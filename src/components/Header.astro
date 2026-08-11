@@ -1,0 +1,195 @@
+---
+import { BRAND, NAV, NAV_CTA } from '../config';
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="wordmark" aria-label={`${BRAND.name} — home`}>
+      <span class="wordmark__mark" aria-hidden="true"></span>
+      {BRAND.name}
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        {
+          NAV.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="site-nav__cta">
+          <a href={NAV_CTA.href} class="btn btn--primary">{NAV_CTA.label}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4.25rem;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 750;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .wordmark__mark {
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--signal-strong);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .site-nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav a:not(.btn) {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 550;
+    font-size: var(--text-sm);
+  }
+
+  .site-nav a:not(.btn):hover,
+  .site-nav a[aria-current='page']:not(.btn) {
+    color: var(--ink);
+  }
+
+  .site-nav a[aria-current='page']:not(.btn) {
+    text-decoration: underline;
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.75rem 0.25rem;
+    cursor: pointer;
+  }
+
+  .nav-toggle__bar {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--ink);
+    margin-block: 5px;
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  @media (max-width: 47.99rem) {
+    .nav-toggle {
+      display: block;
+    }
+
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: var(--space-3) clamp(1.25rem, 4vw, 2.5rem) var(--space-4);
+    }
+
+    .site-header.is-open .site-nav {
+      display: block;
+    }
+
+    .site-header.is-open .nav-toggle__bar:first-of-type {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+
+    .site-header.is-open .nav-toggle__bar:last-of-type {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .site-nav li {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-nav a:not(.btn) {
+      display: block;
+      padding: var(--space-3) 0;
+      font-size: var(--text-base);
+    }
+
+    .site-nav__cta {
+      border-bottom: none;
+      padding-top: var(--space-3);
+    }
+
+    .site-nav__cta .btn {
+      display: block;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  if (header && toggle) {
+    toggle.addEventListener('click', () => {
+      const open = header.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>

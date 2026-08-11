@@ -1,0 +1,49 @@
+---
+import { NAV_CTA } from '../config';
+
+interface Props {
+  heading?: string;
+  body?: string;
+}
+
+const {
+  heading = 'Tell me about your business.',
+  body = 'Send a few lines about what you do and what’s not working. You’ll get a straight answer about scope, price, and timeline — usually within one business day.',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <div>
+      <h2>{heading}</h2>
+      <p>{body}</p>
+    </div>
+    <a href={NAV_CTA.href} class="btn btn--primary btn--large">{NAV_CTA.label}</a>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    border-top: 1px solid var(--line);
+    background: var(--signal-tint);
+    padding-block: var(--space-6);
+  }
+
+  .cta-band__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .cta-band h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .cta-band p {
+    margin-top: var(--space-2);
+    color: var(--ink-soft);
+    max-width: 48ch;
+  }
+</style>

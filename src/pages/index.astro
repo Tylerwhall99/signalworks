@@ -1,0 +1,177 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { BRAND, NAV_CTA, SERVICES } from '../config';
+---
+
+<Base title={BRAND.name}>
+  <section class="section hero">
+    <div class="container">
+      <span class="eyebrow">Web design for service businesses</span>
+      <h1>
+        Your website has one job:<br />make the phone ring.
+      </h1>
+      <p class="lede">
+        {BRAND.tagline} Custom-built, fast, and written in plain English — by
+        one person who answers their own email.
+      </p>
+      <div class="btn-row hero__actions">
+        <a href={NAV_CTA.href} class="btn btn--primary btn--large"
+          >{NAV_CTA.label}</a
+        >
+        <a href="/pricing/" class="btn btn--ghost btn--large">See pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--rule">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The problem</span>
+        <h2>Most service-business websites don't do their job.</h2>
+        <p class="lede">
+          They load slow, bury the phone number, and read like they were
+          written for other web designers. Meanwhile the jobs go to whoever
+          picked up first.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card">
+          <h3>Slow to load</h3>
+          <p class="muted">
+            Half your visitors are on a phone, standing in a driveway. If the
+            page takes six seconds, they hit back and call the next result.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Hard to contact</h3>
+          <p class="muted">
+            The number is a footer link. The form has nine fields. Every extra
+            tap between a visitor and a call costs you work.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Says nothing</h3>
+          <p class="muted">
+            "Quality service since whenever." Nothing about what you actually
+            do, where you do it, or what happens when someone calls.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What I build</span>
+        <h2>Websites and web apps. That's the whole menu.</h2>
+      </div>
+      <div class="grid grid--2">
+        {
+          SERVICES.map((s) => (
+            <div class="card">
+              <h3>
+                <a href={s.href}>{s.title}</a>
+              </h3>
+              <p class="muted">{s.summary}</p>
+              <p style="margin-top: var(--space-3);">
+                <a href={s.href}>What's included →</a>
+              </p>
+            </div>
+          ))
+        }
+        <div class="card">
+          <h3>Built for how customers actually find you</h3>
+          <p class="muted">
+            Every site ships with clean structure, fast load times, and
+            structured data — the technical groundwork search engines read.
+            What I won't do is promise you rankings. Nobody can, honestly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--rule">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why a solo shop</span>
+        <h2>One builder, current tools, agency output.</h2>
+        <p class="lede">
+          I build with AI-accelerated tooling. That's not a gimmick — it's why
+          one person can design, write, and ship a custom site in days instead
+          of months, at a price that isn't padded with agency overhead. You
+          talk to the person doing the work. Every time.
+        </p>
+      </div>
+      <ul class="checklist">
+        <li>No account managers, no handoffs, no "let me check with the team."</li>
+        <li>Fixed quotes in writing before work starts. The number doesn't move.</li>
+        <li>You own everything: domain, hosting, code, accounts. No hostage-taking.</li>
+        <li>Delivered remotely — video audits, video calls, async review. Based in Los Angeles, working nationwide.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--rule">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Four steps. No mystery.</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Tell me what's broken</h3>
+          <p class="muted">
+            A short email or call about your business and what the current
+            site isn't doing. If I'm not the right fit, I'll say so and point
+            you somewhere better.
+          </p>
+        </li>
+        <li>
+          <h3>Get a fixed quote</h3>
+          <p class="muted">
+            A written scope, a flat price, and a delivery date. You know
+            exactly what you're buying before you spend a dollar.
+          </p>
+        </li>
+        <li>
+          <h3>Review the build</h3>
+          <p class="muted">
+            You see the real site on a live preview link, not mockups. We
+            revise until it sounds like you and works on your customers'
+            phones.
+          </p>
+        </li>
+        <li>
+          <h3>Launch and hand off</h3>
+          <p class="muted">
+            The site goes live on your domain, in your accounts. You get a
+            recorded walkthrough and a plain-English guide to running it.
+          </p>
+        </li>
+      </ol>
+      <p style="margin-top: var(--space-5);">
+        <a href="/process/">The full process, step by step →</a>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .hero {
+    padding-block: var(--space-7);
+  }
+
+  .hero__actions {
+    margin-top: var(--space-5);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-4);
+    max-width: 22ch;
+  }
+</style>
