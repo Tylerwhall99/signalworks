@@ -43,3 +43,28 @@ items are the ones worth reviewing before launch.
   /pricing/, /process/, /about/, /contact/, 404. Future services slot in as
   entries in `SERVICES` in `src/config.ts` plus one page file under
   `src/pages/services/`.
+
+## Phase 2 — Pages & copy
+
+- **Payment terms invented: 50% to start, 50% at launch, monthly milestones
+  for longer web apps.** Stated on /pricing/ and /process/. Edit those two
+  pages if your terms differ.
+- **"Replies within one business day" is a conduct commitment** used on
+  Home, Contact, and Process. It replaces testimonials as trust-building —
+  only keep it if you'll honor it.
+- Other conduct commitments used in place of social proof: fixed written
+  quotes, delivery date treated as part of the deal, client owns all
+  accounts/code, "if I'm the wrong fit I'll say so," 30 days of post-launch
+  fixes on web apps, staff training recorded. All are promises of behavior
+  and deliverables, never outcomes.
+- Named example customer types (contractors, trades, clinics, studios,
+  firms) as the target audience — descriptive, not claimed clients.
+- The one SERVICES entry covers both websites and web apps on a single page
+  (/services/web-design/) since they share process and audience; the slug
+  matches the brief's planned URL structure. If web apps later deserve their
+  own marketing page, add a second SERVICES entry.
+- FAQ answer states domains cost "usually $10–20/year" and that most builds
+  host free — true of static hosting (Cloudflare Pages/Netlify free tiers)
+  as of 2026.
+- 404 page included (works automatically on Netlify/Vercel/Cloudflare
+  static hosting).

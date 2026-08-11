@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import { CONTACT } from '../config';
+
+const hasForm = CONTACT.formEndpoint.length > 0;
+---
+
+<Base
+  title="Contact"
+  description="Tell Signalworks about your business. Straight answer on scope, price, and timeline — usually within one business day."
+>
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Tell me what's not working.</h1>
+      <p class="lede" style="margin-top: var(--space-4);">
+        A few plain sentences is plenty: what you do, where you work, and
+        what you wish your website did. You'll hear back within one business
+        day.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="contact-h">Direct</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="eyebrow" style="margin-bottom: var(--space-1);">Email</span>
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          </li>
+          <li>
+            <span class="eyebrow" style="margin-bottom: var(--space-1);">Phone</span>
+            <a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a>
+          </li>
+        </ul>
+        <div class="contact-next">
+          <h2 class="contact-h">What happens after you write</h2>
+          <ol class="steps">
+            <li>
+              <h3>You get a reply</h3>
+              <p class="muted">
+                Within one business day, from me — a real answer, not an
+                autoresponder.
+              </p>
+            </li>
+            <li>
+              <h3>We look at your situation</h3>
+              <p class="muted">
+                A short call or a recorded video audit of your current site,
+                whichever suits you.
+              </p>
+            </li>
+            <li>
+              <h3>You get a number</h3>
+              <p class="muted">
+                A written scope, a flat price, and a delivery date. Then it's
+                your call, with no follow-up pressure campaign.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      {
+        hasForm && (
+          <form
+            method="POST"
+            action={CONTACT.formEndpoint}
+            class="contact-form"
+          >
+            <h2 class="contact-h">Or use the form</h2>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="business">What does your business do?</label>
+              <input
+                id="business"
+                name="business"
+                type="text"
+                placeholder="e.g. Residential electrician in Sacramento"
+              />
+            </div>
+            <div class="field">
+              <label for="message">What's not working?</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="A few plain sentences is perfect."
+              />
+            </div>
+            <button type="submit" class="btn btn--primary btn--large">
+              Send it
+            </button>
+          </form>
+        )
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 48rem) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .contact-h {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-list li + li {
+    margin-top: var(--space-4);
+  }
+
+  .contact-list a {
+    font-size: var(--text-lg);
+    font-weight: 600;
+  }
+
+  .contact-next {
+    margin-top: var(--space-6);
+  }
+
+  .contact-form {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    align-self: start;
+  }
+</style>

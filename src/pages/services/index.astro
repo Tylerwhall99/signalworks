@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { SERVICES } from '../../config';
+---
+
+<Base
+  title="Services"
+  description="Custom websites and web apps for service businesses. A deliberately short menu, done properly by one builder."
+>
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Services</span>
+      <h1>A short menu, on purpose.</h1>
+      <p class="lede" style="margin-top: var(--space-4);">
+        I do the things I can do at a high standard, and nothing else. If you
+        need something outside this list, I'll tell you straight and point you
+        to someone who does it well.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2">
+        {
+          SERVICES.map((s) => (
+            <div class="card">
+              <h3>
+                <a href={s.href}>{s.title}</a>
+              </h3>
+              <p class="muted">{s.summary}</p>
+              <p style="margin-top: var(--space-3);">
+                <a href={s.href}>Details, deliverables, and timelines →</a>
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="muted" style="margin-top: var(--space-5); font-size: var(--text-sm);">
+        Not sure whether your project fits? Ask. A five-minute email beats a
+        week of guessing.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Have a project in mind?"
+    body="Describe it in a few plain sentences. You'll get a straight answer about whether it fits, what it costs, and how long it takes."
+  />
+</Base>

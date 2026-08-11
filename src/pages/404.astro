@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { NAV } from '../config';
+---
+
+<Base
+  title="Page not found"
+  description="That page doesn't exist. Here's the way back."
+>
+  <section class="section">
+    <div class="container container--narrow">
+      <span class="eyebrow">404</span>
+      <h1>That page isn't here.</h1>
+      <p class="lede" style="margin-top: var(--space-4);">
+        The link is old, the address has a typo, or I moved something and
+        missed a redirect — which would be my fault. Either way, everything
+        useful is one click below.
+      </p>
+      <ul class="checklist" style="margin-top: var(--space-5);">
+        <li><a href="/">Home</a></li>
+        {NAV.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>
