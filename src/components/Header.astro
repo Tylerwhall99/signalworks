@@ -18,6 +18,7 @@ const isActive = (href: string) =>
       type="button"
       aria-expanded="false"
       aria-controls="site-nav"
+      aria-label="Menu"
     >
       <span class="nav-toggle__bar" aria-hidden="true"></span>
       <span class="nav-toggle__bar" aria-hidden="true"></span>
@@ -148,11 +149,11 @@ const isActive = (href: string) =>
     }
 
     .site-header.is-open .nav-toggle__bar:first-of-type {
-      transform: translateY(3.5px) rotate(45deg);
+      transform: translateY(6px) rotate(45deg);
     }
 
-    .site-header.is-open .nav-toggle__bar:last-of-type {
-      transform: translateY(-3.5px) rotate(-45deg);
+    .site-header.is-open .nav-toggle__bar:nth-of-type(2) {
+      transform: translateY(-6px) rotate(-45deg);
     }
 
     .site-nav ul {

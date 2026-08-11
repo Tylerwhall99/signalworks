@@ -86,3 +86,17 @@ items are the ones worth reviewing before launch.
   1200x630. Regenerate if the tagline changes.
 - Skipped FAQPage structured data on purpose: Google restricted FAQ rich
   results to government/health sites in 2023, so it's dead weight.
+
+## Phase 4 — Polish & responsive verification
+
+- Verified in-browser at 375px (mobile) and 1280px (desktop): hamburger nav
+  toggle with aria-expanded, no horizontal overflow on any page, FAQ
+  accordions (native <details>, zero JS), 404 route, footer grid collapse.
+- Fixed during this pass: the mobile menu close-icon X (a CSS
+  :last-of-type selector matched the button's hidden label span instead of
+  the second icon bar; also increased the bar travel so the X actually
+  crosses).
+- The only JavaScript on the site is the ~8-line mobile nav toggle.
+  Accordions are native HTML. This is deliberate: nothing to break, nothing
+  to bundle.
+- Reduced-motion users get transitions disabled globally via media query.
