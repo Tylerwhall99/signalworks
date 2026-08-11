@@ -1,10 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
+import StructuredData from '../components/StructuredData.astro';
 import { BRAND, NAV_CTA, SERVICES } from '../config';
 ---
 
 <Base title={BRAND.name}>
+  <StructuredData slot="head" />
   <section class="section hero">
     <div class="container">
       <span class="eyebrow">Web design for service businesses</span>

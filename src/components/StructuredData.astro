@@ -1,0 +1,45 @@
+---
+/**
+ * JSON-LD for the home page. Everything derives from src/config.ts, so
+ * updating contact details or pricing there keeps structured data in sync.
+ */
+import { BRAND, CONTACT, PRICING, SITE_URL } from '../config';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: BRAND.name,
+  description: BRAND.description,
+  url: SITE_URL,
+  email: CONTACT.email,
+  telephone: CONTACT.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: CONTACT.address,
+    addressLocality: 'Los Angeles',
+    addressRegion: 'CA',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'United States',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Web design services',
+    itemListElement: PRICING.map((pkg) => ({
+      '@type': 'Offer',
+      name: pkg.name,
+      description: pkg.summary,
+      price: pkg.price.replace(/[^0-9.]/g, ''),
+      priceCurrency: 'USD',
+    })),
+  },
+};
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+  is:inline
+/>

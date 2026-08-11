@@ -68,3 +68,21 @@ items are the ones worth reviewing before launch.
   as of 2026.
 - 404 page included (works automatically on Netlify/Vercel/Cloudflare
   static hosting).
+
+## Phase 3 — SEO & metadata
+
+- JSON-LD uses `ProfessionalService` schema on the home page only, with an
+  offer catalog generated from the `PRICING` config — prices in structured
+  data stay in sync with the pricing page automatically.
+- Structured data lists Los Angeles as locality (credibility anchor) with
+  `areaServed: United States` — mirrors the "based in LA, serving
+  nationwide" positioning.
+- robots.txt is generated at build time from `SITE_URL` so nothing is
+  hardcoded; sitemap comes from @astrojs/sitemap.
+- Favicon is an SVG (orange square, three rising signal bars). Modern
+  browsers all support SVG favicons; no .ico fallback shipped. Add one
+  pre-launch only if ancient-browser support matters.
+- OG share image (public/og.png) was rendered from the brand system at
+  1200x630. Regenerate if the tagline changes.
+- Skipped FAQPage structured data on purpose: Google restricted FAQ rich
+  results to government/health sites in 2023, so it's dead weight.
