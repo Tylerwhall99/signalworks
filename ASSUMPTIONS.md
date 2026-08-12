@@ -100,3 +100,42 @@ items are the ones worth reviewing before launch.
   Accordions are native HTML. This is deliberate: nothing to break, nothing
   to bundle.
 - Reduced-motion users get transitions disabled globally via media query.
+
+## Scroll-film homepage (SIGNAL / NOISE)
+
+- **You invoked the scroll-film studio with one directive** ("stand out above
+  the new AI consultant companies") and no other answers, so I ran the
+  interview's "you decide" path everywhere: Lane A pure-code film (zero cost,
+  no video engine configured), five chapters, published locally only.
+- **Concepts pitched (self-arbitrated since the session is autonomous):**
+  SIGNAL/NOISE (chosen), The Drafting Table, Dial Tone. SIGNAL/NOISE won
+  because it enacts the brand argument directly against AI-consultant hype.
+- **The homepage was replaced** with the film (old homepage preserved in git;
+  its content sections — services cards, honest-AI block, CTA — live below
+  the film). All subpages and their standard header/nav are untouched.
+- **The banned-words rule is deliberately inverted in CH 01/02**: the banned
+  list appears as the film's antagonist — drifting noise-field words and
+  struck-out fake promises ("#1 on Google. Guaranteed."), explicitly framed
+  as what other agencies say. Signalworks' own voice never uses them. If you
+  want zero occurrences even as quoted villainy, say so and I'll re-art the
+  noise field with invented jargon instead.
+- The film homepage drops the full nav bar for a minimal film chrome
+  (wordmark + Get a quote + Skip the film). Full nav remains on every other
+  page and in the footer. "Skip the film" fades once the film ends.
+- Space Grotesk (self-hosted woff2, ~26KB total) was added as the film's
+  display face — the original system-font-only rule still holds everywhere
+  else; body text remains the system stack.
+- GSAP 3.13 + ScrollTrigger + Lenis vendored locally in public/vendor/ (no
+  CDN dependency at runtime). The original "minimal vanilla JS" brief rule
+  was superseded by the scroll-film request for this one page.
+- Reduced-motion visitors and no-JS visitors get a static paper hero with
+  the tagline and CTAs — no film, full content.
+- Verified with the skill's harness (system Chrome, not the throttled
+  preview pane): dev contract (?jump + __ready), 15 beat screenshots
+  (desktop + 390px mobile), scroll-through jank test 3× PASS (max frame
+  28ms after replacing a CSS-blur glow with layered strokes; before: 248ms
+  spikes).
+- The earlier multi-agent QA audit (Phase 5) stalled server-side and never
+  produced findings; replaced with targeted greps (banned words, hardcoded
+  contact data) + the film verification above. A fuller copy audit can
+  re-run anytime.
