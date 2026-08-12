@@ -1,0 +1,90 @@
+---
+// Body for /services/web-apps/ — custom web apps.
+import { PRICING } from '../../config';
+
+const pkg = PRICING.find((p) => p.id === 'web-app');
+---
+
+<section class="section section--rule">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Who this is for</span>
+      <h2>If your operation lives in a spreadsheet held together with habit.</h2>
+      <p class="lede">
+        Booking flows, quote calculators, job tracking, client portals,
+        internal tools — the software that runs your day. If your crew passes
+        a spreadsheet around, or your booking process is "call and hope," it
+        can usually be an app your whole team uses from a phone.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Deliverables</span>
+      <h2>How a web app project works</h2>
+    </div>
+    <ul class="checklist">
+      <li>A scoping call and a written spec before any money changes hands</li>
+      <li>A fixed quote against that spec — no hourly meter</li>
+      <li>Custom build, so there's no per-seat license bill forever</li>
+      <li>Your data, your accounts, your code — from day one</li>
+      <li>Training for you and your staff, recorded so new hires can watch it later</li>
+      <li>30 days of post-launch fixes included, no invoice</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="container container--narrow">
+    <div class="section-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Asked often, answered straight.</h2>
+    </div>
+    <details class="faq">
+      <summary>How long does it take?</summary>
+      <div class="faq-body">
+        <p>
+          Scoped per project; most ship in three to six weeks. The spec you
+          approve includes the delivery date, and longer builds split into
+          monthly milestones so you're never paying for work you haven't
+          seen.
+        </p>
+      </div>
+    </details>
+    <details class="faq">
+      <summary>Do we need an app in the app stores?</summary>
+      <div class="faq-body">
+        <p>
+          Usually not. Most businesses asking for "an app" need one that
+          opens instantly from a link and installs to the home screen from
+          the browser — one build that works on every phone, with no store
+          review cycle between you and your updates. That's what I build.
+        </p>
+      </div>
+    </details>
+    <details class="faq">
+      <summary>Can it talk to the tools we already use?</summary>
+      <div class="faq-body">
+        <p>
+          Often, yes — if a tool you rely on has a way for other software to
+          connect to it, we can usually wire it in. That gets answered
+          honestly in the written spec, before you've committed a dollar.
+        </p>
+      </div>
+    </details>
+    <details class="faq">
+      <summary>What does it cost?</summary>
+      <div class="faq-body">
+        <p>
+          {pkg ? `${pkg.price[0].toUpperCase()}${pkg.price.slice(1)}` : 'Fixed-quoted'},
+          {pkg?.priceNote}. The
+          <a href="/pricing/">pricing page</a> has the full breakdown of
+          what's included.
+        </p>
+      </div>
+    </details>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+/**
+ * Shared template for every live service page. Adding a service later:
+ * flip its status to "live" in src/config.ts and add a body component at
+ * src/components/services/<slug>.astro. This route, the hub, home, footer,
+ * and sitemap all pick it up from config — no other edits.
+ */
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { LIVE_SERVICES } from '../../config';
+
+export function getStaticPaths() {
+  return LIVE_SERVICES.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+
+const bodies = import.meta.glob('../../components/services/*.astro', {
+  eager: true,
+});
+const bodyModule = bodies[`../../components/services/${service.slug}.astro`] as
+  | { default: any }
+  | undefined;
+if (!bodyModule) {
+  throw new Error(
+    `Service "${service.slug}" is live in src/config.ts but has no body — create src/components/services/${service.slug}.astro`
+  );
+}
+const Body = bodyModule.default;
+---
+
+<Base title={service.name} description={service.metaDescription}>
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Services / {service.name}</span>
+      <h1>{service.headline ?? service.name}</h1>
+      <p class="lede" style="margin-top: var(--space-4);">{service.summary}</p>
+    </div>
+  </section>
+
+  <Body />
+
+  <CtaBand />
+</Base>

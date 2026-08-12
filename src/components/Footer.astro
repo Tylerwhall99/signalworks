@@ -1,5 +1,5 @@
 ---
-import { BRAND, CONTACT, NAV, SERVICES } from '../config';
+import { BRAND, CONTACT, NAV, LIVE_SERVICES, serviceHref } from '../config';
 
 const year = new Date().getFullYear();
 ---
@@ -28,8 +28,8 @@ const year = new Date().getFullYear();
       <nav aria-label="Footer — services">
         <p class="site-footer__heading">Services</p>
         <ul>
-          {SERVICES.map((s) => (
-            <li><a href={s.href}>{s.navLabel}</a></li>
+          {LIVE_SERVICES.map((s) => (
+            <li><a href={serviceHref(s)}>{s.navLabel ?? s.name}</a></li>
           ))}
         </ul>
       </nav>

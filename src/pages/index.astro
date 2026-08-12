@@ -6,7 +6,7 @@
  * Pure-code film (GSAP + ScrollTrigger + Lenis, all vendored locally).
  * Reduced-motion and no-JS visitors get a static hero + full content.
  */
-import { BRAND, NAV_CTA, SERVICES, SITE_URL } from '../config';
+import { BRAND, NAV_CTA, LIVE_SERVICES, serviceHref, SITE_URL } from '../config';
 import Footer from '../components/Footer.astro';
 import CtaBand from '../components/CtaBand.astro';
 import StructuredData from '../components/StructuredData.astro';
@@ -225,26 +225,18 @@ const canonical = new URL('/', SITE_URL).href;
           </div>
           <div class="grid grid--2">
             {
-              SERVICES.map((s) => (
+              LIVE_SERVICES.map((s) => (
                 <div class="card">
                   <h3>
-                    <a href={s.href}>{s.title}</a>
+                    <a href={serviceHref(s)}>{s.name}</a>
                   </h3>
                   <p class="muted">{s.summary}</p>
                   <p style="margin-top: var(--space-3);">
-                    <a href={s.href}>What’s included →</a>
+                    <a href={serviceHref(s)}>What’s included →</a>
                   </p>
                 </div>
               ))
             }
-            <div class="card">
-              <h3>Built for how customers actually find you</h3>
-              <p class="muted">
-                Every site ships with clean structure, fast load times, and
-                structured data — the technical groundwork search engines read.
-                What I won’t do is promise you rankings. Nobody can, honestly.
-              </p>
-            </div>
           </div>
         </div>
       </section>

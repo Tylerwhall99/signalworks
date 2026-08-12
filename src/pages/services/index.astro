@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { SERVICES } from '../../config';
+import { LIVE_SERVICES, serviceHref } from '../../config';
 ---
 
 <Base
@@ -24,14 +24,14 @@ import { SERVICES } from '../../config';
     <div class="container">
       <div class="grid grid--2">
         {
-          SERVICES.map((s) => (
+          LIVE_SERVICES.map((s) => (
             <div class="card">
               <h3>
-                <a href={s.href}>{s.title}</a>
+                <a href={serviceHref(s)}>{s.name}</a>
               </h3>
               <p class="muted">{s.summary}</p>
               <p style="margin-top: var(--space-3);">
-                <a href={s.href}>Details, deliverables, and timelines →</a>
+                <a href={serviceHref(s)}>Details, deliverables, and timelines →</a>
               </p>
             </div>
           ))

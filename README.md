@@ -14,7 +14,7 @@ as a fully static site: no database, no CMS, nothing to patch on a schedule.
 | Real domain | `SITE_URL` — replace `https://signalworks.example` before launch |
 | Prices & packages | `PRICING` and `CARE_PLAN` — edit numbers/bullets here, the pricing page and structured data update themselves |
 | Navigation | `NAV` and `NAV_CTA` |
-| Services list | `SERVICES` — to launch a new service later, add an entry here plus one page file in `src/pages/services/` |
+| Services list | `SERVICES` — see "Adding a new service" below |
 
 Page copy lives in `src/pages/*.astro` — the text is plain HTML, edit it
 like a document.
@@ -62,6 +62,26 @@ Lenis, vendored in `public/vendor/`. Everything lives in
 `src/pages/index.astro`. Reduced-motion and no-JS visitors automatically get
 a static hero instead. To retire the film, `git log` has the previous
 homepage (`Phase 2` commit) — or ask for it to be restored as a variant.
+
+## Adding a new service
+
+Every service on the roadmap already exists as an entry in `SERVICES` in
+`src/config.ts` with `status: "planned"`. The site renders **only**
+`status: "live"` entries — nav, services hub, home cards, footer, routes,
+and sitemap all derive from that one flag. To launch a service:
+
+1. **Check the ledger first.** A service ships publicly only when its
+   assumption rows in `docs/SERVICES-CATALOG.md` are closed. If a row is
+   OPEN, the service stays `planned` — no exceptions.
+2. In `src/config.ts`, flip the entry's `status` to `"live"` and fill in
+   `summary`, `headline`, and `metaDescription` (plus `navLabel` if the
+   name is long).
+3. Create `src/components/services/<slug>.astro` with the page body
+   (sections below the hero — see the four existing files for the shape).
+4. `npm run build` — the template at `src/pages/services/[slug].astro`
+   fails the build loudly if a live service has no body file.
+
+That's the whole procedure: one config edit, one content file.
 
 ## Internal docs
 

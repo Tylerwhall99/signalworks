@@ -139,3 +139,33 @@ items are the ones worth reviewing before launch.
   produced findings; replaced with targeted greps (banned words, hardcoded
   contact data) + the film verification above. A fuller copy audit can
   re-run anytime.
+
+## Service architecture (status-gated config)
+
+- Services are now a typed array in `src/config.ts` with
+  `status: "live" | "planned"`. Every rendering surface (hub, home cards,
+  footer, routes, sitemap) derives from `LIVE_SERVICES`; planned entries
+  never reach HTML (verified by grepping the built output for every planned
+  name, slug, tier name, and ledger vocabulary — only schema.org's standard
+  "OfferCatalog" JSON-LD term matches, which is unrelated).
+- **"Tier 1 as live" was interpreted through the catalog's own sequencing
+  line and ledger rule:** live = marketing websites, landing pages, web
+  apps, rescues/rebuilds (#1, #2, #3, #6). E-commerce (#4) and native
+  mobile apps (#5) are Tier 1 but stay `planned` because their ledger rows
+  (A2/A3, A4) are OPEN — per the rule the catalog itself sets. PWA
+  positioning lives inside the web-apps FAQ ("Do we need an app in the app
+  stores?") rather than as its own service.
+- The combined websites-and-web-apps page was split: `/services/web-design/`
+  (URL preserved for SEO) is now Custom Websites; Web Apps moved to
+  `/services/web-apps/`. New pages: `/services/landing-pages/` (priced by
+  the existing One-Page Site package) and `/services/rescues/`.
+- Service pages render through one template (`src/pages/services/[slug].astro`)
+  + per-service body components in `src/components/services/`. The build
+  fails loudly if a live service lacks a body file.
+- Prices/timelines on service pages render from the PRICING config (no
+  hardcoded numbers) — caught and fixed one hardcoded "$9,500" during build.
+- Home's "What I build" grid now shows the four live services (2×2); the
+  standalone "search groundwork" card was dropped for grid balance — its
+  rankings-honesty message lives on in the web-design FAQ and pricing FAQ.
+- Rescues copy was self-edited to avoid implied track record ("situations I
+  see every week" → "situations that bring people here").

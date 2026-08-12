@@ -40,30 +40,103 @@ export const NAV: NavItem[] = [
 
 export const NAV_CTA: NavItem = { label: 'Get a quote', href: '/contact/' };
 
+export type ServiceStatus = 'live' | 'planned';
+
 export interface Service {
   slug: string;
-  title: string;
-  navLabel: string;
-  summary: string;
-  href: string;
+  name: string;
+  status: ServiceStatus;
+  /** Shorter label for nav/footer. Defaults to name. */
+  navLabel?: string;
+  /** Card/hero blurb. Required in practice for live services. */
+  summary?: string;
+  /** Page H1. Required in practice for live services. */
+  headline?: string;
+  /** Meta description. Required in practice for live services. */
+  metaDescription?: string;
 }
 
+export const serviceHref = (s: Pick<Service, 'slug'>) => `/services/${s.slug}/`;
+
 /**
- * Services currently offered. Future services are added here as siblings
- * (slug 'seo', 'automation', ...) with a matching page file in
- * src/pages/services/ — the hub page, nav, footer, and sitemap pick them
- * up from this array. Nothing else needs to change.
+ * The full service roadmap. Only status "live" renders anywhere on the
+ * public site (nav, hub, home, footer, routes) — "planned" entries exist so
+ * launching a service later is a two-step edit:
+ *
+ *   1. flip status to "live" (and fill navLabel/summary/headline/metaDescription)
+ *   2. add src/components/services/<slug>.astro with the page body
+ *
+ * A service ships publicly only when its assumption rows in
+ * docs/SERVICES-CATALOG.md are closed. See README "Adding a new service".
  */
 export const SERVICES: Service[] = [
   {
     slug: 'web-design',
-    title: 'Custom websites & web apps',
-    navLabel: 'Websites & web apps',
+    name: 'Custom websites',
+    status: 'live',
+    navLabel: 'Websites',
     summary:
-      'A fast, clear website built around the jobs you want more of — or a web app that replaces the spreadsheet holding your operation together.',
-    href: '/services/web-design/',
+      'A fast, clear website built around the jobs you want more of — designed, written, and shipped by one person.',
+    headline: 'A site built around the jobs you want more of.',
+    metaDescription:
+      'Custom websites for service businesses: fast, plainly written, delivered in days to weeks at a fixed price. No templates, no page builders.',
   },
+  {
+    slug: 'landing-pages',
+    name: 'Landing pages',
+    status: 'live',
+    summary:
+      'One focused page for one offer — built to load fast and make contacting you the obvious next step.',
+    headline: 'One page. One offer. One obvious next step.',
+    metaDescription:
+      'Custom landing and campaign pages for service businesses: one focused page, copy included, built in days and wired for your analytics.',
+  },
+  {
+    slug: 'web-apps',
+    name: 'Web apps',
+    status: 'live',
+    summary:
+      'Booking, quoting, scheduling, client portals — custom software for the part of your operation that outgrew spreadsheets.',
+    headline: 'Software for the part of the business that outgrew spreadsheets.',
+    metaDescription:
+      'Custom web apps for service businesses: booking flows, quote builders, portals, and internal tools. Scoped in writing, built at a fixed price, owned by you.',
+  },
+  {
+    slug: 'rescues',
+    name: 'Website rescues & rebuilds',
+    status: 'live',
+    navLabel: 'Rescues & rebuilds',
+    summary:
+      'Site broke? Web person vanished? Stuck on a platform you hate? I’ll assess it honestly and fix what’s actually wrong.',
+    headline: 'For sites that got broken, abandoned, or held hostage.',
+    metaDescription:
+      'Website rescues, rebuilds, and migrations for service businesses: an honest video audit, a rebuild-or-repair answer, and a relaunch where existing links keep working.',
+  },
+
+  // Planned roadmap (never rendered). Meaning and prerequisites for each
+  // live in docs/SERVICES-CATALOG.md.
+  { slug: 'e-commerce', name: 'E-commerce builds', status: 'planned' },
+  { slug: 'native-apps', name: 'Native mobile apps', status: 'planned' },
+  { slug: 'technical-seo', name: 'Technical SEO', status: 'planned' },
+  { slug: 'local-seo', name: 'Local SEO', status: 'planned' },
+  { slug: 'ai-search', name: 'AI-search readiness', status: 'planned' },
+  { slug: 'content', name: 'Content production', status: 'planned' },
+  { slug: 'review-systems', name: 'Review systems', status: 'planned' },
+  { slug: 'chat-agents', name: 'AI chat agents', status: 'planned' },
+  { slug: 'phone-agents', name: 'AI phone agents', status: 'planned' },
+  { slug: 'email-marketing', name: 'Email marketing', status: 'planned' },
+  { slug: 'crm-setup', name: 'CRM setup & pipelines', status: 'planned' },
+  { slug: 'marketing-automation', name: 'Marketing automation', status: 'planned' },
+  { slug: 'ai-consulting', name: 'AI consulting', status: 'planned' },
+  { slug: 'dashboards', name: 'Reporting dashboards', status: 'planned' },
+  { slug: 'ad-infrastructure', name: 'Ad landing pages & tracking', status: 'planned' },
+  { slug: 'ads-management', name: 'Ads management', status: 'planned' },
 ];
+
+/** Everything the public site is allowed to show. */
+export const LIVE_SERVICES: Service[] = SERVICES.filter(
+  (s) => s.status === 'live'
+);
 
 export interface PricingPackage {
   id: string;
