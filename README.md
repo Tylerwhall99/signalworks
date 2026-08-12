@@ -62,3 +62,9 @@ Lenis, vendored in `public/vendor/`. Everything lives in
 `src/pages/index.astro`. Reduced-motion and no-JS visitors automatically get
 a static hero instead. To retire the film, `git log` has the previous
 homepage (`Phase 2` commit) — or ask for it to be restored as a variant.
+
+## Internal docs
+
+- `docs/SERVICES-CATALOG.md` — the full service catalog & feasibility map
+  (internal only, never published). Rule: a service goes on the public site
+  only when its ledger row there is CLOSED.
