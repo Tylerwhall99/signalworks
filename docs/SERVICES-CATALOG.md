@@ -114,7 +114,7 @@ Gap to close: either (a) get certified and manage a small budget on your own bus
 
 | # | Assumption / prerequisite | Blocks | Status |
 |---|---|---|---|
-| A1 | Supabase (or equal) account strategy decided: client-owned vs. yours | Web apps, portals | OPEN — but see note below |
+| A1 | Supabase (or equal) account strategy decided: client-owned vs. yours | Web apps, portals | CLOSED — client-owned accounts (Supabase, Stripe, domain, email). Signalworks retains admin access for delivery and Care Plan work. This matches the public "your data, your accounts, your code" promise. |
 | A2 | Stripe flows tested end-to-end on a demo | E-commerce | OPEN |
 | A3 | Shopify Partner account created | Shopify builds | OPEN |
 | A4 | One Expo app published under own dev accounts | Native mobile apps | OPEN |
@@ -126,11 +126,6 @@ Gap to close: either (a) get certified and manage a small budget on your own bus
 | A10 | Ads path decided: certify vs. white-label partner | Paid traffic | OPEN |
 | A11 | Per-client DNS access process documented (email + domains) | Email marketing, launches | OPEN |
 | A12 | 2–3 shipped client builds exist | AI consulting credibility | OPEN |
-
-> **A1 note (added at intake):** the live site already promises web-app
-> clients "Your data, your accounts, your code — from day one"
-> (/services/web-design/) — that public commitment is the client-owned
-> answer. Recommend closing A1 as CLIENT-OWNED unless Tyler objects.
 
 **Rule:** a service does not appear on the public site until its ledger rows are CLOSED. The site's expansion architecture (sibling /services/ pages) is already built for this — adding a service is a content edit, not a rebuild.
 
