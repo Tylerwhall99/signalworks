@@ -169,3 +169,20 @@ items are the ones worth reviewing before launch.
   rankings-honesty message lives on in the web-design FAQ and pricing FAQ.
 - Rescues copy was self-edited to avoid implied track record ("situations I
   see every week" → "situations that bring people here").
+
+## Niche update — home services
+
+- Primary audience narrowed to home services trades (HVAC, plumbing,
+  electrical, roofing, landscaping) per Tyler, 2026-08-12. Scope kept
+  deliberately narrow: hero subheads (film CH4 line + static hero) and FAQ
+  examples went trade-specific; /about, the /services hub, and the brand
+  tagline keep the broader "service businesses" so adjacent clients
+  (clinics, studios, firms) aren't repelled.
+- **/free-audit does not exist on this site** — the instruction referenced
+  updating its copy, but no such page was ever specified or built, and "no
+  new pages" ruled out creating one. Audit copy continues to live on
+  /process/ (video audit step) and /services/rescues/. Flagged to Tyler.
+- Trade language kept factual (service calls, dispatch software, job types,
+  trucks/crews/finished jobs) — no caricature, no "blue-collar" flattery.
+- Not changed, worth deciding later: BRAND.description meta text and the
+  OG share image kicker both still say "service businesses" (broad).
