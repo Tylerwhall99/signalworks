@@ -88,7 +88,7 @@ const STEPS = [
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL('/og.png', SITE_URL).href} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0d0f12" />
+    <meta name="theme-color" content="#0b111c" />
     <link
       rel="preload"
       href="/fonts/space-grotesk-700.woff2"
@@ -108,6 +108,7 @@ const STEPS = [
       )
     }
     <script is:inline>
+      document.documentElement.classList.add('js');
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.classList.add('film-off');
       }
@@ -412,8 +413,10 @@ const STEPS = [
             <summary>What if the draft misses?</summary>
             <div class="faq-body">
               <p>
-                One revision round is included. If it’s still not right, walk
-                away. You’ve lost nothing.
+                Tell us what’s off and we revise until it’s right. And if
+                something we built ever breaks, fixing it is on us, free —
+                a bug we caused is never your bill. If it’s still not you,
+                walk away. You’ve lost nothing.
               </p>
             </div>
           </details>
@@ -483,16 +486,39 @@ const STEPS = [
             </p>
           </div>
 
-          <div class="grid grid--2 intake-grid">
-            <!-- Card A: Quickstart -->
+          <div class="wiz-chooser" data-wiz-chooser>
+            <button type="button" class="card wiz-choice" data-choose="quickstart">
+              <h3>Quickstart</h3>
+              <p class="muted">
+                Enough for us to build draft one. Best if you want to see
+                something fast.
+              </p>
+              <span class="wiz-choice__meta">9 quick questions · ~3 minutes →</span>
+            </button>
+            <button type="button" class="card wiz-choice" data-choose="detailed">
+              <h3>Detailed</h3>
+              <p class="muted">
+                The more you give us, the closer draft one lands.
+              </p>
+              <span class="wiz-choice__meta">18 questions · 10–15 minutes →</span>
+            </button>
+          </div>
+
+          <div class="intake-stack">
+            <!-- Path A: Quickstart -->
             <form
-              class="card intake-form"
+              class="card intake-form wiz-form"
               method="POST"
               action={hasEndpoint ? CONTACT.formEndpoint : undefined}
               data-intake="quickstart"
               novalidate
             >
-              <h3>Quickstart — 3 minutes</h3>
+              <div class="wiz-head">
+                <button type="button" class="wiz-back" aria-label="Go back">←</button>
+                <span class="wiz-count" data-wiz-count>1 / 9</span>
+                <span class="wiz-track"><span class="wiz-fill" data-wiz-fill></span></span>
+              </div>
+              <h3 class="wiz-title">Quickstart — 3 minutes</h3>
               <p class="muted intake-blurb">
                 Enough for us to build draft one. Best if you want to see
                 something fast.
@@ -508,71 +534,99 @@ const STEPS = [
                   autocomplete="off"
                 />
               </p>
-              <div class="field">
-                <label for="qs-name">Business name *</label>
-                <input id="qs-name" name="business_name" type="text" required />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-name">Business name *</label>
+                  <input id="qs-name" name="business_name" type="text" required />
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-trade">What you do *</label>
-                <select id="qs-trade" name="trade" required>
-                  <option value="">Choose one…</option>
-                  <option>HVAC</option>
-                  <option>Plumbing</option>
-                  <option>Electrical</option>
-                  <option>Roofing</option>
-                  <option>Landscaping</option>
-                  <option>Law firm</option>
-                  <option>Other</option>
-                </select>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-trade">What you do *</label>
+                  <select id="qs-trade" name="trade" required>
+                    <option value="">Choose one…</option>
+                    <option>HVAC</option>
+                    <option>Plumbing</option>
+                    <option>Electrical</option>
+                    <option>Roofing</option>
+                    <option>Landscaping</option>
+                    <option>Law firm</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="qs-trade-other">If other — what?</label>
+                  <input id="qs-trade-other" name="trade_other" type="text" />
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-trade-other">If other — what?</label>
-                <input id="qs-trade-other" name="trade_other" type="text" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-area">Service area *</label>
+                  <input
+                    id="qs-area"
+                    name="service_area"
+                    type="text"
+                    required
+                    placeholder="e.g. Fresno & Clovis"
+                  />
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-area">Service area *</label>
-                <input
-                  id="qs-area"
-                  name="service_area"
-                  type="text"
-                  required
-                  placeholder="e.g. Fresno & Clovis"
-                />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-phone">Phone *</label>
+                  <input id="qs-phone" name="phone" type="tel" required autocomplete="tel" />
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-phone">Phone *</label>
-                <input id="qs-phone" name="phone" type="tel" required autocomplete="tel" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-email">Email *</label>
+                  <input id="qs-email" name="email" type="email" required autocomplete="email" />
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-email">Email *</label>
-                <input id="qs-email" name="email" type="email" required autocomplete="email" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-url">Current website (if any)</label>
+                  <input id="qs-url" name="current_website" type="url" placeholder="https://" />
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-url">Current website (if any)</label>
-                <input id="qs-url" name="current_website" type="url" placeholder="https://" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-services">Your top 3 services *</label>
+                  <textarea id="qs-services" name="top_services" rows="2" required></textarea>
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-services">Your top 3 services *</label>
-                <textarea id="qs-services" name="top_services" rows="2" required></textarea>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-like">One thing customers say they like about you *</label>
+                  <textarea id="qs-like" name="customers_like" rows="2" required></textarea>
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-like">One thing customers say they like about you *</label>
-                <textarea id="qs-like" name="customers_like" rows="2" required></textarea>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="qs-must">Anything the site must include</label>
+                  <textarea id="qs-must" name="must_include" rows="2"></textarea>
+                </div>
               </div>
-              <div class="field">
-                <label for="qs-must">Anything the site must include</label>
-                <textarea id="qs-must" name="must_include" rows="2"></textarea>
+              <div class="wiz-step wiz-step--final">
+                <p class="wiz-final-note">
+                  That’s everything we need for draft one.
+                </p>
+                <p class="form-error" role="alert" hidden>
+                  A few required fields are missing — tap back to fill them.
+                </p>
+                <button
+                  type="submit"
+                  class="btn btn--primary btn--large intake-submit"
+                  disabled={!hasEndpoint}
+                >
+                  Send it — build my draft
+                </button>
               </div>
-              <p class="form-error" role="alert" hidden>
-                A few required fields are missing — they’re marked above.
-              </p>
-              <button
-                type="submit"
-                class="btn btn--primary btn--large intake-submit"
-                disabled={!hasEndpoint}
-              >
-                Send it — build my draft
-              </button>
+              <div class="wiz-foot">
+                <button type="button" class="btn btn--primary wiz-next">
+                  Next →
+                </button>
+              </div>
               {
                 !hasEndpoint && (
                   <p class="muted intake-fallback">
@@ -588,15 +642,20 @@ const STEPS = [
               </p>
             </form>
 
-            <!-- Card B: Detailed -->
+            <!-- Path B: Detailed -->
             <form
-              class="card intake-form"
+              class="card intake-form wiz-form"
               method="POST"
               action={hasEndpoint ? CONTACT.formEndpoint : undefined}
               data-intake="detailed"
               novalidate
             >
-              <h3>Detailed — 10–15 minutes</h3>
+              <div class="wiz-head">
+                <button type="button" class="wiz-back" aria-label="Go back">←</button>
+                <span class="wiz-count" data-wiz-count>1 / 18</span>
+                <span class="wiz-track"><span class="wiz-fill" data-wiz-fill></span></span>
+              </div>
+              <h3 class="wiz-title">Detailed — 10–15 minutes</h3>
               <p class="muted intake-blurb">
                 The more you give us, the closer draft one lands.
               </p>
@@ -611,109 +670,155 @@ const STEPS = [
                   autocomplete="off"
                 />
               </p>
-              <div class="field">
-                <label for="dt-name">Business name *</label>
-                <input id="dt-name" name="business_name" type="text" required />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-name">Business name *</label>
+                  <input id="dt-name" name="business_name" type="text" required />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-trade">What you do *</label>
-                <select id="dt-trade" name="trade" required>
-                  <option value="">Choose one…</option>
-                  <option>HVAC</option>
-                  <option>Plumbing</option>
-                  <option>Electrical</option>
-                  <option>Roofing</option>
-                  <option>Landscaping</option>
-                  <option>Law firm</option>
-                  <option>Other</option>
-                </select>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-trade">What you do *</label>
+                  <select id="dt-trade" name="trade" required>
+                    <option value="">Choose one…</option>
+                    <option>HVAC</option>
+                    <option>Plumbing</option>
+                    <option>Electrical</option>
+                    <option>Roofing</option>
+                    <option>Landscaping</option>
+                    <option>Law firm</option>
+                    <option>Other</option>
+                  </select>
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-area">Service area *</label>
-                <input id="dt-area" name="service_area" type="text" required />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-area">Service area *</label>
+                  <input id="dt-area" name="service_area" type="text" required />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-phone">Phone *</label>
-                <input id="dt-phone" name="phone" type="tel" required autocomplete="tel" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-phone">Phone *</label>
+                  <input id="dt-phone" name="phone" type="tel" required autocomplete="tel" />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-email">Email *</label>
-                <input id="dt-email" name="email" type="email" required autocomplete="email" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-email">Email *</label>
+                  <input id="dt-email" name="email" type="email" required autocomplete="email" />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-url">Current website (if any)</label>
-                <input id="dt-url" name="current_website" type="url" placeholder="https://" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-url">Current website (if any)</label>
+                  <input id="dt-url" name="current_website" type="url" placeholder="https://" />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-services">Your top 3 services *</label>
-                <textarea id="dt-services" name="top_services" rows="2" required></textarea>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-services">Your top 3 services *</label>
+                  <textarea id="dt-services" name="top_services" rows="2" required></textarea>
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-like">One thing customers say they like about you *</label>
-                <textarea id="dt-like" name="customers_like" rows="2" required></textarea>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-like">One thing customers say they like about you *</label>
+                  <textarea id="dt-like" name="customers_like" rows="2" required></textarea>
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-brand">Logo / brand colors</label>
-                <input
-                  id="dt-brand"
-                  name="brand_assets"
-                  type="text"
-                  placeholder="Link to a logo file, or describe your colors"
-                />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-brand">Logo / brand colors</label>
+                  <input
+                    id="dt-brand"
+                    name="brand_assets"
+                    type="text"
+                    placeholder="Link to a logo file, or describe your colors"
+                  />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-photos">Photos you have the right to use</label>
-                <input
-                  id="dt-photos"
-                  name="photo_links"
-                  type="text"
-                  placeholder="Google Drive / Dropbox link is perfect"
-                />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-photos">Photos you have the right to use</label>
+                  <input
+                    id="dt-photos"
+                    name="photo_links"
+                    type="text"
+                    placeholder="Google Drive / Dropbox link is perfect"
+                  />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-pages">Pages you want</label>
-                <input id="dt-pages" name="pages_wanted" type="text" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-pages">Pages you want</label>
+                  <input id="dt-pages" name="pages_wanted" type="text" />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-licenses">Licenses / certifications you hold</label>
-                <input id="dt-licenses" name="licenses" type="text" />
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-licenses">Licenses / certifications you hold</label>
+                  <input id="dt-licenses" name="licenses" type="text" />
+                </div>
               </div>
-              <div class="field">
-                <label for="dt-testimonials"
-                  >Testimonials you have written permission to use</label
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-testimonials"
+                    >Testimonials you have written permission to use</label
+                  >
+                  <textarea id="dt-testimonials" name="testimonials" rows="2"></textarea>
+                </div>
+              </div>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-booking">Booking or scheduling tool you use</label>
+                  <input id="dt-booking" name="booking_tool" type="text" />
+                </div>
+              </div>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-hours">Hours &amp; locations</label>
+                  <input id="dt-hours" name="hours_locations" type="text" />
+                </div>
+              </div>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-likes">1–2 sites you like the look of</label>
+                  <input id="dt-likes" name="reference_sites" type="text" />
+                </div>
+              </div>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-domain">Do you own a domain already?</label>
+                  <input id="dt-domain" name="owns_domain" type="text" placeholder="Yes/no — which one?" />
+                </div>
+              </div>
+              <div class="wiz-step">
+                <div class="field">
+                  <label for="dt-gbp">Do you have a Google Business Profile?</label>
+                  <input id="dt-gbp" name="has_gbp" type="text" placeholder="Yes / no / not sure" />
+                </div>
+              </div>
+              <div class="wiz-step wiz-step--final">
+                <p class="wiz-final-note">
+                  That’s everything — draft one will land close.
+                </p>
+                <p class="form-error" role="alert" hidden>
+                  A few required fields are missing — tap back to fill them.
+                </p>
+                <button
+                  type="submit"
+                  class="btn btn--primary btn--large intake-submit"
+                  disabled={!hasEndpoint}
                 >
-                <textarea id="dt-testimonials" name="testimonials" rows="2"></textarea>
+                  Send it — build my draft
+                </button>
               </div>
-              <div class="field">
-                <label for="dt-booking">Booking or scheduling tool you use</label>
-                <input id="dt-booking" name="booking_tool" type="text" />
+              <div class="wiz-foot">
+                <button type="button" class="btn btn--primary wiz-next">
+                  Next →
+                </button>
               </div>
-              <div class="field">
-                <label for="dt-hours">Hours &amp; locations</label>
-                <input id="dt-hours" name="hours_locations" type="text" />
-              </div>
-              <div class="field">
-                <label for="dt-likes">1–2 sites you like the look of</label>
-                <input id="dt-likes" name="reference_sites" type="text" />
-              </div>
-              <div class="field">
-                <label for="dt-domain">Do you own a domain already?</label>
-                <input id="dt-domain" name="owns_domain" type="text" placeholder="Yes/no — which one?" />
-              </div>
-              <div class="field">
-                <label for="dt-gbp">Do you have a Google Business Profile?</label>
-                <input id="dt-gbp" name="has_gbp" type="text" placeholder="Yes / no / not sure" />
-              </div>
-              <p class="form-error" role="alert" hidden>
-                A few required fields are missing — they’re marked above.
-              </p>
-              <button
-                type="submit"
-                class="btn btn--primary btn--large intake-submit"
-                disabled={!hasEndpoint}
-              >
-                Send it — build my draft
-              </button>
               {
                 !hasEndpoint && (
                   <p class="muted intake-fallback">
@@ -748,8 +853,82 @@ const STEPS = [
         const JUMP = new URLSearchParams(location.search).get('jump');
         if (JUMP !== null) history.scrollRestoration = 'manual';
 
-        // ---- Intake form handling (runs film or not) ----
-        document.querySelectorAll('.intake-form').forEach((form) => {
+        // ---- Intake wizard (runs film or not) ----
+        const chooser = document.querySelector('[data-wiz-chooser]');
+        const wizForms = Array.from(document.querySelectorAll('.wiz-form'));
+
+        const wizState = new Map(); // form -> current step index
+
+        function stepsOf(form) {
+          return Array.from(form.querySelectorAll('.wiz-step'));
+        }
+
+        function setStep(form, index) {
+          const steps = stepsOf(form);
+          const i = Math.max(0, Math.min(index, steps.length - 1));
+          wizState.set(form, i);
+          steps.forEach((s, n) => s.classList.toggle('is-current', n === i));
+          const isFinal = i === steps.length - 1;
+          const count = form.querySelector('[data-wiz-count]');
+          const fill = form.querySelector('[data-wiz-fill]');
+          count.textContent = isFinal ? 'Send it' : `${i + 1} / ${steps.length - 1}`;
+          fill.style.width = ((i + 1) / steps.length) * 100 + '%';
+          form.querySelector('.wiz-foot').style.display = isFinal ? 'none' : '';
+          const focusable = steps[i].querySelector('input, select, textarea');
+          if (focusable) focusable.focus({ preventScroll: true });
+        }
+
+        function openForm(type) {
+          chooser.classList.add('is-hidden');
+          wizForms.forEach((f) => {
+            const active = f.dataset.intake === type;
+            f.classList.toggle('is-active', active);
+            if (active) setStep(f, wizState.get(f) ?? 0);
+          });
+        }
+
+        function closeToChooser() {
+          chooser.classList.remove('is-hidden');
+          wizForms.forEach((f) => f.classList.remove('is-active'));
+          chooser.querySelector('[data-choose]').focus({ preventScroll: true });
+        }
+
+        function validateStep(form) {
+          const steps = stepsOf(form);
+          const current = steps[wizState.get(form) ?? 0];
+          let ok = true;
+          current.querySelectorAll('[required]').forEach((input) => {
+            const bad = !input.value.trim();
+            input.toggleAttribute('aria-invalid', bad);
+            if (bad) ok = false;
+          });
+          return ok;
+        }
+
+        document.querySelectorAll('[data-choose]').forEach((btn) => {
+          btn.addEventListener('click', () => openForm(btn.dataset.choose));
+        });
+
+        wizForms.forEach((form) => {
+          form.querySelector('.wiz-next').addEventListener('click', () => {
+            if (validateStep(form)) setStep(form, (wizState.get(form) ?? 0) + 1);
+          });
+          form.querySelector('.wiz-back').addEventListener('click', () => {
+            const i = wizState.get(form) ?? 0;
+            if (i === 0) closeToChooser();
+            else setStep(form, i - 1);
+          });
+          // Enter advances (except in textareas and on the final step)
+          form.addEventListener('keydown', (ev) => {
+            if (ev.key !== 'Enter' || ev.target.tagName === 'TEXTAREA') return;
+            const isFinal =
+              (wizState.get(form) ?? 0) === stepsOf(form).length - 1;
+            if (!isFinal) {
+              ev.preventDefault();
+              if (validateStep(form)) setStep(form, (wizState.get(form) ?? 0) + 1);
+            }
+          });
+
           form.addEventListener('submit', (ev) => {
             const errorEl = form.querySelector('.form-error');
             const successEl = form.querySelector('.form-success');
@@ -758,7 +937,7 @@ const STEPS = [
               ev.preventDefault();
               return;
             }
-            // Client-side validation with visible error states.
+            // Full-form validation (steps were validated on Next; re-check all).
             let valid = true;
             form.querySelectorAll('[required]').forEach((input) => {
               const bad = !input.value.trim();
@@ -768,7 +947,10 @@ const STEPS = [
             if (!valid) {
               ev.preventDefault();
               errorEl.hidden = false;
-              form.querySelector('[aria-invalid]')?.focus();
+              // Jump the wizard back to the first invalid step.
+              const steps = stepsOf(form);
+              const badStep = steps.findIndex((s) => s.querySelector('[aria-invalid]'));
+              if (badStep >= 0) setStep(form, badStep);
               return;
             }
             errorEl.hidden = true;
@@ -789,7 +971,7 @@ const STEPS = [
               .then((r) => {
                 if (!r.ok) throw new Error('submit failed');
                 form
-                  .querySelectorAll('.field, .intake-submit, .intake-blurb')
+                  .querySelectorAll('.wiz-step, .wiz-head, .wiz-foot, .intake-blurb, .wiz-title')
                   .forEach((el) => (el.style.display = 'none'));
                 successEl.hidden = false;
               })
@@ -822,7 +1004,7 @@ const STEPS = [
         const FIELD_WORDS = [
           'HVAC', 'PLUMBING', 'ELECTRICAL', 'ROOFING', 'LANDSCAPING',
           'SERVICE AREA', 'FIRST DRAFT', 'YOUR DOMAIN', 'CLICK TO CALL',
-          'FIVE PAGES', 'MOBILE FIRST', 'YOUR PROPERTY',
+          'BUILT IN DAYS', 'MOBILE FIRST', 'YOUR PROPERTY',
         ];
         const heroField = document.querySelector('.hero-field');
         const fieldCount = innerWidth < 640 ? 8 : 14;
@@ -900,7 +1082,7 @@ const STEPS = [
             stagger: 0.08,
             duration: 0.9,
           }, 0.05)
-          .to('.wf-cta', { fill: 'rgba(255,92,31,0.85)', duration: 0.2 }, 1.1)
+          .to('.wf-cta', { fill: 'rgba(255,81,71,0.85)', duration: 0.2 }, 1.1)
           .fromTo('#s2-tag', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 1.25);
 
         // S3 — edits get struck and replaced
@@ -1040,10 +1222,11 @@ const STEPS = [
       }
 
       :root {
-        --film-bg: #0d0f12;
-        --film-dim: #3c4450;
-        --film-mid: #59636f;
-        --signal-bright: #ff5c1f;
+        --film-bg: #0b111c;
+        --film-dim: #3d4a63;
+        --film-mid: #5c6b85;
+        --signal-bright: #ff5147;
+        --blue-bright: #6e9bff;
         --font-display: 'Space Grotesk', var(--font-sans);
       }
 
@@ -1197,11 +1380,11 @@ const STEPS = [
         font-weight: 600;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--signal-bright);
+        color: var(--blue-bright);
         margin-bottom: var(--space-4);
       }
       .film-eyebrow--ink {
-        color: var(--signal);
+        color: var(--blue);
       }
       .film-h {
         font-family: var(--font-display);
@@ -1226,7 +1409,7 @@ const STEPS = [
         font-family: var(--font-mono);
         font-size: var(--text-sm);
         letter-spacing: 0.25em;
-        color: var(--signal-bright);
+        color: var(--blue-bright);
       }
       .scroll-hint {
         margin-top: var(--space-6);
@@ -1281,8 +1464,8 @@ const STEPS = [
         white-space: nowrap;
       }
       .chip:nth-child(even) {
-        color: var(--signal-bright);
-        border-color: color-mix(in srgb, var(--signal-bright) 45%, transparent);
+        color: var(--blue-bright);
+        border-color: color-mix(in srgb, var(--blue-bright) 45%, transparent);
       }
 
       /* S2 wireframe */
@@ -1364,18 +1547,18 @@ const STEPS = [
         stroke-linejoin: round;
       }
       .sigpath--core {
-        stroke: var(--signal-bright);
+        stroke: var(--blue-bright);
         stroke-width: 2.5;
       }
       .sigpath--glow {
-        stroke: var(--signal-bright);
+        stroke: var(--blue-bright);
         stroke-width: 9;
-        opacity: 0.16;
+        opacity: 0.18;
       }
       .sigpath--halo {
-        stroke: var(--signal-bright);
+        stroke: var(--blue-bright);
         stroke-width: 22;
-        opacity: 0.06;
+        opacity: 0.07;
       }
       #s4 .scene-copy {
         position: static;
@@ -1507,9 +1690,117 @@ const STEPS = [
         background: var(--signal-bright);
       }
 
-      /* ---- Intake ---- */
-      .intake-grid {
-        align-items: start;
+      /* ---- Intake wizard ---- */
+      .wiz-chooser {
+        display: none; /* no-JS: chooser hidden, full forms shown instead */
+        gap: var(--space-4);
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 44rem) {
+        .wiz-chooser {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      html.js .wiz-chooser {
+        display: grid;
+      }
+      html.js .wiz-chooser.is-hidden {
+        display: none;
+      }
+      .wiz-choice {
+        text-align: left;
+        cursor: pointer;
+        font: inherit;
+        transition: border-color 120ms ease, transform 120ms ease;
+      }
+      .wiz-choice:hover {
+        border-color: var(--blue);
+        transform: translateY(-2px);
+      }
+      .wiz-choice h3 {
+        margin-bottom: var(--space-2);
+      }
+      .wiz-choice__meta {
+        display: block;
+        margin-top: var(--space-3);
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+
+      .intake-stack {
+        display: grid;
+        gap: var(--space-5);
+        max-width: 40rem;
+      }
+      /* JS on: forms hidden until chosen; steps advance one at a time. */
+      html.js .wiz-form {
+        display: none;
+      }
+      html.js .wiz-form.is-active {
+        display: block;
+      }
+      html.js .wiz-step {
+        display: none;
+      }
+      html.js .wiz-step.is-current {
+        display: block;
+      }
+      .wiz-head {
+        display: none;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+      }
+      html.js .wiz-head {
+        display: flex;
+      }
+      .wiz-back {
+        background: none;
+        border: 1.5px solid var(--line-strong);
+        border-radius: var(--radius);
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1rem;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .wiz-back:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+      .wiz-count {
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        letter-spacing: 0.1em;
+        color: var(--ink-faint);
+        min-width: 4.5em;
+      }
+      .wiz-track {
+        flex: 1;
+        height: 3px;
+        background: var(--line);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .wiz-fill {
+        display: block;
+        height: 100%;
+        width: 0%;
+        background: var(--blue);
+        transition: width 200ms ease;
+      }
+      .wiz-foot {
+        margin-top: var(--space-3);
+      }
+      .wiz-final-note {
+        font-weight: 600;
+        margin-bottom: var(--space-3);
+      }
+      html.js .wiz-title {
+        font-size: var(--text-lg);
       }
       .intake-form h3 {
         margin-bottom: var(--space-2);

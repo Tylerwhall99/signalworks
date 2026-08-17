@@ -60,26 +60,25 @@ export const NAV_CTA: NavItem = { label: 'Start my free site', href: '/#start' }
  * claim anywhere (the spec bans fake scarcity; an invented number is fake).
  */
 export const FREE_BUILD = {
-  maxPages: 5,
-  revisionRounds: 1,
   draftTimeline: 'five business days',
   capacityPerMonth: null as number | null,
   includes: [
-    'Up to 5 pages: Home, Services, About, Contact, plus one',
+    'The pages your business actually needs — Home, Services, About, Contact, and whatever else earns its place',
     'Copy written from your intake answers — you talk, we write',
     'Mobile-first layout, tested on real phones',
     'Click-to-call, placed where thumbs go',
     'A contact form that reaches a real inbox',
+    'Custom functionality where it helps — quote forms, booking buttons, service-area maps',
     'Basic on-page SEO hygiene: titles, descriptions, speed',
     'Google Business Profile connection',
-    'One revision round',
+    'Revisions until it says what you mean',
+    'Bug fixes, free — if we caused it, we fix it, no clock on it',
   ],
   notIncludedFree: [
-    'Web apps and custom functionality — quoted per project',
-    'Ongoing edits and content — quoted plainly if you want it',
+    'Standalone web apps — booking systems, portals, internal tools — quoted per project',
+    'Ongoing edits and new content — quoted plainly (bug fixes are always free)',
     'Hosting and maintenance — optional Care Plan, or run it yourself for roughly $0–20/month',
     'Photography and logo design',
-    'Additional pages beyond five',
     'Ongoing growth services — ask us',
   ],
 } as const;

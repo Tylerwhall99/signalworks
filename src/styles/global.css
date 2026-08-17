@@ -5,20 +5,23 @@
 
 /* ---- Tokens ---- */
 :root {
-  /* Color */
-  --paper: #faf9f6;
+  /* Color — blue carries trust and structure, red carries action. */
+  --paper: #fafafc;
   --paper-raised: #ffffff;
-  --ink: #171a1f;
-  --ink-soft: #494f58;
-  --ink-faint: #6d737c;
-  --line: #e4e1da;
-  --line-strong: #cfccc3;
-  --signal: #d64513;        /* accent for text/links: 4.5:1+ on paper */
-  --signal-strong: #b8380c; /* fills and hovers */
-  --signal-tint: #fbeee8;
-  --footer-ink: #14171c;
-  --footer-paper: #f2f0eb;
-  --footer-faint: #9aa0a8;
+  --ink: #14181f;
+  --ink-soft: #47505c;
+  --ink-faint: #6b7484;
+  --line: #e2e4ea;
+  --line-strong: #c9cdd8;
+  --blue: #1d4ed8;          /* links, eyebrows, structure: 4.5:1+ on paper */
+  --blue-strong: #163da6;   /* hovers */
+  --blue-tint: #e9effc;
+  --signal: #bf2318;        /* red accent for text: 4.5:1+ on paper */
+  --signal-strong: #9c1a10; /* CTA fills and hovers */
+  --signal-tint: var(--blue-tint);
+  --footer-ink: #101827;
+  --footer-paper: #eef1f7;
+  --footer-faint: #94a0b8;
 
   /* Type */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -133,17 +136,17 @@ p {
 }
 
 a {
-  color: var(--signal);
+  color: var(--blue);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--signal-strong);
+  color: var(--blue-strong);
 }
 
 :focus-visible {
-  outline: 2px solid var(--signal-strong);
+  outline: 2px solid var(--blue-strong);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -159,7 +162,7 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--signal);
+  color: var(--blue);
   display: block;
   margin-bottom: var(--space-3);
 }
@@ -299,8 +302,8 @@ a:hover {
   top: 0.42em;
   width: 0.95rem;
   height: 0.5rem;
-  border-left: 2.5px solid var(--signal);
-  border-bottom: 2.5px solid var(--signal);
+  border-left: 2.5px solid var(--blue);
+  border-bottom: 2.5px solid var(--blue);
   transform: rotate(-45deg);
 }
 
@@ -330,7 +333,7 @@ a:hover {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   font-weight: 700;
-  color: var(--signal);
+  color: var(--blue);
 }
 
 .steps > li::after {
@@ -382,7 +385,7 @@ details.faq summary::after {
   transform: translateY(-50%);
   font-family: var(--font-mono);
   font-size: 1.1rem;
-  color: var(--signal);
+  color: var(--blue);
 }
 
 details.faq[open] summary::after {
@@ -417,7 +420,7 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid var(--signal-strong);
+  outline: 2px solid var(--blue-strong);
   outline-offset: 1px;
   border-color: transparent;
 }
