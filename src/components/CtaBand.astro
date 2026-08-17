@@ -1,5 +1,5 @@
 ---
-import { NAV_CTA } from '../config';
+import { FREE_BUILD, NAV_CTA } from '../config';
 
 interface Props {
   heading?: string;
@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  heading = 'Tell me about your business.',
-  body = 'Send a few lines about what you do and what’s not working. You’ll get a straight answer about scope, price, and timeline — usually within one business day.',
+  heading = 'Start your free site.',
+  body = `Tell us about your business. Draft one lands within ${FREE_BUILD.draftTimeline}, and you own it either way.`,
 } = Astro.props;
 ---
 

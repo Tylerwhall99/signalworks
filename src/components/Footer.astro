@@ -1,5 +1,5 @@
 ---
-import { BRAND, CONTACT, NAV, LIVE_SERVICES, serviceHref } from '../config';
+import { BRAND, CARE_PLAN, CONTACT, NAV } from '../config';
 
 const year = new Date().getFullYear();
 ---
@@ -11,7 +11,8 @@ const year = new Date().getFullYear();
         <p class="site-footer__wordmark">{BRAND.name}</p>
         <p class="site-footer__tagline">{BRAND.tagline}</p>
         <p class="site-footer__meta">
-          Based in Los Angeles. Working with service businesses nationwide.
+          Based in Los Angeles. Building for home services businesses
+          nationwide.
         </p>
       </div>
 
@@ -21,16 +22,18 @@ const year = new Date().getFullYear();
           {NAV.map((item) => (
             <li><a href={item.href}>{item.label}</a></li>
           ))}
+          <li><a href="/about/">About</a></li>
           <li><a href="/contact/">Contact</a></li>
+          <li><a href="/terms/">Free-build terms</a></li>
         </ul>
       </nav>
 
-      <nav aria-label="Footer — services">
-        <p class="site-footer__heading">Services</p>
+      <nav aria-label="Footer — the offer">
+        <p class="site-footer__heading">The offer</p>
         <ul>
-          {LIVE_SERVICES.map((s) => (
-            <li><a href={serviceHref(s)}>{s.navLabel ?? s.name}</a></li>
-          ))}
+          <li><a href="/#start">Start a free site</a></li>
+          <li><a href="/#included">What's included</a></li>
+          <li><a href="/services/">{CARE_PLAN.name} &amp; services</a></li>
         </ul>
       </nav>
 
@@ -45,8 +48,9 @@ const year = new Date().getFullYear();
     </div>
 
     <p class="site-footer__colophon">
-      © {year} {BRAND.name}. Hand-built, no page builder — the same way client
-      sites get made.
+      © {year} {BRAND.name}. Form submissions go to our inbox so we can
+      build your draft — never sold, never added to a list you didn't ask
+      for. <a href="/terms/">The free-build terms</a>, in plain English.
     </p>
   </div>
 </footer>
@@ -131,5 +135,13 @@ const year = new Date().getFullYear();
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     font-size: var(--text-xs);
     color: var(--footer-faint);
+    max-width: 72ch;
+  }
+
+  .site-footer__colophon a {
+    color: var(--footer-paper);
+    font-size: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>

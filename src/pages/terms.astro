@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import { CARE_PLAN, FREE_BUILD } from '../config';
+---
+
+<Base
+  title="Free build terms"
+  description="The plain-English terms of the free website build: what's free, what's not, who owns what, and how handoff works."
+>
+  <section class="section">
+    <div class="container container--narrow">
+      <span class="eyebrow">Terms</span>
+      <h1>The free build, in writing.</h1>
+      <p class="lede" style="margin-top: var(--space-4);">
+        This is the plain-English version of what we agree to before a build
+        starts. You'll get it as a one-page document to sign — same content,
+        no extra fine print.
+      </p>
+
+      <div class="stack" style="margin-top: var(--space-6);">
+        <h2>What's free</h2>
+        <p>
+          One website of up to {FREE_BUILD.maxPages} pages, built from your
+          intake answers, with {FREE_BUILD.revisionRounds} revision round
+          included. First working draft within {FREE_BUILD.draftTimeline} of
+          intake.
+        </p>
+
+        <h2>What's not free</h2>
+        <p>
+          Web apps and custom functionality, ongoing edits and content,
+          photography and logo design, pages beyond
+          {FREE_BUILD.maxPages}, and ongoing growth services — all quoted
+          plainly in writing if you want them, never assumed.
+        </p>
+
+        <h2>Ownership</h2>
+        <p>
+          You own the site. Your domain is registered in your own account
+          from day one. At launch we transfer the code and hosting into
+          accounts in your name, or host it for you on the
+          {CARE_PLAN.name} — your choice, changeable later.
+        </p>
+
+        <h2>Hosting</h2>
+        <p>
+          The build is free. Running any website costs hosting: roughly
+          $0–20 a month if you run it yourself, or {CARE_PLAN.price} if we
+          handle hosting, updates, and support. If you ever leave the
+          {CARE_PLAN.name}, we hand everything over within 5 business days
+          at no charge.
+        </p>
+
+        <h2>Images and content</h2>
+        <p>
+          You confirm you have the right to use the photos, logos, and
+          testimonials you give us. We only publish testimonials you have
+          written permission to use.
+        </p>
+
+        <h2>Our archive copy</h2>
+        <p>
+          We keep an archived copy of the finished site and may show the
+          work as part of our portfolio. If you'd rather we didn't, say so
+          and we won't.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

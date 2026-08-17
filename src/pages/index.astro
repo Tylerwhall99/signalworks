@@ -1,19 +1,74 @@
 ---
 /**
- * SIGNAL / NOISE — the scroll-film homepage.
- * One continuous journey: the AI-agency noise → their promises struck out →
- * a clean signal → the Signalworks identity → the terms → real content.
- * Pure-code film (GSAP + ScrollTrigger + Lenis, all vendored locally).
- * Reduced-motion and no-JS visitors get a static hero + full content.
+ * The free-site wedge homepage. Structure per docs/site-redraft-prompt.md:
+ * hero → 5-step scroll film (How it works) → Why free → What's included →
+ * FAQ → dual intake → footer. The film keeps the original animation
+ * architecture (pinned scrubbed scenes, chapter readout, adaptive chrome,
+ * ?jump/__ready dev contract); its content is the free-build journey.
+ * Reduced-motion and no-JS visitors get static steps and native forms.
  */
-import { BRAND, NAV_CTA, LIVE_SERVICES, serviceHref, SITE_URL } from '../config';
+import {
+  ANALYTICS,
+  BRAND,
+  CARE_PLAN,
+  CLEARED_SERVICES,
+  CONTACT,
+  FREE_BUILD,
+  NAV,
+  NAV_CTA,
+  SITE_URL,
+} from '../config';
 import Footer from '../components/Footer.astro';
-import CtaBand from '../components/CtaBand.astro';
 import StructuredData from '../components/StructuredData.astro';
 import '../styles/global.css';
 
-const pageTitle = `${BRAND.name} — ${BRAND.tagline}`;
+const pageTitle = `${BRAND.name} — Free professional websites for home services businesses`;
 const canonical = new URL('/', SITE_URL).href;
+
+const hasEndpoint = CONTACT.formEndpoint.length > 0;
+
+const clearedText =
+  CLEARED_SERVICES.length > 0
+    ? CLEARED_SERVICES.join(', ')
+    : 'the growth services that take sustained effort month after month';
+
+const STEPS = [
+  {
+    id: 'tell-us',
+    label: 'STEP 01 / 05 — TELL US',
+    eyebrow: 'Step 01 · Tell us',
+    title: 'Tell us about your business.',
+    sub: 'Three minutes if you’re in a hurry. Fifteen if you want draft one to land close.',
+  },
+  {
+    id: 'draft-one',
+    label: 'STEP 02 / 05 — DRAFT ONE',
+    eyebrow: 'Step 02 · Draft one',
+    title: 'We build draft one. A real working site, not a wireframe.',
+    sub: `Within ${FREE_BUILD.draftTimeline}.`,
+  },
+  {
+    id: 'revise',
+    label: 'STEP 03 / 05 — REVISE',
+    eyebrow: 'Step 03 · Revise',
+    title: 'We revise it together.',
+    sub: 'One round included. Tell us what’s off — we fix it.',
+  },
+  {
+    id: 'live',
+    label: 'STEP 04 / 05 — LIVE',
+    eyebrow: 'Step 04 · Live',
+    title: 'It goes live. Your domain. Your property.',
+    sub: 'Calls and form fills go straight to you.',
+  },
+  {
+    id: 'yours',
+    label: 'STEP 05 / 05 — YOURS',
+    eyebrow: 'Step 05 · Yours',
+    title: 'Either way, it’s yours.',
+    sub: 'Want the ongoing work that keeps the phone ringing? We’ll quote it plainly. If not, you keep the site.',
+  },
+];
 ---
 
 <!doctype html>
@@ -42,8 +97,17 @@ const canonical = new URL('/', SITE_URL).href;
       crossorigin
     />
     <StructuredData />
+    {
+      ANALYTICS.plausibleDomain && (
+        <script
+          defer
+          data-domain={ANALYTICS.plausibleDomain}
+          src="https://plausible.io/js/script.js"
+          is:inline
+        />
+      )
+    }
     <script is:inline>
-      // Before first paint: reduced-motion users get the static page, no flash.
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.classList.add('film-off');
       }
@@ -51,14 +115,12 @@ const canonical = new URL('/', SITE_URL).href;
     <noscript>
       <style>
         #filmwrap, .chapter-readout { display: none !important; }
-        .static-hero { display: block !important; }
-        .film-header { position: static !important; }
-        .film-header { --chrome: var(--ink); background: var(--paper); border-bottom: 1px solid var(--line); }
+        .static-steps { display: block !important; }
       </style>
     </noscript>
   </head>
   <body>
-    <a href="#content" class="skip-link">Skip to content</a>
+    <a href="#start" class="skip-link">Skip to intake</a>
 
     <header class="film-header" id="film-header">
       <a href="/" class="fh-wordmark" aria-label={`${BRAND.name} — home`}>
@@ -66,63 +128,119 @@ const canonical = new URL('/', SITE_URL).href;
         {BRAND.name}
       </a>
       <nav class="fh-nav" aria-label="Main">
-        <a href="#content" class="fh-skip" id="skip-film">Skip the film ↓</a>
+        {
+          NAV.filter((n) => n.href !== '/').map((n) => (
+            <a href={n.href} class="fh-link">
+              {n.label}
+            </a>
+          ))
+        }
         <a href={NAV_CTA.href} class="fh-cta">{NAV_CTA.label}</a>
       </nav>
     </header>
 
-    <!-- Static fallback: reduced motion / no JS -->
-    <section class="static-hero" aria-label="Introduction">
-      <div class="container">
-        <span class="eyebrow">Web design for home services businesses</span>
-        <h1>
-          <span class="sh-mark" aria-hidden="true"></span>
-          {BRAND.name}
+    <!-- ============ HERO ============ -->
+    <section class="hero scene--dark" aria-label="The offer">
+      <div class="noise-layer hero-field" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <span class="film-eyebrow"
+          >HVAC · Plumbing · Electrical · Roofing · Landscaping</span
+        >
+        <h1 class="film-h">
+          A free, professional website for your home services business.
         </h1>
-        <p class="lede">{BRAND.tagline}</p>
-        <p class="lede">
-          For HVAC, plumbing, electrical, roofing, landscaping, and the trades
-          like them — custom-built, fast, and written in plain English by one
-          person who answers their own email.
+        <p class="film-sub">
+          Built in days. You own it outright — domain, files, everything. No
+          catch, and we’ll tell you exactly why it’s free.
         </p>
-        <div class="btn-row" style="margin-top: var(--space-5);">
-          <a href={NAV_CTA.href} class="btn btn--primary btn--large">{NAV_CTA.label}</a>
-          <a href="/pricing/" class="btn btn--ghost btn--large">See pricing</a>
+        <div class="btn-row hero-ctas">
+          <a href="#start" class="btn btn--primary btn--large">{NAV_CTA.label}</a>
+          <a href="#why-free" class="btn btn--ghost btn--large hero-ghost"
+            >How is this free?</a
+          >
         </div>
+        <p class="scroll-hint" aria-hidden="true">How it works</p>
       </div>
     </section>
 
+    <!-- ============ THE FILM: HOW IT WORKS ============ -->
+    <div id="how-it-works" class="anchor-offset"></div>
     <div id="filmwrap">
-      <!-- CH 01 — THE NOISE -->
-      <section class="scene scene--dark" id="ch1" aria-label="Chapter one: the noise">
-        <div class="noise-layer l1" aria-hidden="true"></div>
-        <div class="noise-layer l2" aria-hidden="true"></div>
-        <div class="noise-layer l3" aria-hidden="true"></div>
-        <div class="scene-copy" id="ch1-copy">
-          <span class="film-eyebrow">CH 01 · The noise</span>
-          <h1 class="film-h">Every week,<br />another “AI&nbsp;agency.”</h1>
-          <p class="film-sub">Same deck. Same buzzwords. Same promises.</p>
-          <p class="scroll-hint" aria-hidden="true">Scroll</p>
+      <!-- STEP 1 — TELL US -->
+      <section class="scene scene--dark" id="s1" aria-label="Step one: tell us about your business">
+        <div class="chip-field" aria-hidden="true">
+          <span class="chip">Business name</span>
+          <span class="chip">HVAC</span>
+          <span class="chip">Service area</span>
+          <span class="chip">Top 3 services</span>
+          <span class="chip">Phone</span>
+          <span class="chip">Roofing</span>
+          <span class="chip">Photos you have</span>
+          <span class="chip">What customers say</span>
+          <span class="chip">Plumbing</span>
         </div>
-      </section>
-
-      <!-- CH 02 — THE PROMISES -->
-      <section class="scene scene--dark" id="ch2" aria-label="Chapter two: the promises">
         <div class="scene-copy">
-          <span class="film-eyebrow">CH 02 · The promises</span>
-          <div class="promises">
-            <p class="promise" id="pr1">“#1 on Google. Guaranteed.”<span class="strike" aria-hidden="true"></span></p>
-            <p class="promise" id="pr2">“10x your leads in 30 days.”<span class="strike" aria-hidden="true"></span></p>
-            <p class="promise" id="pr3">“Fully autonomous growth.”<span class="strike" aria-hidden="true"></span></p>
-          </div>
-          <p class="film-h film-h--small" id="ch2-line">
-            If it sounds like magic,<br />it’s marketing.
-          </p>
+          <span class="film-eyebrow">{STEPS[0].eyebrow}</span>
+          <h2 class="film-h">{STEPS[0].title}</h2>
+          <p class="film-sub">{STEPS[0].sub}</p>
         </div>
       </section>
 
-      <!-- CH 03 — THE SIGNAL -->
-      <section class="scene scene--dark" id="ch3" aria-label="Chapter three: the signal">
+      <!-- STEP 2 — DRAFT ONE -->
+      <section class="scene scene--dark" id="s2" aria-label="Step two: we build draft one">
+        <svg
+          class="wireframe"
+          viewBox="0 0 560 360"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          <rect class="wf-line" x="8" y="8" width="544" height="344" rx="10"></rect>
+          <line class="wf-line" x1="8" y1="52" x2="552" y2="52"></line>
+          <rect class="wf-line" x="40" y="88" width="300" height="26" rx="4"></rect>
+          <rect class="wf-line" x="40" y="130" width="220" height="14" rx="4"></rect>
+          <rect class="wf-line wf-cta" x="40" y="170" width="130" height="34" rx="6"></rect>
+          <rect class="wf-line" x="40" y="238" width="150" height="80" rx="6"></rect>
+          <rect class="wf-line" x="206" y="238" width="150" height="80" rx="6"></rect>
+          <rect class="wf-line" x="372" y="238" width="150" height="80" rx="6"></rect>
+        </svg>
+        <div class="scene-copy">
+          <span class="film-eyebrow">{STEPS[1].eyebrow}</span>
+          <h2 class="film-h film-h--small">{STEPS[1].title}</h2>
+          <p class="mono-tag" id="s2-tag">● WITHIN FIVE BUSINESS DAYS</p>
+        </div>
+      </section>
+
+      <!-- STEP 3 — REVISE -->
+      <section class="scene scene--dark" id="s3" aria-label="Step three: we revise it together">
+        <div class="scene-copy">
+          <span class="film-eyebrow">{STEPS[2].eyebrow}</span>
+          <h2 class="film-h film-h--small">{STEPS[2].title}</h2>
+          <div class="edits" aria-hidden="true">
+            <p class="edit">
+              <span class="edit-old"
+                >Serving the greater area<span class="strike"></span></span
+              >
+              <span class="edit-new">Serving Fresno &amp; Clovis</span>
+            </p>
+            <p class="edit">
+              <span class="edit-old"
+                >We do it all<span class="strike"></span></span
+              >
+              <span class="edit-new">AC repair · installs · tune-ups</span>
+            </p>
+            <p class="edit">
+              <span class="edit-old"
+                >Contact us<span class="strike"></span></span
+              >
+              <span class="edit-new">Call now — answered 24/7</span>
+            </p>
+          </div>
+          <p class="film-sub" id="s3-sub">{STEPS[2].sub}</p>
+        </div>
+      </section>
+
+      <!-- STEP 4 — LIVE -->
+      <section class="scene scene--dark" id="s4" aria-label="Step four: it goes live">
         <svg
           class="sigwave"
           viewBox="0 0 1200 240"
@@ -131,142 +249,492 @@ const canonical = new URL('/', SITE_URL).href;
         >
           <path
             class="sigpath sigpath--halo"
-            d="M0,120 L60,120 L78,64 L96,176 L114,88 L132,152 L150,104 L168,168 L186,72 L204,144 L222,96 L240,160 L258,112 L276,136 L300,120 C340,120 340,84 380,84 C420,84 420,156 460,156 C500,156 500,92 540,92 C580,92 580,148 620,148 C660,148 660,100 700,100 C740,100 740,140 780,140 C820,140 820,110 860,110 C900,110 900,130 940,130 L1000,124 L1040,120 L1120,120 L1140,96 L1160,120 L1200,120"
+            d="M0,120 L200,120 L228,74 L256,166 L284,96 L312,144 L340,120 L520,120 L548,74 L576,166 L604,96 L632,144 L660,120 L840,120 L868,74 L896,166 L924,96 L952,144 L980,120 L1200,120"
           ></path>
           <path
             class="sigpath sigpath--glow"
-            d="M0,120 L60,120 L78,64 L96,176 L114,88 L132,152 L150,104 L168,168 L186,72 L204,144 L222,96 L240,160 L258,112 L276,136 L300,120 C340,120 340,84 380,84 C420,84 420,156 460,156 C500,156 500,92 540,92 C580,92 580,148 620,148 C660,148 660,100 700,100 C740,100 740,140 780,140 C820,140 820,110 860,110 C900,110 900,130 940,130 L1000,124 L1040,120 L1120,120 L1140,96 L1160,120 L1200,120"
+            d="M0,120 L200,120 L228,74 L256,166 L284,96 L312,144 L340,120 L520,120 L548,74 L576,166 L604,96 L632,144 L660,120 L840,120 L868,74 L896,166 L924,96 L952,144 L980,120 L1200,120"
           ></path>
           <path
             class="sigpath sigpath--core"
-            d="M0,120 L60,120 L78,64 L96,176 L114,88 L132,152 L150,104 L168,168 L186,72 L204,144 L222,96 L240,160 L258,112 L276,136 L300,120 C340,120 340,84 380,84 C420,84 420,156 460,156 C500,156 500,92 540,92 C580,92 580,148 620,148 C660,148 660,100 700,100 C740,100 740,140 780,140 C820,140 820,110 860,110 C900,110 900,130 940,130 L1000,124 L1040,120 L1120,120 L1140,96 L1160,120 L1200,120"
+            d="M0,120 L200,120 L228,74 L256,166 L284,96 L312,144 L340,120 L520,120 L548,74 L576,166 L604,96 L632,144 L660,120 L840,120 L868,74 L896,166 L924,96 L952,144 L980,120 L1200,120"
           ></path>
         </svg>
         <div class="scene-copy">
-          <span class="film-eyebrow">CH 03 · The signal</span>
-          <p class="film-h film-h--small beat" id="ch3-b1">
-            Underneath the noise, your customer<br />wants one simple thing.
-          </p>
-          <p class="film-h beat" id="ch3-b2">Someone who picks up.</p>
-          <p class="mono-tag beat" id="ch3-b3">● SIGNAL LOCKED</p>
+          <span class="film-eyebrow">{STEPS[3].eyebrow}</span>
+          <h2 class="film-h film-h--small" id="s4-h">{STEPS[3].title}</h2>
+          <p class="film-sub" id="s4-sub">{STEPS[3].sub}</p>
+          <p class="mono-tag" id="s4-tag">● LIVE</p>
         </div>
       </section>
 
-      <!-- CH 04 — THE WORK -->
-      <section class="scene scene--dark" id="ch4" aria-label="Chapter four: the work">
+      <!-- STEP 5 — YOURS -->
+      <section class="scene scene--dark" id="s5" aria-label="Step five: you keep the site either way">
         <div class="paper-flood" aria-hidden="true"></div>
-        <div class="scene-copy ch4-copy">
-          <span class="film-eyebrow film-eyebrow--ink">CH 04 · The work</span>
-          <h2 class="wm" aria-label={BRAND.name}>
+        <div class="scene-copy ch5-copy">
+          <span class="film-eyebrow film-eyebrow--ink">{STEPS[4].eyebrow}</span>
+          <h2 class="wm" aria-label={STEPS[4].title}>
             <span class="brand-square" aria-hidden="true"></span
             ><span class="wm-chars" aria-hidden="true"
-              >{BRAND.name.split('').map((c) => <span class="wm-char">{c}</span>)}</span
+              >{'Yours.'.split('').map((c) => <span class="wm-char">{c}</span>)}</span
             >
           </h2>
-          <p class="ch4-tag">{BRAND.tagline}</p>
-          <p class="ch4-line">
-            For HVAC, plumbing, electrical, roofing, landscaping — the trades,
-            nationwide.<br />One builder in Los Angeles. No noise. Just the work.
-          </p>
-          <div class="btn-row ch4-ctas">
-            <a href={NAV_CTA.href} class="btn btn--primary btn--large">{NAV_CTA.label}</a>
-            <a href="/pricing/" class="btn btn--ghost btn--large">See pricing</a>
+          <p class="ch5-tag">{STEPS[4].title}</p>
+          <p class="ch5-line">{STEPS[4].sub}</p>
+          <div class="btn-row ch5-ctas">
+            <a href="#start" class="btn btn--primary btn--large"
+              >{NAV_CTA.label}</a
+            >
           </div>
-        </div>
-      </section>
-
-      <!-- CH 05 — THE TERMS (horizontal run) -->
-      <section class="scene scene--paper" id="ch5" aria-label="Chapter five: the terms">
-        <div class="terms-track">
-          <article class="term">
-            <span class="film-eyebrow film-eyebrow--ink">CH 05 · The terms</span>
-            <span class="term-num" aria-hidden="true">01</span>
-            <h3>A fixed number, in&nbsp;writing.</h3>
-            <p>The quote is flat. It doesn’t move mid-project.</p>
-          </article>
-          <article class="term">
-            <span class="term-num" aria-hidden="true">02</span>
-            <h3>Days, not&nbsp;months.</h3>
-            <p>
-              A one-page site ships in five business days. Full sites in two to
-              three weeks. The date is part of the deal.
-            </p>
-          </article>
-          <article class="term">
-            <span class="term-num" aria-hidden="true">03</span>
-            <h3>One person. Zero&nbsp;handoffs.</h3>
-            <p>
-              The person who quotes it designs it, writes it, builds it, and
-              answers the email.
-            </p>
-          </article>
-          <article class="term">
-            <span class="term-num" aria-hidden="true">04</span>
-            <h3>You own all of&nbsp;it.</h3>
-            <p>
-              Domain, hosting, code, accounts. Walk away anytime and lose
-              nothing.
-            </p>
-          </article>
         </div>
       </section>
     </div>
 
+    <!-- Static steps for reduced-motion / no-JS -->
+    <section class="static-steps section" aria-label="How it works">
+      <div class="container container--narrow">
+        <span class="eyebrow">How it works</span>
+        <h2>Five steps, start to live.</h2>
+        <ol class="steps" style="margin-top: var(--space-5);">
+          {
+            STEPS.map((s) => (
+              <li>
+                <h3>{s.title}</h3>
+                <p class="muted">{s.sub}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
     <div class="chapter-readout" id="readout" aria-hidden="true">
-      <span class="ro-label" id="ro-label">CH 01 / 05 — THE NOISE</span>
+      <span class="ro-label" id="ro-label">{STEPS[0].label}</span>
       <span class="ro-bar"><span class="ro-fill" id="ro-fill"></span></span>
     </div>
 
     <main id="content">
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">What I build</span>
-            <h2>Websites and web apps. That’s the whole menu.</h2>
-          </div>
-          <div class="grid grid--2">
-            {
-              LIVE_SERVICES.map((s) => (
-                <div class="card">
-                  <h3>
-                    <a href={serviceHref(s)}>{s.name}</a>
-                  </h3>
-                  <p class="muted">{s.summary}</p>
-                  <p style="margin-top: var(--space-3);">
-                    <a href={serviceHref(s)}>What’s included →</a>
-                  </p>
-                </div>
-              ))
-            }
+      <!-- ============ WHY FREE ============ -->
+      <section class="section" id="why-free">
+        <div class="container container--narrow">
+          <span class="eyebrow">Why free</span>
+          <h2>Why would anyone build websites for free?</h2>
+          <div class="stack" style="margin-top: var(--space-4);">
+            <p class="lede">
+              Because the economics changed. AI-assisted development means a
+              site that used to take an agency six weeks takes us days. Our
+              real business is the ongoing work — {clearedText}. Some of the
+              businesses we build free sites for hire us for that. Enough
+              that the math works.
+            </p>
+            <p class="lede">
+              The free site is our audition, not a trap. You keep it either
+              way. We’ll put the terms in writing — one page, plain English —
+              before we start. <a href="/terms/">Read them now</a> if you
+              like.
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="section section--rule">
+      <!-- ============ WHAT'S INCLUDED ============ -->
+      <section class="section section--rule" id="included">
         <div class="container">
           <div class="section-head">
-            <span class="eyebrow">The honest part</span>
-            <h2>Everyone’s selling AI. I just build with it.</h2>
-            <p class="lede">
-              AI-accelerated tooling is how one person designs, writes, and
-              ships agency-quality work in days, at a price without agency
-              overhead. That’s the whole trick — stated plainly, not dressed up
-              as magic. The judgment and the accountability are human. Mine.
+            <span class="eyebrow">Scope, in writing</span>
+            <h2>What the free build includes — and what it doesn’t.</h2>
+          </div>
+          <div class="grid grid--2">
+            <div class="card">
+              <h3>Free build includes</h3>
+              <ul class="checklist">
+                {FREE_BUILD.includes.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Not included free — quoted plainly if you want it</h3>
+              <ul class="checklist checklist--neutral">
+                {FREE_BUILD.notIncludedFree.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="muted" style="margin-top: var(--space-3); font-size: var(--text-sm);">
+                {CARE_PLAN.name}: {CARE_PLAN.price}, {CARE_PLAN.priceNote}.
+                Details on the <a href="/services/">services page</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="section section--rule" id="faq">
+        <div class="container container--narrow">
+          <div class="section-head">
+            <span class="eyebrow">FAQ</span>
+            <h2>The questions a sensible skeptic asks.</h2>
+          </div>
+          <details class="faq">
+            <summary>What’s the catch?</summary>
+            <div class="faq-body">
+              <p>
+                There isn’t one you’ll find later. The site is yours —
+                domain, files, content. We build free because some clients
+                hire us afterward for ongoing work. That’s the entire model,
+                and we’d rather tell you than have you wonder.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Do I have to host with you?</summary>
+            <div class="faq-body">
+              <p>
+                No. At launch, everything moves into accounts in your name —
+                code, hosting, domain. Running any website costs hosting:
+                roughly $0–20 a month if you handle it yourself, or
+                {CARE_PLAN.price.replace('/month', ' a month')} on our
+                {CARE_PLAN.name} and we handle hosting, updates, and support.
+                The build is free either way, and if you ever leave the
+                {CARE_PLAN.name} we hand everything over within 5 business
+                days at no charge.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Is this a template with my logo on it?</summary>
+            <div class="faq-body">
+              <p>
+                No. Each site is built from your intake — your services, your
+                area, your photos. Modern code, not a page-builder account
+                you’re locked into.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>What if the draft misses?</summary>
+            <div class="faq-body">
+              <p>
+                One revision round is included. If it’s still not right, walk
+                away. You’ve lost nothing.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>How do you make money if I never buy anything?</summary>
+            <div class="faq-body">
+              <p>
+                On you, we don’t. Across everyone we build for, enough hire
+                us for ongoing work that it works out.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Do I have to get on a sales call?</summary>
+            <div class="faq-body">
+              <p>
+                No. Submit the form, get the draft. We’ll talk when there’s
+                something to look at.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>How fast?</summary>
+            <div class="faq-body">
+              <p>
+                First working draft within {FREE_BUILD.draftTimeline} of
+                intake.
+              </p>
+            </div>
+          </details>
+          {
+            /* Capacity FAQ renders only once FREE_BUILD.capacityPerMonth is a
+               real, enforced number (DECISION 5). An invented number would be
+               fake scarcity, which this site bans. */
+            FREE_BUILD.capacityPerMonth !== null && (
+              <details class="faq">
+                <summary>How many of these do you do?</summary>
+                <div class="faq-body">
+                  <p>
+                    {FREE_BUILD.capacityPerMonth} free builds a month. When
+                    the month is full, you go on next month's list.
+                  </p>
+                </div>
+              </details>
+            )
+          }
+        </div>
+      </section>
+
+      {
+        /* PROOF SECTION — intentionally absent until real proof exists.
+           When there are live client sites with written permission, add a
+           section here: 2-3 launched-site cards (screenshot, trade, link)
+           and nothing invented — no testimonials without written consent,
+           no counts, no ratings. */
+      }
+
+      <!-- ============ INTAKE ============ -->
+      <section class="section section--rule" id="start">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Start</span>
+            <h2>Two ways in. Both end with a real draft.</h2>
+            <p class="muted">
+              No sales call, no deposit, no card. Pick the form that matches
+              the time you have.
             </p>
           </div>
-          <ul class="checklist">
-            <li>No account managers, no handoffs, no “let me check with the team.”</li>
-            <li>Fixed quotes in writing before work starts. The number doesn’t move.</li>
-            <li>You own everything: domain, hosting, code, accounts. No hostage-taking.</li>
-            <li>Delivered remotely — video audits, video calls, async review. Based in Los Angeles, working nationwide.</li>
-          </ul>
-          <p style="margin-top: var(--space-5);">
-            <a href="/process/">The full process, step by step →</a>
+
+          <div class="grid grid--2 intake-grid">
+            <!-- Card A: Quickstart -->
+            <form
+              class="card intake-form"
+              method="POST"
+              action={hasEndpoint ? CONTACT.formEndpoint : undefined}
+              data-intake="quickstart"
+              novalidate
+            >
+              <h3>Quickstart — 3 minutes</h3>
+              <p class="muted intake-blurb">
+                Enough for us to build draft one. Best if you want to see
+                something fast.
+              </p>
+              <input type="hidden" name="form_type" value="quickstart" />
+              <p class="hp-field" aria-hidden="true">
+                <label for="qs-website-hp">Leave this field empty</label>
+                <input
+                  id="qs-website-hp"
+                  type="text"
+                  name="company_website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </p>
+              <div class="field">
+                <label for="qs-name">Business name *</label>
+                <input id="qs-name" name="business_name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="qs-trade">What you do *</label>
+                <select id="qs-trade" name="trade" required>
+                  <option value="">Choose one…</option>
+                  <option>HVAC</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>Roofing</option>
+                  <option>Landscaping</option>
+                  <option>Law firm</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="qs-trade-other">If other — what?</label>
+                <input id="qs-trade-other" name="trade_other" type="text" />
+              </div>
+              <div class="field">
+                <label for="qs-area">Service area *</label>
+                <input
+                  id="qs-area"
+                  name="service_area"
+                  type="text"
+                  required
+                  placeholder="e.g. Fresno & Clovis"
+                />
+              </div>
+              <div class="field">
+                <label for="qs-phone">Phone *</label>
+                <input id="qs-phone" name="phone" type="tel" required autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="qs-email">Email *</label>
+                <input id="qs-email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="qs-url">Current website (if any)</label>
+                <input id="qs-url" name="current_website" type="url" placeholder="https://" />
+              </div>
+              <div class="field">
+                <label for="qs-services">Your top 3 services *</label>
+                <textarea id="qs-services" name="top_services" rows="2" required></textarea>
+              </div>
+              <div class="field">
+                <label for="qs-like">One thing customers say they like about you *</label>
+                <textarea id="qs-like" name="customers_like" rows="2" required></textarea>
+              </div>
+              <div class="field">
+                <label for="qs-must">Anything the site must include</label>
+                <textarea id="qs-must" name="must_include" rows="2"></textarea>
+              </div>
+              <p class="form-error" role="alert" hidden>
+                A few required fields are missing — they’re marked above.
+              </p>
+              <button
+                type="submit"
+                class="btn btn--primary btn--large intake-submit"
+                disabled={!hasEndpoint}
+              >
+                Send it — build my draft
+              </button>
+              {
+                !hasEndpoint && (
+                  <p class="muted intake-fallback">
+                    Intake opens shortly. Today, email
+                    <a href={`mailto:${CONTACT.email}`}> {CONTACT.email}</a>
+                    with these answers and we’ll take it from there.
+                  </p>
+                )
+              }
+              <p class="form-success" role="status" hidden>
+                Got it. You’ll hear from us within 1 business day with your
+                draft timeline.
+              </p>
+            </form>
+
+            <!-- Card B: Detailed -->
+            <form
+              class="card intake-form"
+              method="POST"
+              action={hasEndpoint ? CONTACT.formEndpoint : undefined}
+              data-intake="detailed"
+              novalidate
+            >
+              <h3>Detailed — 10–15 minutes</h3>
+              <p class="muted intake-blurb">
+                The more you give us, the closer draft one lands.
+              </p>
+              <input type="hidden" name="form_type" value="detailed" />
+              <p class="hp-field" aria-hidden="true">
+                <label for="dt-website-hp">Leave this field empty</label>
+                <input
+                  id="dt-website-hp"
+                  type="text"
+                  name="company_website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </p>
+              <div class="field">
+                <label for="dt-name">Business name *</label>
+                <input id="dt-name" name="business_name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="dt-trade">What you do *</label>
+                <select id="dt-trade" name="trade" required>
+                  <option value="">Choose one…</option>
+                  <option>HVAC</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>Roofing</option>
+                  <option>Landscaping</option>
+                  <option>Law firm</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="dt-area">Service area *</label>
+                <input id="dt-area" name="service_area" type="text" required />
+              </div>
+              <div class="field">
+                <label for="dt-phone">Phone *</label>
+                <input id="dt-phone" name="phone" type="tel" required autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="dt-email">Email *</label>
+                <input id="dt-email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="dt-url">Current website (if any)</label>
+                <input id="dt-url" name="current_website" type="url" placeholder="https://" />
+              </div>
+              <div class="field">
+                <label for="dt-services">Your top 3 services *</label>
+                <textarea id="dt-services" name="top_services" rows="2" required></textarea>
+              </div>
+              <div class="field">
+                <label for="dt-like">One thing customers say they like about you *</label>
+                <textarea id="dt-like" name="customers_like" rows="2" required></textarea>
+              </div>
+              <div class="field">
+                <label for="dt-brand">Logo / brand colors</label>
+                <input
+                  id="dt-brand"
+                  name="brand_assets"
+                  type="text"
+                  placeholder="Link to a logo file, or describe your colors"
+                />
+              </div>
+              <div class="field">
+                <label for="dt-photos">Photos you have the right to use</label>
+                <input
+                  id="dt-photos"
+                  name="photo_links"
+                  type="text"
+                  placeholder="Google Drive / Dropbox link is perfect"
+                />
+              </div>
+              <div class="field">
+                <label for="dt-pages">Pages you want</label>
+                <input id="dt-pages" name="pages_wanted" type="text" />
+              </div>
+              <div class="field">
+                <label for="dt-licenses">Licenses / certifications you hold</label>
+                <input id="dt-licenses" name="licenses" type="text" />
+              </div>
+              <div class="field">
+                <label for="dt-testimonials"
+                  >Testimonials you have written permission to use</label
+                >
+                <textarea id="dt-testimonials" name="testimonials" rows="2"></textarea>
+              </div>
+              <div class="field">
+                <label for="dt-booking">Booking or scheduling tool you use</label>
+                <input id="dt-booking" name="booking_tool" type="text" />
+              </div>
+              <div class="field">
+                <label for="dt-hours">Hours &amp; locations</label>
+                <input id="dt-hours" name="hours_locations" type="text" />
+              </div>
+              <div class="field">
+                <label for="dt-likes">1–2 sites you like the look of</label>
+                <input id="dt-likes" name="reference_sites" type="text" />
+              </div>
+              <div class="field">
+                <label for="dt-domain">Do you own a domain already?</label>
+                <input id="dt-domain" name="owns_domain" type="text" placeholder="Yes/no — which one?" />
+              </div>
+              <div class="field">
+                <label for="dt-gbp">Do you have a Google Business Profile?</label>
+                <input id="dt-gbp" name="has_gbp" type="text" placeholder="Yes / no / not sure" />
+              </div>
+              <p class="form-error" role="alert" hidden>
+                A few required fields are missing — they’re marked above.
+              </p>
+              <button
+                type="submit"
+                class="btn btn--primary btn--large intake-submit"
+                disabled={!hasEndpoint}
+              >
+                Send it — build my draft
+              </button>
+              {
+                !hasEndpoint && (
+                  <p class="muted intake-fallback">
+                    Intake opens shortly. Today, email
+                    <a href={`mailto:${CONTACT.email}`}> {CONTACT.email}</a>
+                    with these answers and we’ll take it from there.
+                  </p>
+                )
+              }
+              <p class="form-success" role="status" hidden>
+                Got it. You’ll hear from us within 1 business day with your
+                draft timeline.
+              </p>
+            </form>
+          </div>
+          <p class="muted" style="margin-top: var(--space-4); font-size: var(--text-sm);">
+            We also work with law firms and other service businesses that
+            live on inbound calls.
           </p>
         </div>
       </section>
-
-      <CtaBand />
     </main>
 
     <Footer />
@@ -280,6 +748,60 @@ const canonical = new URL('/', SITE_URL).href;
         const JUMP = new URLSearchParams(location.search).get('jump');
         if (JUMP !== null) history.scrollRestoration = 'manual';
 
+        // ---- Intake form handling (runs film or not) ----
+        document.querySelectorAll('.intake-form').forEach((form) => {
+          form.addEventListener('submit', (ev) => {
+            const errorEl = form.querySelector('.form-error');
+            const successEl = form.querySelector('.form-success');
+            // Honeypot: quietly drop bot submissions.
+            if (form.querySelector('[name="company_website"]').value) {
+              ev.preventDefault();
+              return;
+            }
+            // Client-side validation with visible error states.
+            let valid = true;
+            form.querySelectorAll('[required]').forEach((input) => {
+              const bad = !input.value.trim();
+              input.toggleAttribute('aria-invalid', bad);
+              if (bad) valid = false;
+            });
+            if (!valid) {
+              ev.preventDefault();
+              errorEl.hidden = false;
+              form.querySelector('[aria-invalid]')?.focus();
+              return;
+            }
+            errorEl.hidden = true;
+            const action = form.getAttribute('action');
+            if (!action) {
+              ev.preventDefault();
+              return; // endpoint not configured; fallback note is visible
+            }
+            // Enhance: fetch POST + inline confirmation (native POST works without JS).
+            ev.preventDefault();
+            const btn = form.querySelector('.intake-submit');
+            btn.disabled = true;
+            fetch(action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' },
+            })
+              .then((r) => {
+                if (!r.ok) throw new Error('submit failed');
+                form
+                  .querySelectorAll('.field, .intake-submit, .intake-blurb')
+                  .forEach((el) => (el.style.display = 'none'));
+                successEl.hidden = false;
+              })
+              .catch(() => {
+                btn.disabled = false;
+                errorEl.textContent =
+                  'That didn’t go through. Try again, or email us directly.';
+                errorEl.hidden = false;
+              });
+          });
+        });
+
         if (reduced) {
           document.documentElement.classList.add('film-off');
           window.__ready = true;
@@ -288,7 +810,6 @@ const canonical = new URL('/', SITE_URL).href;
 
         gsap.registerPlugin(ScrollTrigger);
 
-        // Smooth scroll — skipped under ?jump so captures are exact.
         let lenis = null;
         if (JUMP === null && typeof Lenis !== 'undefined') {
           lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
@@ -297,49 +818,32 @@ const canonical = new URL('/', SITE_URL).href;
           gsap.ticker.lagSmoothing(0);
         }
 
-        // ---- CH1: the noise field ----
-        const WORDS = [
-          'ELEVATE', 'LEVERAGE', 'TRANSFORM', 'UNLOCK', 'EMPOWER',
-          'CUTTING-EDGE', 'DIGITAL LANDSCAPE', 'SOLUTIONS', 'SYNERGY',
-          'DISRUPT', '10X GROWTH', 'AI-POWERED', 'GAME-CHANGER',
-          'PARADIGM SHIFT', 'NEXT-GEN', 'TURNKEY', 'HYPERGROWTH',
-          'FRICTIONLESS', 'REVOLUTIONARY', 'SCALE FAST', 'END-TO-END',
-          'DATA-DRIVEN', 'GROWTH HACKING', 'FULL-FUNNEL', 'OMNICHANNEL',
-          'THOUGHT LEADER', 'BEST-IN-CLASS', 'WORLD-CLASS', 'FUTURE-PROOF',
-          'INNOVATE HARDER', 'MOVE THE NEEDLE', 'CIRCLE BACK',
+        // Hero ambient word field — trades and intake phrases, quiet texture.
+        const FIELD_WORDS = [
+          'HVAC', 'PLUMBING', 'ELECTRICAL', 'ROOFING', 'LANDSCAPING',
+          'SERVICE AREA', 'FIRST DRAFT', 'YOUR DOMAIN', 'CLICK TO CALL',
+          'FIVE PAGES', 'MOBILE FIRST', 'YOUR PROPERTY',
         ];
-        const layers = [
-          document.querySelector('.noise-layer.l1'),
-          document.querySelector('.noise-layer.l2'),
-          document.querySelector('.noise-layer.l3'),
-        ];
-        const perLayer = innerWidth < 640 ? 7 : 11;
-        let w = 0;
-        layers.forEach((layer, li) => {
-          for (let i = 0; i < perLayer; i++) {
-            const span = document.createElement('span');
-            span.className = 'nw' + (w % 3 === 0 ? ' nw--stroke' : '');
-            span.textContent = WORDS[w % WORDS.length];
-            w++;
-            // Scatter, avoiding the centre copy zone.
-            let x, y;
-            do {
-              x = 4 + Math.random() * 88;
-              y = 4 + Math.random() * 88;
-            } while (Math.abs(x - 50) < 26 && Math.abs(y - 48) < 24);
-            span.style.left = x + '%';
-            span.style.top = y + '%';
-            span.style.fontSize = 0.8 + Math.random() * 0.9 + (2 - li) * 0.35 + 'rem';
-            span.style.transform = 'rotate(' + (Math.random() * 8 - 4) + 'deg)';
-            span.style.opacity = String(0.5 + Math.random() * 0.5);
-            layer.appendChild(span);
-          }
-        });
+        const heroField = document.querySelector('.hero-field');
+        const fieldCount = innerWidth < 640 ? 8 : 14;
+        for (let i = 0; i < fieldCount; i++) {
+          const span = document.createElement('span');
+          span.className = 'nw' + (i % 3 === 0 ? ' nw--stroke' : '');
+          span.textContent = FIELD_WORDS[i % FIELD_WORDS.length];
+          let x, y;
+          do {
+            x = 3 + Math.random() * 90;
+            y = 3 + Math.random() * 90;
+          } while (Math.abs(x - 50) < 27 && Math.abs(y - 48) < 26);
+          span.style.left = x + '%';
+          span.style.top = y + '%';
+          span.style.fontSize = 0.75 + Math.random() * 0.8 + 'rem';
+          span.style.transform = 'rotate(' + (Math.random() * 6 - 3) + 'deg)';
+          span.style.opacity = String(0.35 + Math.random() * 0.35);
+          heroField.appendChild(span);
+        }
 
-        // ================= PINNED SCENES (creation order = refresh order) =================
-
-        // The chapter readout label is driven by the pins themselves so it can
-        // never drift out of sync with what's on screen.
+        // Readout wiring
         const roLabel = document.getElementById('ro-label');
         const setLabel = (label) => (self) => {
           if (self.isActive) roLabel.textContent = label;
@@ -352,96 +856,115 @@ const canonical = new URL('/', SITE_URL).href;
           scrub: true,
           onToggle: setLabel(label),
         });
+        const LABELS = [
+          'STEP 01 / 05 — TELL US',
+          'STEP 02 / 05 — DRAFT ONE',
+          'STEP 03 / 05 — REVISE',
+          'STEP 04 / 05 — LIVE',
+          'STEP 05 / 05 — YOURS',
+        ];
 
-        // CH1 — push through the noise
+        // ================= PINNED SCENES (creation order = refresh order) =================
+
+        // S1 — intake chips drift up and past
         gsap
-          .timeline({ scrollTrigger: pinCfg('#ch1', '+=170%', 'CH 01 / 05 — THE NOISE') })
-          .to('.noise-layer.l1', { scale: 3.1, autoAlpha: 0, ease: 'power2.in', duration: 1 }, 0)
-          .to('.noise-layer.l2', { scale: 2.5, autoAlpha: 0, ease: 'power2.in', duration: 1 }, 0.08)
-          .to('.noise-layer.l3', { scale: 2.0, autoAlpha: 0, ease: 'power2.in', duration: 1 }, 0.16)
-          .to('#ch1-copy', { y: -110, autoAlpha: 0, ease: 'power1.in', duration: 0.8 }, 0.1);
+          .timeline({ scrollTrigger: pinCfg('#s1', '+=160%', LABELS[0]) })
+          .from('.chip', {
+            y: 120,
+            autoAlpha: 0,
+            stagger: 0.06,
+            ease: 'power2.out',
+            duration: 0.5,
+          }, 0)
+          .to('.chip', {
+            y: -160,
+            autoAlpha: 0,
+            stagger: 0.05,
+            ease: 'power2.in',
+            duration: 0.5,
+          }, 1.0)
+          .to('#s1 .scene-copy', { y: -90, autoAlpha: 0, ease: 'power1.in', duration: 0.5 }, 1.15);
 
-        // CH2 — promises struck out, then discarded. Strict sequence:
-        // in (0–.75) → strikes (.8–1.25) → out (1.35–1.8) → verdict line (1.85–2.1)
-        gsap
-          .timeline({ scrollTrigger: pinCfg('#ch2', '+=190%', 'CH 02 / 05 — THE PROMISES') })
-          .from('.promise', { y: 80, autoAlpha: 0, stagger: 0.1, ease: 'power2.out', duration: 0.35 }, 0)
-          .to('#pr1 .strike', { scaleX: 1, ease: 'power2.inOut', duration: 0.14 }, 0.8)
-          .to('#pr2 .strike', { scaleX: 1, ease: 'power2.inOut', duration: 0.14 }, 0.96)
-          .to('#pr3 .strike', { scaleX: 1, ease: 'power2.inOut', duration: 0.14 }, 1.12)
-          .to('.promise', { y: -140, rotation: (i) => [-6, 4, -3][i], autoAlpha: 0, stagger: 0.06, ease: 'power2.in', duration: 0.32 }, 1.35)
-          .fromTo('#ch2-line', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.25 }, 1.85);
-
-        // CH3 — the signal draws itself clean. Beats never overlap:
-        // b1 (.02–.25, out by .75) → b2 (.85–1.05, out by 1.45) → SIGNAL LOCKED (1.6+)
-        const core = document.querySelector('.sigpath--core');
-        const glow = document.querySelector('.sigpath--glow');
-        const halo = document.querySelector('.sigpath--halo');
-        const L = core.getTotalLength();
-        [core, glow, halo].forEach((p) => {
-          p.style.strokeDasharray = L;
-          p.style.strokeDashoffset = L;
+        // S2 — the wireframe draws itself, then fills
+        const wfLines = gsap.utils.toArray('.wf-line');
+        wfLines.forEach((el) => {
+          const len = el.getTotalLength();
+          el.style.strokeDasharray = len;
+          el.style.strokeDashoffset = len;
         });
         gsap
-          .timeline({ scrollTrigger: pinCfg('#ch3', '+=220%', 'CH 03 / 05 — THE SIGNAL') })
-          .fromTo('#ch3-b1', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.02)
-          .to([core, glow, halo], { strokeDashoffset: 0, ease: 'none', duration: 1.4 }, 0.1)
-          .to('#ch3-b1', { autoAlpha: 0, y: -40, duration: 0.2 }, 0.55)
-          .fromTo('#ch3-b2', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.85)
-          .to('#ch3-b2', { autoAlpha: 0, y: -40, duration: 0.2 }, 1.25)
-          .fromTo('#ch3-b3', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15 }, 1.6);
+          .timeline({ scrollTrigger: pinCfg('#s2', '+=180%', LABELS[1]) })
+          .to(wfLines, {
+            strokeDashoffset: 0,
+            ease: 'none',
+            stagger: 0.08,
+            duration: 0.9,
+          }, 0.05)
+          .to('.wf-cta', { fill: 'rgba(255,92,31,0.85)', duration: 0.2 }, 1.1)
+          .fromTo('#s2-tag', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 1.25);
 
-        // CH4 — paper floods in, the identity lands and holds settled
+        // S3 — edits get struck and replaced
+        const editTl = gsap.timeline({
+          scrollTrigger: pinCfg('#s3', '+=190%', LABELS[2]),
+        });
+        editTl.from('.edit', { y: 60, autoAlpha: 0, stagger: 0.12, duration: 0.35 }, 0);
+        gsap.utils.toArray('.edit').forEach((row, i) => {
+          editTl
+            .to(row.querySelector('.strike'), { scaleX: 1, duration: 0.14 }, 0.7 + i * 0.28)
+            .fromTo(
+              row.querySelector('.edit-new'),
+              { autoAlpha: 0, x: 24 },
+              { autoAlpha: 1, x: 0, duration: 0.18 },
+              0.82 + i * 0.28
+            );
+        });
+        editTl.fromTo('#s3-sub', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25 }, 1.75);
+
+        // S4 — the line goes live: steady pulses draw across
+        const sigPaths = gsap.utils.toArray('.sigpath');
+        const sigLen = sigPaths[0].getTotalLength();
+        sigPaths.forEach((p) => {
+          p.style.strokeDasharray = sigLen;
+          p.style.strokeDashoffset = sigLen;
+        });
         gsap
-          .timeline({ scrollTrigger: pinCfg('#ch4', '+=180%', 'CH 04 / 05 — THE WORK') })
+          .timeline({ scrollTrigger: pinCfg('#s4', '+=200%', LABELS[3]) })
+          .fromTo('#s4-h', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.25 }, 0.02)
+          .to(sigPaths, { strokeDashoffset: 0, ease: 'none', duration: 1.2 }, 0.1)
+          .fromTo('#s4-sub', { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.25 }, 0.6)
+          .fromTo('#s4-tag', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15 }, 1.35);
+
+        // S5 — paper floods, ownership lands
+        gsap
+          .timeline({ scrollTrigger: pinCfg('#s5', '+=180%', LABELS[4]) })
           .to('.paper-flood', { clipPath: 'circle(142% at 50% 55%)', ease: 'power2.inOut', duration: 0.7 }, 0)
           .fromTo('.brand-square', { scale: 0, rotation: 45 }, { scale: 1, rotation: 0, ease: 'back.out(1.6)', duration: 0.18 }, 0.72)
-          .from('.wm-char', { yPercent: 120, stagger: 0.02, ease: 'power4.out', duration: 0.25 }, 0.8)
+          .from('.wm-char', { yPercent: 120, stagger: 0.03, ease: 'power4.out', duration: 0.25 }, 0.8)
           .fromTo('.film-eyebrow--ink', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15 }, 0.85)
-          .fromTo('.ch4-tag', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.25 }, 1.1)
-          .fromTo('.ch4-line', { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.25 }, 1.25)
-          .fromTo('.ch4-ctas', { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 1.4)
+          .fromTo('.ch5-tag', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.25 }, 1.1)
+          .fromTo('.ch5-line', { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.25 }, 1.25)
+          .fromTo('.ch5-ctas', { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 1.4)
           .to({}, { duration: 0.4 });
-
-        // CH5 — horizontal run through the terms
-        const track = document.querySelector('.terms-track');
-        const dist = () => track.scrollWidth - innerWidth;
-        const hTween = gsap.to(track, {
-          x: () => -dist(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#ch5',
-            start: 'top top',
-            end: () => '+=' + (dist() + innerHeight * 0.4),
-            pin: true,
-            scrub: true,
-            invalidateOnRefresh: true,
-            onToggle: setLabel('CH 05 / 05 — THE TERMS'),
-          },
-        });
 
         // ================= AMBIENT (after all pins — the ordering law) =================
 
-        // Per-panel parallax on the giant numerals
-        document.querySelectorAll('.term-num').forEach((num) => {
-          gsap.from(num, {
-            xPercent: 26,
-            autoAlpha: 0.2,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: num.closest('.term'),
-              containerAnimation: hTween,
-              start: 'left 90%',
-              end: 'left 30%',
-              scrub: true,
-            },
-          });
+        // Hero field parallax out
+        gsap.to('.hero-field', {
+          autoAlpha: 0,
+          scale: 1.15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
         });
 
-        // Chrome flip: dark chrome over the dark scenes, ink chrome once paper floods
+        // Chrome flip once paper floods in S5
         const chrome = [document.getElementById('film-header'), document.getElementById('readout')];
         ScrollTrigger.create({
-          trigger: '#ch4',
+          trigger: '#s5',
           start: 'top top',
           end: '+=180%',
           onUpdate: (self) => {
@@ -451,45 +974,20 @@ const canonical = new URL('/', SITE_URL).href;
           onLeaveBack: () => chrome.forEach((el) => el && el.classList.remove('on-light')),
         });
 
-        // Film progress bar + readout fade at film end
+        // Film progress bar + readout visibility (hidden until the film begins)
         const roFill = document.getElementById('ro-fill');
         const readout = document.getElementById('readout');
+        readout.style.opacity = '0';
         ScrollTrigger.create({
           trigger: '#filmwrap',
-          start: 'top top',
+          start: 'top 60%',
           end: 'bottom bottom',
           onUpdate: (self) => {
             roFill.style.width = (self.progress * 100).toFixed(1) + '%';
-            const done = self.progress > 0.985;
-            readout.style.opacity = done ? '0' : '1';
-            document.querySelector('.fh-skip').style.opacity = done ? '0' : '';
-            document.querySelector('.fh-skip').style.pointerEvents = done ? 'none' : '';
+            readout.style.opacity =
+              self.progress > 0.001 && self.progress < 0.985 ? '1' : '0';
           },
         });
-
-        // Velocity skew on the noise layers (subtle, clamped)
-        if (lenis) {
-          lenis.on('scroll', (e) => {
-            const v = Math.max(-6, Math.min(6, (e.velocity || 0) * 0.28));
-            layers.forEach((l, i) => {
-              l.style.setProperty('--skew', (v * (1 - i * 0.25)).toFixed(2) + 'deg');
-            });
-          });
-        }
-
-        // Skip-the-film link scrolls past all pin spacers
-        document.getElementById('skip-film').addEventListener('click', (ev) => {
-          ev.preventDefault();
-          const target = document.getElementById('content');
-          const y = target.getBoundingClientRect().top + scrollY;
-          if (lenis) lenis.scrollTo(y, { duration: 1.2 });
-          else scrollTo({ top: y, behavior: 'smooth' });
-        });
-
-        // Entrance (skipped under ?jump)
-        if (JUMP === null) {
-          gsap.from('#ch1-copy > *', { y: 26, autoAlpha: 0, stagger: 0.1, duration: 0.9, ease: 'power3.out', delay: 0.15 });
-        }
 
         // Jank meter — judge max/p95, never average fps
         (() => {
@@ -528,7 +1026,6 @@ const canonical = new URL('/', SITE_URL).href;
     </script>
 
     <style is:global>
-      /* ---- Film-specific type ---- */
       @font-face {
         font-family: 'Space Grotesk';
         src: url('/fonts/space-grotesk-700.woff2') format('woff2');
@@ -554,32 +1051,17 @@ const canonical = new URL('/', SITE_URL).href;
       html.film-off .chapter-readout {
         display: none;
       }
-      html.film-off .static-hero {
+      html.film-off .static-steps {
         display: block;
       }
-      html.film-off .film-header {
-        position: static;
-        --chrome: var(--ink);
-        background: var(--paper);
-        border-bottom: 1px solid var(--line);
+
+      .static-steps {
+        display: none;
       }
 
-      .static-hero {
-        display: none;
-        padding-block: var(--space-7);
-      }
-      .static-hero h1 {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-block: var(--space-4);
-      }
-      .sh-mark {
-        width: 0.65em;
-        height: 0.65em;
-        background: var(--signal-strong);
-        border-radius: 4px;
-        flex-shrink: 0;
+      .anchor-offset {
+        position: relative;
+        top: -1px;
       }
 
       /* ---- Fixed chrome ---- */
@@ -594,10 +1076,12 @@ const canonical = new URL('/', SITE_URL).href;
         justify-content: space-between;
         padding: 1rem clamp(1.25rem, 4vw, 2.5rem);
         --chrome: var(--footer-paper);
-        transition: --chrome 0s;
       }
       .film-header.on-light {
         --chrome: var(--ink);
+        background: color-mix(in srgb, var(--paper) 90%, transparent);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
       }
       .fh-wordmark {
         display: flex;
@@ -621,19 +1105,20 @@ const canonical = new URL('/', SITE_URL).href;
         align-items: center;
         gap: var(--space-4);
       }
-      .fh-skip {
-        font-family: var(--font-mono);
-        font-size: var(--text-xs);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
+      .fh-link {
+        font-weight: 550;
+        font-size: var(--text-sm);
         color: var(--chrome);
-        opacity: 0.75;
+        opacity: 0.85;
         text-decoration: none;
         transition: color 200ms ease;
       }
-      .fh-skip:hover {
+      .fh-link:hover {
         opacity: 1;
         color: var(--signal-bright);
+      }
+      .film-header.on-light .fh-link:hover {
+        color: var(--signal-strong);
       }
       .fh-cta {
         font-weight: 600;
@@ -651,6 +1136,41 @@ const canonical = new URL('/', SITE_URL).href;
         color: #fff;
       }
 
+      /* ---- Hero ---- */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: var(--film-bg);
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+        max-width: 62rem;
+      }
+      .hero-field {
+        position: absolute;
+        inset: 0;
+        will-change: transform, opacity;
+      }
+      .hero-ctas {
+        justify-content: center;
+        margin-top: var(--space-5);
+      }
+      .hero-ghost {
+        border-color: var(--film-mid);
+        color: var(--footer-paper);
+      }
+      .hero-ghost:hover {
+        border-color: var(--footer-paper);
+        color: var(--footer-paper);
+      }
+
       /* ---- Scenes ---- */
       .scene {
         position: relative;
@@ -662,9 +1182,6 @@ const canonical = new URL('/', SITE_URL).href;
       }
       .scene--dark {
         background: var(--film-bg);
-      }
-      .scene--paper {
-        background: var(--paper);
       }
       .scene-copy {
         position: relative;
@@ -689,8 +1206,8 @@ const canonical = new URL('/', SITE_URL).href;
       .film-h {
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: clamp(2.4rem, 1.6rem + 5vw, 5.2rem);
-        line-height: 1.02;
+        font-size: clamp(2.3rem, 1.5rem + 4.6vw, 4.8rem);
+        line-height: 1.04;
         letter-spacing: -0.02em;
         color: var(--footer-paper);
         text-wrap: balance;
@@ -702,7 +1219,14 @@ const canonical = new URL('/', SITE_URL).href;
         margin: var(--space-4) auto 0;
         font-size: var(--text-lg);
         color: var(--film-mid);
-        max-width: 40ch;
+        max-width: 44ch;
+      }
+      .mono-tag {
+        margin-top: var(--space-5);
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        letter-spacing: 0.25em;
+        color: var(--signal-bright);
       }
       .scroll-hint {
         margin-top: var(--space-6);
@@ -721,15 +1245,7 @@ const canonical = new URL('/', SITE_URL).href;
         .scroll-hint { animation: none; }
       }
 
-      /* CH1 noise field */
-      .noise-layer {
-        position: absolute;
-        inset: 0;
-        transform: skewY(var(--skew, 0deg));
-        will-change: transform, opacity;
-      }
-      .noise-layer.l1 { filter: blur(2.5px); }
-      .noise-layer.l2 { filter: blur(1px); }
+      /* Ambient word field (hero) */
       .nw {
         position: absolute;
         font-family: var(--font-display);
@@ -744,45 +1260,97 @@ const canonical = new URL('/', SITE_URL).href;
         -webkit-text-stroke: 1px var(--film-dim);
       }
 
-      /* CH2 promises */
-      .promises {
+      /* S1 chips */
+      .chip-field {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+        padding: 12vh 6vw;
+        pointer-events: none;
+      }
+      .chip {
+        font-family: var(--font-mono);
+        font-size: clamp(0.7rem, 0.6rem + 0.5vw, 0.95rem);
+        letter-spacing: 0.08em;
+        color: var(--film-mid);
+        border: 1px solid var(--film-dim);
+        border-radius: 999px;
+        padding: 0.5em 1.1em;
+        white-space: nowrap;
+      }
+      .chip:nth-child(even) {
+        color: var(--signal-bright);
+        border-color: color-mix(in srgb, var(--signal-bright) 45%, transparent);
+      }
+
+      /* S2 wireframe */
+      .wireframe {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -58%);
+        width: min(560px, 82vw);
+        z-index: 1;
+        opacity: 0.9;
+      }
+      .wf-line {
+        fill: none;
+        stroke: var(--film-mid);
+        stroke-width: 1.5;
+      }
+      .wf-cta {
+        stroke: var(--signal-bright);
+      }
+      #s2 .scene-copy {
+        margin-top: 46vh;
+      }
+      #s2 .mono-tag {
+        margin-top: var(--space-3);
+      }
+
+      /* S3 edits */
+      .edits {
+        margin-top: var(--space-5);
         display: grid;
         gap: var(--space-4);
-        margin-bottom: var(--space-6);
       }
-      .promise {
-        position: relative;
-        display: inline-block;
-        justify-self: center;
+      .edit {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6em 1.2em;
+        justify-content: center;
+        align-items: baseline;
         font-family: var(--font-display);
         font-weight: 500;
-        font-size: clamp(1.4rem, 1rem + 2.6vw, 2.6rem);
-        color: var(--film-mid);
-        padding-inline: 0.2em;
+        font-size: clamp(1.1rem, 0.9rem + 1.6vw, 1.9rem);
       }
-      .promise .strike {
+      .edit-old {
+        position: relative;
+        color: var(--film-mid);
+      }
+      .edit-old .strike {
         position: absolute;
         left: -2%;
         right: -2%;
         top: 52%;
-        height: 0.09em;
-        min-height: 3px;
+        height: 0.08em;
+        min-height: 2.5px;
         background: var(--signal-bright);
         transform: scaleX(0);
         transform-origin: left center;
         border-radius: 2px;
       }
-      #ch2-line {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 100%;
-        transform: translate(-50%, -50%);
+      .edit-new {
+        color: var(--footer-paper);
         visibility: hidden;
       }
-      #ch2 .scene-copy { width: 100%; }
+      #s3-sub {
+        visibility: hidden;
+      }
 
-      /* CH3 signal wave */
+      /* S4 wave */
       .sigwave {
         position: absolute;
         inset: 0;
@@ -799,8 +1367,6 @@ const canonical = new URL('/', SITE_URL).href;
         stroke: var(--signal-bright);
         stroke-width: 2.5;
       }
-      /* Layered translucent strokes fake the glow — a CSS blur filter here
-         re-rasterizes the path every dash-offset frame and causes jank. */
       .sigpath--glow {
         stroke: var(--signal-bright);
         stroke-width: 9;
@@ -811,34 +1377,41 @@ const canonical = new URL('/', SITE_URL).href;
         stroke-width: 22;
         opacity: 0.06;
       }
-      #ch3 .beat {
+      #s4 .scene-copy {
+        position: static;
+      }
+      #s4 .film-eyebrow {
         position: absolute;
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      #s4-h {
+        position: absolute;
+        top: 18%;
         left: 50%;
         transform: translateX(-50%);
         width: max-content;
         max-width: 90vw;
         visibility: hidden;
       }
-      #ch3-b1 { top: 18%; }
-      #ch3-b2 { top: 16%; }
-      #ch3-b3 {
-        bottom: 20%;
-        font-family: var(--font-mono);
-        font-size: var(--text-sm);
-        letter-spacing: 0.25em;
-        color: var(--signal-bright);
-      }
-      #ch3 .scene-copy {
-        position: static;
-      }
-      #ch3 .film-eyebrow {
+      #s4-sub {
         position: absolute;
-        top: 12%;
+        bottom: 26%;
         left: 50%;
         transform: translateX(-50%);
+        visibility: hidden;
+      }
+      #s4-tag {
+        position: absolute;
+        bottom: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        visibility: hidden;
+        margin: 0;
       }
 
-      /* CH4 identity */
+      /* S5 ownership */
       .paper-flood {
         position: absolute;
         inset: 0;
@@ -846,7 +1419,9 @@ const canonical = new URL('/', SITE_URL).href;
         clip-path: circle(0% at 50% 55%);
         z-index: 1;
       }
-      .ch4-copy { z-index: 2; }
+      .ch5-copy {
+        z-index: 2;
+      }
       .wm {
         display: flex;
         align-items: center;
@@ -854,7 +1429,7 @@ const canonical = new URL('/', SITE_URL).href;
         gap: clamp(0.6rem, 2vw, 1.4rem);
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: clamp(2.6rem, 1.4rem + 7vw, 6.5rem);
+        font-size: clamp(3rem, 1.6rem + 8vw, 7rem);
         letter-spacing: -0.03em;
         color: var(--ink);
         line-height: 1;
@@ -876,64 +1451,21 @@ const canonical = new URL('/', SITE_URL).href;
         display: inline-block;
         will-change: transform;
       }
-      .ch4-tag {
+      .ch5-tag {
         margin: var(--space-4) auto 0;
         font-size: var(--text-lg);
         color: var(--ink);
         font-weight: 600;
         max-width: 46ch;
       }
-      .ch4-line {
+      .ch5-line {
         margin: var(--space-3) auto 0;
         color: var(--ink-soft);
+        max-width: 52ch;
       }
-      .ch4-ctas {
+      .ch5-ctas {
         justify-content: center;
         margin-top: var(--space-5);
-      }
-
-      /* CH5 horizontal terms */
-      #ch5 {
-        justify-content: flex-start;
-        align-items: stretch;
-      }
-      .terms-track {
-        display: flex;
-        align-items: center;
-        width: max-content;
-        will-change: transform;
-      }
-      .term {
-        width: min(78vw, 44rem);
-        flex-shrink: 0;
-        padding-inline: clamp(2rem, 6vw, 5rem);
-        position: relative;
-      }
-      .term-num {
-        display: block;
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: clamp(5rem, 3rem + 12vw, 12rem);
-        line-height: 1;
-        color: transparent;
-        -webkit-text-stroke: 2px var(--line-strong);
-        margin-bottom: var(--space-3);
-        will-change: transform;
-      }
-      .term h3 {
-        font-family: var(--font-display);
-        font-size: clamp(1.6rem, 1.2rem + 2vw, 2.6rem);
-        margin-bottom: var(--space-3);
-      }
-      .term p {
-        color: var(--ink-soft);
-        max-width: 34ch;
-      }
-      .term .film-eyebrow {
-        position: absolute;
-        top: -3.5rem;
-        left: clamp(2rem, 6vw, 5rem);
-        margin: 0;
       }
 
       /* ---- Chapter readout ---- */
@@ -975,9 +1507,63 @@ const canonical = new URL('/', SITE_URL).href;
         background: var(--signal-bright);
       }
 
+      /* ---- Intake ---- */
+      .intake-grid {
+        align-items: start;
+      }
+      .intake-form h3 {
+        margin-bottom: var(--space-2);
+      }
+      .intake-blurb {
+        margin-bottom: var(--space-4);
+        font-size: var(--text-sm);
+      }
+      .hp-field {
+        position: absolute !important;
+        left: -9999px !important;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      [aria-invalid] {
+        border-color: #b3261e !important;
+      }
+      .form-error {
+        color: #b3261e;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        margin-bottom: var(--space-3);
+      }
+      .form-success {
+        color: var(--ink);
+        font-weight: 600;
+        background: var(--signal-tint);
+        border-radius: var(--radius);
+        padding: var(--space-3);
+      }
+      .intake-submit[disabled] {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      .intake-fallback {
+        margin-top: var(--space-3);
+        font-size: var(--text-sm);
+      }
+      .checklist--neutral li::before {
+        border-color: var(--line-strong);
+      }
+
       @media (max-width: 47.99rem) {
-        .fh-skip { display: none; }
-        .ro-label { font-size: 0.6rem; }
+        .fh-link {
+          display: none;
+        }
+        .chip-field {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 14vh 4vw;
+        }
+        .ro-label {
+          font-size: 0.6rem;
+        }
       }
     </style>
   </body>

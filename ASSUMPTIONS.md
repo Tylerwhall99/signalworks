@@ -186,3 +186,46 @@ items are the ones worth reviewing before launch.
   trucks/crews/finished jobs) — no caricature, no "blue-collar" flattery.
 - Not changed, worth deciding later: BRAND.description meta text and the
   OG share image kicker both still say "service businesses" (broad).
+
+## Free-site wedge redraft (docs/site-redraft-prompt.md)
+
+- Executed the one-shot redraft: offer-led positioning, all
+  competitor-negative framing removed (the SIGNAL/NOISE noise-field and
+  struck-promises scenes are gone), film architecture kept and re-authored
+  as the 5-step free-build journey (Tell us → Draft one → Revise → Live →
+  Yours). Pricing tiers removed; /pricing/ and /process/ retired with
+  redirects; paid service detail pages retired (all roadmap entries back to
+  "planned"); services page is the 3-group structure; /terms/ stub built
+  from the runbook's paste-able language; footer carries the privacy note
+  and terms link. Care Plan is $150/mo with the 5-day handoff clause.
+- **Three DECISIONS arrived unfilled and are handled with the spec's own
+  fallbacks — resolve when ready:**
+  - **CAPACITY (D5):** no number → the capacity FAQ does not render (an
+    invented number would be the fake scarcity the spec bans). Set
+    `FREE_BUILD.capacityPerMonth` in src/config.ts and the FAQ appears.
+  - **CLEARED_SERVICES (D6):** empty → "Why free" uses the spec's fallback
+    phrase and the services page stays category-level. Add names to
+    `CLEARED_SERVICES` when they pass the two-week test.
+  - **NOTIFY_EMAIL (D7):** unset → intake forms render fully built
+    (honeypot, validation, error/confirmation states) but submit buttons
+    are disabled with a visible email-us fallback. Set
+    `CONTACT.formEndpoint` (Formspree/Basin/your function delivering to
+    `CONTACT.notifyEmail`) and they go live — native POST without JS,
+    fetch + inline confirmation with JS.
+- Deviations from the spec, reasoned: (a) the spec's "insert to Supabase"
+  form requirement conflicts with the runbook's email-first rule and no
+  Supabase account exists in this session — forms are endpoint-agnostic;
+  point the endpoint anywhere, Supabase included, later. (b) File uploads
+  (logo/photos) are link fields ("Drive/Dropbox link") — static hosting has
+  no upload backend. (c) The end-to-end form test in the acceptance
+  checklist is blocked on the endpoint existing; everything testable
+  without it was tested. (d) Analytics is a config slot
+  (`ANALYTICS.plausibleDomain`) — no analytics account exists yet.
+- The proof section is a code comment on the homepage awaiting real,
+  permissioned proof, per the spec.
+- About page keeps its solo-honesty framing (allowed: the rule bans implying
+  a team, not stating the truth) and now explains the "we."
+- Verified: jank 3× territory PASS (max 19.2ms), mobile 375px no overflow,
+  reduced-motion static steps, all acceptance greps clean (single "rankings"
+  hit is the disclaimer refusing to promise rankings), redirects built,
+  zero placeholder text. OG image regenerated for the free offer.

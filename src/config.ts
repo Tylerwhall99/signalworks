@@ -1,9 +1,11 @@
 /**
  * Single source of truth for brand constants, contact placeholders,
- * navigation, and pricing. Copy edits here propagate site-wide.
+ * navigation, the free-build offer, and the service roadmap.
+ * Copy edits here propagate site-wide.
  *
  * Before launch, replace: SITE_URL, CONTACT.phone, CONTACT.email,
- * CONTACT.address, and (optionally) CONTACT.formEndpoint.
+ * CONTACT.address, CONTACT.formEndpoint (intake pipeline), and — when the
+ * real numbers exist — FREE_BUILD.capacityPerMonth and CLEARED_SERVICES.
  */
 
 // Real domain goes here before launch. Used for canonical URLs, sitemap, and structured data.
@@ -14,16 +16,27 @@ export const BRAND = {
   tagline: 'Websites and apps that get service businesses found, called, and booked.',
   // Default meta description; individual pages override it.
   description:
-    'Signalworks builds custom websites and web apps for service businesses. Solo builder based in Los Angeles, working with clients nationwide.',
+    'Signalworks builds free, professional websites for home services businesses — HVAC, plumbing, electrical, roofing, landscaping. You own it outright: domain, files, everything. Built in days with AI-assisted development.',
 } as const;
 
 export const CONTACT = {
   phone: 'PHONE_PLACEHOLDER',
   email: 'EMAIL_PLACEHOLDER',
   address: 'ADDRESS_PLACEHOLDER',
-  // Form POST endpoint (e.g. Formspree/Basin URL). Leave empty to hide the
-  // contact form and show direct contact details only.
+  /**
+   * Intake form POST endpoint (Formspree/Basin/Web3Forms-style, or your own
+   * serverless function). The endpoint is responsible for delivering
+   * submissions to NOTIFY_EMAIL within a minute. While empty, the intake
+   * forms render but submissions show a direct-email fallback instead.
+   */
   formEndpoint: '',
+  /** Where the form endpoint should deliver submissions. DECISION 7 — unfilled. */
+  notifyEmail: '',
+} as const;
+
+/** Optional analytics. Set a Plausible domain to inject the script site-wide. */
+export const ANALYTICS = {
+  plausibleDomain: '',
 } as const;
 
 export interface NavItem {
@@ -32,13 +45,66 @@ export interface NavItem {
 }
 
 export const NAV: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'How it works', href: '/#how-it-works' },
   { label: 'Services', href: '/services/' },
-  { label: 'Process', href: '/process/' },
-  { label: 'Pricing', href: '/pricing/' },
-  { label: 'About', href: '/about/' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
-export const NAV_CTA: NavItem = { label: 'Get a quote', href: '/contact/' };
+export const NAV_CTA: NavItem = { label: 'Start my free site', href: '/#start' };
+
+/**
+ * The free-build offer. DECISIONS 1, 3, 4 from docs/site-redraft-prompt.md.
+ * capacityPerMonth is DECISION 5 — deliberately null until Tyler supplies a
+ * number he will actually enforce. While null, the site makes NO capacity
+ * claim anywhere (the spec bans fake scarcity; an invented number is fake).
+ */
+export const FREE_BUILD = {
+  maxPages: 5,
+  revisionRounds: 1,
+  draftTimeline: 'five business days',
+  capacityPerMonth: null as number | null,
+  includes: [
+    'Up to 5 pages: Home, Services, About, Contact, plus one',
+    'Copy written from your intake answers — you talk, we write',
+    'Mobile-first layout, tested on real phones',
+    'Click-to-call, placed where thumbs go',
+    'A contact form that reaches a real inbox',
+    'Basic on-page SEO hygiene: titles, descriptions, speed',
+    'Google Business Profile connection',
+    'One revision round',
+  ],
+  notIncludedFree: [
+    'Web apps and custom functionality — quoted per project',
+    'Ongoing edits and content — quoted plainly if you want it',
+    'Hosting and maintenance — optional Care Plan, or run it yourself for roughly $0–20/month',
+    'Photography and logo design',
+    'Additional pages beyond five',
+    'Ongoing growth services — ask us',
+  ],
+} as const;
+
+export const CARE_PLAN = {
+  name: 'Care Plan',
+  price: '$150/month',
+  priceNote: 'optional, cancel anytime',
+  summary:
+    'We handle hosting, updates, and support so you never think about the website again. Not required — at launch everything can move into accounts in your name instead.',
+  includes: [
+    'Hosting, software updates, backups, and monitoring',
+    'Content edits within 2 business days — just email what changed',
+    'Support from the person who built the site',
+    'Cancel anytime: full handoff within 5 business days at no charge — code, hosting, everything in your name',
+  ],
+} as const;
+
+/**
+ * Paid ongoing services the site may NAME. DECISION 6 — unfilled. A service
+ * goes in this list only when it passes the two-week test: delivery could
+ * begin within two weeks of a client saying yes. While empty, the site says
+ * "ongoing growth services" at category level and names nothing.
+ */
+export const CLEARED_SERVICES: string[] = [];
 
 export type ServiceStatus = 'live' | 'planned';
 
@@ -46,75 +112,28 @@ export interface Service {
   slug: string;
   name: string;
   status: ServiceStatus;
-  /** Shorter label for nav/footer. Defaults to name. */
   navLabel?: string;
-  /** Card/hero blurb. Required in practice for live services. */
   summary?: string;
-  /** Page H1. Required in practice for live services. */
   headline?: string;
-  /** Meta description. Required in practice for live services. */
   metaDescription?: string;
 }
 
 export const serviceHref = (s: Pick<Service, 'slug'>) => `/services/${s.slug}/`;
 
 /**
- * The full service roadmap. Only status "live" renders anywhere on the
- * public site (nav, hub, home, footer, routes) — "planned" entries exist so
- * launching a service later is a two-step edit:
- *
- *   1. flip status to "live" (and fill navLabel/summary/headline/metaDescription)
- *   2. add src/components/services/<slug>.astro with the page body
- *
- * A service ships publicly only when its assumption rows in
- * docs/SERVICES-CATALOG.md are closed. See README "Adding a new service".
+ * The service roadmap (see docs/SERVICES-CATALOG.md for meaning and
+ * prerequisites). Only status "live" gets a detail page via
+ * src/pages/services/[slug].astro + a body file in
+ * src/components/services/. Under the free-site model nothing is currently
+ * "live" — the free build and category-level ongoing services are presented
+ * on /services/ directly. When a CLEARED_SERVICE deserves its own page,
+ * flip it live here and add its body file.
  */
 export const SERVICES: Service[] = [
-  {
-    slug: 'web-design',
-    name: 'Custom websites',
-    status: 'live',
-    navLabel: 'Websites',
-    summary:
-      'A fast, clear website built around the jobs you want more of — designed, written, and shipped by one person.',
-    headline: 'A site built around the jobs you want more of.',
-    metaDescription:
-      'Custom websites for service businesses: fast, plainly written, delivered in days to weeks at a fixed price. No templates, no page builders.',
-  },
-  {
-    slug: 'landing-pages',
-    name: 'Landing pages',
-    status: 'live',
-    summary:
-      'One focused page for one offer — built to load fast and make contacting you the obvious next step.',
-    headline: 'One page. One offer. One obvious next step.',
-    metaDescription:
-      'Custom landing and campaign pages for service businesses: one focused page, copy included, built in days and wired for your analytics.',
-  },
-  {
-    slug: 'web-apps',
-    name: 'Web apps',
-    status: 'live',
-    summary:
-      'Booking, quoting, scheduling, client portals — custom software for the part of your operation that outgrew spreadsheets.',
-    headline: 'Software for the part of the business that outgrew spreadsheets.',
-    metaDescription:
-      'Custom web apps for service businesses: booking flows, quote builders, portals, and internal tools. Scoped in writing, built at a fixed price, owned by you.',
-  },
-  {
-    slug: 'rescues',
-    name: 'Website rescues & rebuilds',
-    status: 'live',
-    navLabel: 'Rescues & rebuilds',
-    summary:
-      'Site broke? Web person vanished? Stuck on a platform you hate? I’ll assess it honestly and fix what’s actually wrong.',
-    headline: 'For sites that got broken, abandoned, or held hostage.',
-    metaDescription:
-      'Website rescues, rebuilds, and migrations for service businesses: an honest video audit, a rebuild-or-repair answer, and a relaunch where existing links keep working.',
-  },
-
-  // Planned roadmap (never rendered). Meaning and prerequisites for each
-  // live in docs/SERVICES-CATALOG.md.
+  { slug: 'web-design', name: 'Custom websites', status: 'planned' },
+  { slug: 'landing-pages', name: 'Landing pages', status: 'planned' },
+  { slug: 'web-apps', name: 'Web apps', status: 'planned' },
+  { slug: 'rescues', name: 'Website rescues & rebuilds', status: 'planned' },
   { slug: 'e-commerce', name: 'E-commerce builds', status: 'planned' },
   { slug: 'native-apps', name: 'Native mobile apps', status: 'planned' },
   { slug: 'technical-seo', name: 'Technical SEO', status: 'planned' },
@@ -133,96 +152,7 @@ export const SERVICES: Service[] = [
   { slug: 'ads-management', name: 'Ads management', status: 'planned' },
 ];
 
-/** Everything the public site is allowed to show. */
+/** Everything the public site is allowed to show as a named detail page. */
 export const LIVE_SERVICES: Service[] = SERVICES.filter(
   (s) => s.status === 'live'
 );
-
-export interface PricingPackage {
-  id: string;
-  name: string;
-  /** Display price, e.g. "$1,900" or "from $9,000". Edit here only. */
-  price: string;
-  priceNote: string;
-  timeline: string;
-  summary: string;
-  includes: string[];
-  ctaLabel: string;
-  ctaHref: string;
-}
-
-export const PRICING: PricingPackage[] = [
-  {
-    id: 'one-page',
-    name: 'One-Page Site',
-    price: '$1,900',
-    priceNote: 'flat, fixed quote',
-    timeline: '5 business days from kickoff',
-    summary:
-      'One focused page that says what you do, where you work, and how to reach you. Built to load fast and turn visits into calls.',
-    includes: [
-      'One custom-designed page, written and built for your business',
-      'Copywriting included — you talk, I write',
-      'Click-to-call and contact form',
-      'Mobile-first build, tested on real phones',
-      'Basic on-page SEO: titles, descriptions, structured data',
-      'Hosting setup on fast static hosting (often $0/month)',
-      'A 30-minute handoff call and a plain-English owner’s guide',
-    ],
-    ctaLabel: 'Start a one-pager',
-    ctaHref: '/contact/',
-  },
-  {
-    id: 'business-site',
-    name: 'Business Site',
-    price: '$4,800',
-    priceNote: 'flat, fixed quote',
-    timeline: '2–3 weeks from kickoff',
-    summary:
-      'A full site with a page for each service you want more of. The standard choice for established service businesses.',
-    includes: [
-      'Up to 8 custom pages, including a page per core service',
-      'Copywriting included for every page',
-      'Contact forms, click-to-call, and a quote-request flow',
-      'Mobile-first build, tested on real phones',
-      'On-page SEO: titles, descriptions, structured data, sitemap',
-      'Google Business Profile checklist for your listing',
-      'Hosting setup, redirects from your old site, launch support',
-      'A recorded video walkthrough of how to run your site',
-    ],
-    ctaLabel: 'Start a business site',
-    ctaHref: '/contact/',
-  },
-  {
-    id: 'web-app',
-    name: 'Web App',
-    price: 'from $9,500',
-    priceNote: 'fixed quote after a scoping call',
-    timeline: 'scoped per project; most ship in 3–6 weeks',
-    summary:
-      'Custom software for the part of your operation that outgrew spreadsheets — booking, quoting, scheduling, client portals.',
-    includes: [
-      'A scoping call and a written spec before any money changes hands',
-      'A fixed quote against that spec — no hourly meter',
-      'Custom build, no license fees on someone else’s platform',
-      'You own the code and the accounts, from day one',
-      'Training for you and your staff, recorded',
-      '30 days of post-launch fixes included',
-    ],
-    ctaLabel: 'Scope a web app',
-    ctaHref: '/contact/',
-  },
-];
-
-export const CARE_PLAN = {
-  name: 'Site Care',
-  price: '$95/month',
-  priceNote: 'optional, cancel anytime',
-  summary:
-    'For owners who never want to think about their website again. Not required — every site ships with a guide so you can run it yourself.',
-  includes: [
-    'Content edits within 2 business days — just email what changed',
-    'Software updates, backups, and uptime monitoring',
-    'A short monthly note on what changed',
-  ],
-} as const;

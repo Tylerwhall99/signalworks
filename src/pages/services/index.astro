@@ -1,51 +1,109 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { LIVE_SERVICES, serviceHref } from '../../config';
+import {
+  CARE_PLAN,
+  CLEARED_SERVICES,
+  FREE_BUILD,
+  LIVE_SERVICES,
+  serviceHref,
+} from '../../config';
 ---
 
 <Base
   title="Services"
-  description="Custom websites and web apps for service businesses. A deliberately short menu, done properly by one builder."
+  description="A free website build for home services businesses, ongoing growth services quoted plainly, and custom web apps scoped per project."
 >
   <section class="section">
     <div class="container">
       <span class="eyebrow">Services</span>
-      <h1>A short menu, on purpose.</h1>
+      <h1>The free site, and what comes after.</h1>
       <p class="lede" style="margin-top: var(--space-4);">
-        I do the things I can do at a high standard, and nothing else. If you
-        need something outside this list, I'll tell you straight and point you
-        to someone who does it well.
+        The build is free and it's yours. Everything beyond it is optional,
+        quoted plainly, and never a surprise on an invoice.
       </p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="grid grid--2">
-        {
-          LIVE_SERVICES.map((s) => (
-            <div class="card">
-              <h3>
-                <a href={serviceHref(s)}>{s.name}</a>
-              </h3>
-              <p class="muted">{s.summary}</p>
-              <p style="margin-top: var(--space-3);">
-                <a href={serviceHref(s)}>Details, deliverables, and timelines →</a>
+      <div class="grid grid--3">
+        <div class="card">
+          <h2 class="svc-h">Free website</h2>
+          <p class="muted">
+            Up to {FREE_BUILD.maxPages} pages, copy written from your intake,
+            mobile-first, click-to-call, live on your own domain. One
+            revision round included. You own all of it.
+          </p>
+          <p style="margin-top: var(--space-3);">
+            <a href="/#included">Full scope →</a><br />
+            <a href="/#start">Start my free site →</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 class="svc-h">Ongoing services</h2>
+          {
+            CLEARED_SERVICES.length > 0 ? (
+              <>
+                <p class="muted">
+                  The month-after-month work, quoted plainly before anything
+                  starts:
+                </p>
+                <ul class="checklist">
+                  {CLEARED_SERVICES.map((s) => (
+                    <li>{s}</li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <p class="muted">
+                Ongoing growth services — the work that takes sustained
+                effort month after month. Ask us what fits your business;
+                you'll get a plain written quote, never a pitch deck.
               </p>
-            </div>
-          ))
-        }
+            )
+          }
+          <p class="muted" style="margin-top: var(--space-3);">
+            <strong>{CARE_PLAN.name}</strong> — {CARE_PLAN.price},
+            {CARE_PLAN.priceNote}. Hosting, updates, and support, with full
+            handoff within 5 business days at no charge if you ever cancel.
+          </p>
+          {
+            LIVE_SERVICES.length > 0 && (
+              <ul class="checklist" style="margin-top: var(--space-3);">
+                {LIVE_SERVICES.map((s) => (
+                  <li>
+                    <a href={serviceHref(s)}>{s.navLabel ?? s.name}</a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+
+        <div class="card">
+          <h2 class="svc-h">Custom builds &amp; web apps</h2>
+          <p class="muted">
+            Booking flows, quote builders, client portals, internal tools —
+            custom software scoped in writing and quoted per project. A
+            written spec and a fixed number before any money changes hands,
+            and you own the code from day one.
+          </p>
+          <p style="margin-top: var(--space-3);">
+            <a href="/contact/">Ask about a custom build →</a>
+          </p>
+        </div>
       </div>
-      <p class="muted" style="margin-top: var(--space-5); font-size: var(--text-sm);">
-        Not sure whether your project fits? Ask. A five-minute email beats a
-        week of guessing.
-      </p>
     </div>
   </section>
 
-  <CtaBand
-    heading="Have a project in mind?"
-    body="Describe it in a few plain sentences. You'll get a straight answer about whether it fits, what it costs, and how long it takes."
-  />
+  <CtaBand />
 </Base>
+
+<style>
+  .svc-h {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-3);
+  }
+</style>

@@ -1,9 +1,9 @@
 ---
 /**
  * JSON-LD for the home page. Everything derives from src/config.ts, so
- * updating contact details or pricing there keeps structured data in sync.
+ * updating the offer or contact details there keeps structured data in sync.
  */
-import { BRAND, CONTACT, PRICING, SITE_URL } from '../config';
+import { BRAND, CARE_PLAN, CONTACT, SITE_URL } from '../config';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -26,14 +26,24 @@ const schema = {
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Web design services',
-    itemListElement: PRICING.map((pkg) => ({
-      '@type': 'Offer',
-      name: pkg.name,
-      description: pkg.summary,
-      price: pkg.price.replace(/[^0-9.]/g, ''),
-      priceCurrency: 'USD',
-    })),
+    name: 'Website services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'Free website build',
+        description:
+          'A free, professional website for home services businesses — up to 5 pages, owned outright by the client.',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      {
+        '@type': 'Offer',
+        name: CARE_PLAN.name,
+        description: CARE_PLAN.summary,
+        price: CARE_PLAN.price.replace(/[^0-9.]/g, ''),
+        priceCurrency: 'USD',
+      },
+    ],
   },
 };
 ---
