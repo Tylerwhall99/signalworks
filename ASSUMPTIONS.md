@@ -248,3 +248,25 @@ items are the ones worth reviewing before launch.
   account). Recommend closing A2 before the first store intake arrives;
   the FAQ promise (checkout in the client's own payment account) matches
   the runbook's client-owned-Stripe rule.
+
+## Pre-launch audit pass (2026-08-17)
+
+- A 3-agent background sweep (fresh-eyes site audit + CA business research
+  + free-offer pitfalls) fed the launch checklist. Site defects found and
+  FIXED: revision-copy contradiction (film step 3 said "one round" while
+  everything else says until-it's-right), contact page implying an
+  on-page form (+ dead CSS removed), cross-page hash anchors landing
+  mid-film before pin inflation (settle() now corrects twice, with
+  scrollRestoration manual on hash loads — all five anchors verified
+  landing at 0px), jank meter now gated to ?jump/?debug, no-JS visitors
+  get one clean form instead of two dead wizards, PNG/apple-touch icons
+  added, terms got a last-updated + governing-document note, and a
+  plain-English /privacy/ page shipped (CalOPPA; linked footer + intake;
+  attorney review still on the checklist).
+- Added from the pitfalls research: a time-to-submit bot gate (<5s =
+  silent drop) alongside the honeypot; Turnstile recommended at deploy;
+  a visible "Skip ↓" link in the film header that fades when the film
+  ends (conversion escape hatch for hurried visitors).
+- Not fixed by choice: film length itself (it's the brand; the skip link
+  + hero CTAs are the mitigation), meta-refresh redirects (real 301s move
+  to host config at deploy — checklist item).

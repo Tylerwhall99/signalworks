@@ -43,11 +43,19 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 - [ ] ⚡👤 Wire the form endpoint, then **test both intake paths on a real
   phone**: submission arrives in your inbox, confirmation shows, honeypot
   quiet.
-- [ ] ⚡ **Privacy policy page.** The forms collect names, phones, emails
-  — and you're in California. I can draft a plain-English one to match
-  the footer's promise; worth a professional glance before launch.
-- [ ] 👤 Have an attorney glance at **/terms/** and the privacy page —
-  one short review, cheap insurance for a "no catch" brand.
+- [x] ⚡ **Privacy policy page.** ~~Drafted~~ — live at /privacy/, linked
+  in the footer and next to the intake forms. (CalOPPA requires one for
+  any site collecting personal info from Californians; CCPA itself almost
+  certainly doesn't apply to you — its 2026 thresholds start at ~$26.6M
+  revenue or 100k+ residents' data.)
+- [ ] 👤 Have an attorney glance at **/terms/** and **/privacy/** — one
+  short review, cheap insurance for a "no catch" brand. The audit also
+  flagged: terms need your legal entity name (waits on the section-0
+  decision) and the signed one-pager must exist and match before launch.
+- [ ] 👤 At deploy: add **Cloudflare Turnstile** (invisible captcha) to
+  the intake forms — the site already ships a honeypot and a
+  time-to-submit bot gate, but a free offer attracts serious junk volume;
+  layered is the way. ⚡ I wire it once the Cloudflare account exists.
 - [ ] 👤 Create an analytics account (Plausible ~$9/mo, privacy-friendly,
   no cookie banner needed — or GA4 free). ⚡ I wire it (config slot
   already exists).
@@ -66,19 +74,29 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 
 ## 2 · Legal & money
 
-- [ ] 👤 **Entity decision with a CPA**: California LLC (~$70 filing +
-  the $800/yr franchise tax) vs. starting as a sole proprietor with a
-  DBA. A one-hour CPA conversation now saves real money either way.
-- [ ] 👤 **EIN** — free, 10 minutes, irs.gov directly (never the paid
-  middlemen sites).
+- [ ] 👤 **Entity decision with a CPA**: California LLC ($70 filing + $20
+  Statement of Information within 90 days) vs. starting as a sole
+  proprietor with a DBA. Know going in: the $800/yr franchise tax
+  first-year waiver **expired end of 2023** — an LLC formed in 2026 owes
+  the full $800 in year one, due the 15th day of the 4th month after
+  formation (FTB Form 3522). Some blogs still claim otherwise; they're
+  stale. (Verified: sos.ca.gov / ftb.ca.gov guidance via llcuniversity.)
+- [ ] 👤 **EIN** — free, instant, irs.gov directly (never the paid
+  middlemen sites). Sequence matters: form the LLC first so the EIN
+  matches state records.
 - [ ] 👤 **Business bank account** — separate money from day one, even as
-  a sole prop.
-- [ ] 👤 **City of LA business tax registration certificate** — required
-  to operate, even home-based; small businesses under a revenue threshold
-  are typically exempt from the tax itself but still register.
-- [ ] 👤 **Insurance quotes**: general liability + professional (E&O).
-  Solo web designers typically land in the few-hundred-dollars-a-year
-  range (Hiscox, Next, Thimble all quote online).
+  a sole prop. Needs the EIN.
+- [ ] 👤 **City of LA Business Tax Registration Certificate (BTRC)** —
+  required even home-based, register online at finance.lacity.gov. Under
+  $100k gross receipts you owe no city tax — but **only if you register
+  AND file the annual renewal on time** (the 2026 renewal deadline was
+  March 2; missing it forfeits the exemption). Also ask about the
+  **Creative Artist Exemption** (up to $300k for creative work) — a
+  design business may qualify.
+- [ ] 👤 **Insurance quotes**: general liability (~$29/mo average) +
+  professional E&O (~$61–68/mo for $1M limits); bundles with cyber run
+  ~$30–80/mo. Realistic budget: **$400–$1,200/year**. Hiscox, Next,
+  Thimble, Insureon all quote online.
 - [ ] ⚡👤 Turn the free-build terms into a **signable one-pager**
   (DocuSign template — your connector just needs authorizing). Signed
   before every first commit, per the runbook.
@@ -114,10 +132,22 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   Facebook Page, LinkedIn company page, X, YouTube, Nextdoor business,
   TikTok. Same wordmark square everywhere (I'll export avatar/banner
   images sized per platform — ⚡).
+- [ ] ⚡👤 **2–3 demo sites before outreach.** Skeptical owners are told
+  to demand prior work before trusting a web offer — have it ready.
+  Realistic sample sites for fictional local businesses (clearly labeled
+  as demos — the no-invented-proof rule holds). I build them; you pick
+  the trades.
 - [ ] 👤 **First-five plan.** Your first 5 free builds are the marketing:
-  people you know, local trade Facebook groups, Nextdoor. Each finished
-  build = real portfolio proof (with written permission), which unlocks
-  the site's empty proof section and the catalog's A12 row.
+  people you know first. To reach owners (not homeowners), go where
+  contractors network: trade Facebook groups, Contractor Talk, Plumbing
+  Zone, HVAC forums, BNI/chamber meetings — and give value first;
+  most groups ban naked promotion. Nextdoor/local FB groups reach the
+  consumer side. Each finished build = real portfolio proof (with
+  written permission), which unlocks the site's empty proof section and
+  the catalog's A12 row.
+- [ ] 👤 **GBP live before outreach, not after** — skeptical owners
+  Google you first; a verified profile with real photos is the cheapest
+  legitimacy signal there is.
 - [ ] ⚡ Decide on a small **"Site by Signalworks" footer credit** on
   client builds (with an opt-out in the terms). It's the strongest free
   referral channel this model has.
@@ -130,7 +160,8 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 ## 5 · Launch day
 
 - [ ] ⚡ Final build, deploy to the real domain, DNS confirmed, redirects
-  live, OG image renders in a link preview.
+  live (upgrade the meta-refresh stubs to real server 301s in the host's
+  redirect config), OG image renders in a link preview.
 - [ ] ⚡ Sitemap submitted (Search Console + Bing).
 - [ ] 👤 Announce: GBP post, LinkedIn, the first-five outreach messages.
 - [ ] 👤 Capacity month officially open — start the tracker.

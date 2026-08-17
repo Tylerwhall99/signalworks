@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { ANALYTICS, BRAND, CONTACT } from '../config';
+---
+
+<Base
+  title="Privacy"
+  description="What happens to the information you give Signalworks: it builds your draft, reaches our inbox, and goes nowhere else. Plain English, no legal maze."
+>
+  <section class="section">
+    <div class="container container--narrow">
+      <span class="eyebrow">Privacy</span>
+      <h1>What happens to what you tell us.</h1>
+      <p class="lede" style="margin-top: var(--space-4);">
+        Short version: your intake answers exist to build your website. They
+        go to our inbox, they don't get sold, and you can ask us to delete
+        them anytime. The longer version below says the same thing with the
+        details filled in.
+      </p>
+
+      <div class="stack" style="margin-top: var(--space-6);">
+        <h2>What we collect</h2>
+        <p>
+          What you type into the intake or contact forms: business name,
+          what you do, service area, phone, email, and the optional details
+          you choose to add (photos, links, preferences). Nothing is
+          collected behind your back — no hidden trackers scraping contacts.
+        </p>
+
+        <h2>Where it goes</h2>
+        <p>
+          Form submissions are delivered by a form-handling service to our
+          email inbox, and that's where they live. The form service is a
+          processor — it moves the message, it doesn't get to keep or use
+          your information for itself. If you email or call directly, that
+          conversation stays between us.
+        </p>
+
+        <h2>What we do with it</h2>
+        <p>
+          Build your draft, reply to you, and keep track of your project.
+          That's the list. We don't sell your information, share it with
+          advertisers, or add you to any mailing list you didn't ask for.
+        </p>
+
+        <h2>Analytics</h2>
+        <p>
+          {
+            ANALYTICS.plausibleDomain
+              ? 'We use privacy-friendly analytics (Plausible) that counts visits without cookies or personal profiles.'
+              : 'If we add visitor analytics, it will be the privacy-friendly kind — page counts, not personal profiles — and this page will say so.'
+          }
+        </p>
+
+        <h2>Deletion</h2>
+        <p>
+          Want your information gone? Email
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> and we'll
+          delete your submissions and confirm in writing. No forms, no
+          hoops, no "retention period."
+        </p>
+
+        <h2>Questions</h2>
+        <p>
+          This policy is written by {BRAND.name}, for humans. If any of it
+          is unclear, that's a bug — email us and we'll fix the wording.
+        </p>
+
+        <p class="muted" style="font-size: var(--text-sm);">
+          Last updated: August 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

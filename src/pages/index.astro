@@ -52,7 +52,7 @@ const STEPS = [
     label: 'STEP 03 / 05 — REVISE',
     eyebrow: 'Step 03 · Revise',
     title: 'We revise it together.',
-    sub: 'One round included. Tell us what’s off — we fix it.',
+    sub: 'Tell us what’s off — we fix it until it’s right.',
   },
   {
     id: 'live',
@@ -81,6 +81,8 @@ const STEPS = [
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={BRAND.name} />
     <meta property="og:title" content={pageTitle} />
@@ -117,6 +119,9 @@ const STEPS = [
       <style>
         #filmwrap, .chapter-readout { display: none !important; }
         .static-steps { display: block !important; }
+        /* Without JS the wizard chrome is inert and one full form is enough */
+        .wiz-head, .wiz-foot, .wiz-final-note { display: none !important; }
+        .intake-form[data-intake='detailed'] { display: none !important; }
       </style>
     </noscript>
   </head>
@@ -136,6 +141,7 @@ const STEPS = [
             </a>
           ))
         }
+        <a href="#why-free" class="fh-skip" id="skip-film">Skip ↓</a>
         <a href={NAV_CTA.href} class="fh-cta">{NAV_CTA.label}</a>
       </nav>
     </header>
@@ -498,7 +504,9 @@ const STEPS = [
             <h2>Two ways in. Both end with a real draft.</h2>
             <p class="muted">
               No sales call, no deposit, no card. Pick the form that matches
-              the time you have.
+              the time you have. Your answers go to our inbox to build your
+              draft — <a href="/privacy/">the privacy policy</a>, in plain
+              English.
             </p>
           </div>
 
@@ -897,11 +905,14 @@ const STEPS = [
       (() => {
         const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
         const JUMP = new URLSearchParams(location.search).get('jump');
-        if (JUMP !== null) history.scrollRestoration = 'manual';
+        // We position hash/jump landings ourselves after the pins inflate —
+        // the browser's own restoration would fight the correction.
+        if (JUMP !== null || location.hash) history.scrollRestoration = 'manual';
 
         // ---- Intake wizard (runs film or not) ----
         const chooser = document.querySelector('[data-wiz-chooser]');
         const wizForms = Array.from(document.querySelectorAll('.wiz-form'));
+        const intakeLoadedAt = performance.now();
 
         const wizState = new Map(); // form -> current step index
 
@@ -978,8 +989,12 @@ const STEPS = [
           form.addEventListener('submit', (ev) => {
             const errorEl = form.querySelector('.form-error');
             const successEl = form.querySelector('.form-success');
-            // Honeypot: quietly drop bot submissions.
-            if (form.querySelector('[name="company_website"]').value) {
+            // Honeypot + time-to-submit: quietly drop bot submissions.
+            // (No human finishes a multi-step intake in under 5 seconds.)
+            if (
+              form.querySelector('[name="company_website"]').value ||
+              performance.now() - intakeLoadedAt < 5000
+            ) {
               ev.preventDefault();
               return;
             }
@@ -1212,13 +1227,18 @@ const STEPS = [
           end: 'bottom bottom',
           onUpdate: (self) => {
             roFill.style.width = (self.progress * 100).toFixed(1) + '%';
-            readout.style.opacity =
-              self.progress > 0.001 && self.progress < 0.985 ? '1' : '0';
+            const inFilm = self.progress > 0.001 && self.progress < 0.985;
+            readout.style.opacity = inFilm ? '1' : '0';
+            const skip = document.getElementById('skip-film');
+            if (skip) {
+              skip.style.opacity = self.progress < 0.985 ? '' : '0';
+              skip.style.pointerEvents = self.progress < 0.985 ? '' : 'none';
+            }
           },
         });
 
-        // Jank meter — judge max/p95, never average fps
-        (() => {
+        // Jank meter — dev/verification only, never in visitors' consoles
+        if (JUMP !== null || location.search.includes('debug')) {
           let last = performance.now();
           let max = 0;
           const tick = () => {
@@ -1232,18 +1252,44 @@ const STEPS = [
             if (max > 0) console.log('[jank] max frame ' + max.toFixed(1) + 'ms');
             max = 0;
           }, 2000);
-        })();
+        }
 
         // ---- Dev contract: settle & signal readiness ----
+        // Hash jumps from other pages land before the pinned scenes inflate
+        // the page. GSAP re-refreshes on window load, so the correction must
+        // run after that storm settles — hence the delay.
+        const correctHash = () => {
+          try {
+            const target = document.querySelector(location.hash);
+            if (target) {
+              const y = target.getBoundingClientRect().top + scrollY;
+              if (lenis) lenis.scrollTo(y, { immediate: true });
+              else scrollTo(0, y);
+              ScrollTrigger.update();
+            }
+          } catch (e) {}
+        };
+        const ready = () =>
+          requestAnimationFrame(() => {
+            window.__ready = true;
+          });
         const settle = () => {
           ScrollTrigger.refresh();
           if (JUMP !== null) {
             scrollTo(0, +JUMP || 0);
             ScrollTrigger.update();
+            ready();
+          } else if (location.hash) {
+            // Twice: once after GSAP's load refresh, once after the
+            // browser's own late re-anchor (which fires near pin borders).
+            setTimeout(correctHash, 300);
+            setTimeout(() => {
+              correctHash();
+              ready();
+            }, 900);
+          } else {
+            ready();
           }
-          requestAnimationFrame(() => {
-            window.__ready = true;
-          });
         };
         if (document.readyState === 'complete') {
           document.fonts.ready.then(settle);
@@ -1343,6 +1389,20 @@ const STEPS = [
         transition: color 200ms ease;
       }
       .fh-link:hover {
+        opacity: 1;
+        color: var(--signal-bright);
+      }
+      .fh-skip {
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--chrome);
+        opacity: 0.7;
+        text-decoration: none;
+        transition: opacity 300ms ease, color 200ms ease;
+      }
+      .fh-skip:hover {
         opacity: 1;
         color: var(--signal-bright);
       }
