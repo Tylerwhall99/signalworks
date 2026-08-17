@@ -1,0 +1,202 @@
+---
+/**
+ * DEMO SITE — fictional business, clearly badged, noindexed.
+ * "Ridgeline Heating & Air" shows what a free HVAC build looks like.
+ * Deliberately NOT in the Signalworks design system — demos must read as
+ * independent client work. Phone uses the reserved 555 fictional range.
+ */
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ridgeline Heating & Air — Bakersfield HVAC (Demo)</title>
+    <meta
+      name="description"
+      content="Demo website: a sample HVAC site built by Signalworks."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <a class="demo-badge" href="/">
+      <strong>DEMO</strong> — a sample build by Signalworks. Fictional
+      business. Want one like it? →
+    </a>
+
+    <header class="hd">
+      <div class="wrap hd-in">
+        <span class="logo">Ridgeline <em>Heating &amp; Air</em></span>
+        <a class="hd-phone" href="tel:+16615550142">(661) 555-0142</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <p class="kick">Bakersfield &amp; Kern County</p>
+        <h1>Your AC quit on the hottest day?<br />We answer the phone.</h1>
+        <p class="sub">
+          Repairs, replacements, and tune-ups for homes across Kern County —
+          scheduled this week, priced before we start.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="tel:+16615550142">Call (661) 555-0142</a>
+          <a class="btn ghost" href="#estimate">Request an estimate</a>
+        </div>
+        <ul class="trust">
+          <li>Licensed &amp; insured</li>
+          <li>Upfront, in-writing pricing</li>
+          <li>Same-week scheduling</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="wrap">
+        <h2>What we do</h2>
+        <div class="svc-grid">
+          <div class="svc"><h3>AC repair</h3><p>Most repairs diagnosed same visit, fixed from the truck.</p></div>
+          <div class="svc"><h3>AC replacement</h3><p>Right-sized systems with the math shown, not guessed.</p></div>
+          <div class="svc"><h3>Furnace service</h3><p>Heat exchangers, igniters, and the winter no-heat call.</p></div>
+          <div class="svc"><h3>Seasonal tune-ups</h3><p>Spring and fall checks that catch failures before July does.</p></div>
+          <div class="svc"><h3>Duct work</h3><p>Sealing and re-runs for rooms that never cool down.</p></div>
+          <div class="svc"><h3>Thermostats</h3><p>Smart or simple — installed, wired, and explained.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap band-in">
+        <div>
+          <h2>Priced before we start. Every time.</h2>
+          <p>
+            You approve a written number before a wrench comes out. If we
+            find something else once we're in, you get a new number to
+            approve — never a surprise on the invoice.
+          </p>
+        </div>
+        <a class="btn" href="tel:+16615550142">Talk to a person</a>
+      </div>
+    </section>
+
+    <section class="area">
+      <div class="wrap">
+        <h2>Where we work</h2>
+        <p class="area-list">
+          Bakersfield · Oildale · Rosedale · Shafter · Wasco · Tehachapi ·
+          Taft · Delano — and the county roads between them.
+        </p>
+      </div>
+    </section>
+
+    <section class="estimate" id="estimate">
+      <div class="wrap est-in">
+        <div>
+          <h2>Request an estimate</h2>
+          <p>
+            Tell us what's happening and we'll call you back today —
+            evenings included during summer.
+          </p>
+          <p class="hours">
+            <strong>Hours:</strong> Mon–Sat 7am–7pm · Emergency line Sundays
+          </p>
+        </div>
+        <form class="est-form" aria-label="Estimate request (demo)">
+          <label>Name <input type="text" /></label>
+          <label>Phone <input type="tel" /></label>
+          <label>What's going on? <textarea rows="3"></textarea></label>
+          <button type="button" class="btn" disabled>
+            Send (disabled in demo)
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="ft">
+      <div class="wrap">
+        <p>
+          Ridgeline Heating &amp; Air is a <strong>fictional business</strong>
+          — this page is a sample build by
+          <a href="/">Signalworks</a>, shown as an example of the free
+          website offer.
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+        color: #182230;
+        background: #f6f8fa;
+        line-height: 1.6;
+      }
+      .wrap { max-width: 66rem; margin-inline: auto; padding-inline: 1.4rem; }
+      h1, h2, h3 { line-height: 1.12; letter-spacing: -0.015em; }
+
+      .demo-badge {
+        display: block;
+        background: #101826;
+        color: #cfe0f5;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+      }
+      .demo-badge strong { color: #ffd166; letter-spacing: 0.08em; }
+      .demo-badge:hover { color: #fff; }
+
+      .hd { background: #fff; border-bottom: 1px solid #e3e8ef; position: sticky; top: 0; z-index: 10; }
+      .hd-in { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; }
+      .logo { font-weight: 800; font-size: 1.25rem; color: #12406b; }
+      .logo em { font-style: normal; color: #e2711d; }
+      .hd-phone { font-weight: 800; color: #12406b; text-decoration: none; font-size: 1.05rem; }
+
+      .hero { background: linear-gradient(180deg, #0f3a63, #12406b); color: #fff; padding: 4.5rem 0 3.5rem; }
+      .kick { font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: #9cc3ea; font-weight: 700; }
+      .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin: 0.8rem 0 1rem; }
+      .sub { color: #c9dcf0; max-width: 44ch; font-size: 1.1rem; }
+      .cta-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.8rem; }
+      .btn {
+        display: inline-block; background: #e2711d; color: #fff; font-weight: 700;
+        padding: 0.9em 1.5em; border-radius: 8px; text-decoration: none; border: 2px solid #e2711d;
+        font-size: 1rem; cursor: pointer;
+      }
+      .btn:hover { background: #c75f12; border-color: #c75f12; }
+      .btn.ghost { background: transparent; border-color: #6f9cc9; }
+      .btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+      .trust { list-style: none; padding: 0; display: flex; gap: 1.6rem; flex-wrap: wrap; margin-top: 2rem; color: #c9dcf0; font-size: 0.95rem; }
+      .trust li::before { content: '✓ '; color: #ffd166; font-weight: 800; }
+
+      .services { padding: 3.8rem 0; }
+      .services h2, .area h2 { font-size: 1.9rem; color: #12406b; margin-bottom: 1.6rem; }
+      .svc-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+      .svc { background: #fff; border: 1px solid #e3e8ef; border-radius: 10px; padding: 1.3rem; }
+      .svc h3 { color: #12406b; margin-bottom: 0.4rem; font-size: 1.1rem; }
+      .svc p { color: #51606f; font-size: 0.95rem; }
+
+      .band { background: #ffd166; padding: 2.6rem 0; }
+      .band-in { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+      .band h2 { color: #6b4405; font-size: 1.6rem; margin-bottom: 0.5rem; }
+      .band p { color: #7c5a1a; max-width: 52ch; }
+
+      .area { padding: 3.4rem 0 1.2rem; }
+      .area-list { color: #51606f; max-width: 60ch; }
+
+      .estimate { padding: 3.4rem 0 4rem; }
+      .est-in { display: grid; gap: 2.4rem; grid-template-columns: 1fr; }
+      @media (min-width: 48rem) { .est-in { grid-template-columns: 1fr 1fr; } }
+      .estimate h2 { font-size: 1.9rem; color: #12406b; margin-bottom: 0.6rem; }
+      .hours { margin-top: 1rem; color: #51606f; }
+      .est-form { background: #fff; border: 1px solid #e3e8ef; border-radius: 10px; padding: 1.6rem; display: grid; gap: 1rem; }
+      .est-form label { font-weight: 700; font-size: 0.9rem; color: #12406b; display: grid; gap: 0.35rem; }
+      .est-form input, .est-form textarea {
+        font: inherit; padding: 0.65em 0.8em; border: 1.5px solid #c9d4e0; border-radius: 7px; width: 100%;
+      }
+      .ft { background: #101826; color: #8fa3bb; padding: 1.6rem 0; font-size: 0.85rem; }
+      .ft a { color: #cfe0f5; }
+    </style>
+  </body>
+</html>

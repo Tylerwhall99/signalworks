@@ -132,11 +132,11 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   Facebook Page, LinkedIn company page, X, YouTube, Nextdoor business,
   TikTok. Same wordmark square everywhere (I'll export avatar/banner
   images sized per platform — ⚡).
-- [ ] ⚡👤 **2–3 demo sites before outreach.** Skeptical owners are told
-  to demand prior work before trusting a web offer — have it ready.
-  Realistic sample sites for fictional local businesses (clearly labeled
-  as demos — the no-invented-proof rule holds). I build them; you pick
-  the trades.
+- [x] ⚡ **Demo sites built** — two live at /demos/ridgeline-hvac/ (bold
+  HVAC, navy/orange) and /demos/evergreen-landscaping/ (editorial serif,
+  green/cream). Clearly badged as fictional sample builds, noindexed,
+  excluded from the sitemap, 555 phone numbers. Want a third trade or a
+  law-firm demo? One message.
 - [ ] 👤 **First-five plan.** Your first 5 free builds are the marketing:
   people you know first. To reach owners (not homeowners), go where
   contractors network: trade Facebook groups, Contractor Talk, Plumbing

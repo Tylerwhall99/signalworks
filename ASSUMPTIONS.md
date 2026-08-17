@@ -270,3 +270,24 @@ items are the ones worth reviewing before launch.
 - Not fixed by choice: film length itself (it's the brand; the skip link
   + hero CTAs are the mitigation), meta-refresh redirects (real 301s move
   to host config at deploy — checklist item).
+
+## Revisions-vs-bugs terms + buildable checklist items (2026-08-17)
+
+- Terms clarified per Tyler: ONE revision round (a revision = change of
+  mind — structure, layout, capability) + bug fixes free for 60 DAYS
+  after launch (a bug = something we built not working; never consumes
+  the revision). Propagated to config (revisionRounds/bugFixWindowDays),
+  film step 3, FAQ, scope table, /terms/ (new "Revisions vs. bugs"
+  section), services page, structured data. Grep-verified no stray
+  "until it's right"/"always free" copy remains.
+- Built from the checklist without needing Tyler's accounts:
+  - docs/free-build-agreement.md — signable one-pager draft matching the
+    new terms (attorney review + entity name still required).
+  - docs/marketing/ — "why free" post draft, handoff emails (walk-away +
+    Care Plan variants), referral line, and the footer-credit clause
+    text pending Tyler's decision.
+  - docs/brand-assets/ — avatar 512, X banner 1500x500, FB 820x312,
+    LinkedIn 1128x191, rendered from the blue/red brand system.
+  - Two demo sites under /demos/ (fictional businesses, DEMO-badged,
+    noindexed, sitemap-excluded, 555 numbers, disabled demo forms) in
+    deliberately distinct design systems to show range honestly.

@@ -6,7 +6,8 @@ export default defineConfig({
   site: SITE_URL,
   output: 'static',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  // Demo sample sites are shareable but not indexable or sitemapped.
+  integrations: [sitemap({ filter: (page) => !page.includes('/demos/') })],
   // Retired URLs from the pre-free-site drafts.
   redirects: {
     '/pricing/': '/services/',

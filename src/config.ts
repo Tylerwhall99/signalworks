@@ -61,6 +61,10 @@ export const NAV_CTA: NavItem = { label: 'Start my free site', href: '/#start' }
  */
 export const FREE_BUILD = {
   draftTimeline: 'five business days',
+  /** One "change it" pass: structure, layout, what the site does. */
+  revisionRounds: 1,
+  /** "We broke it, we fix it" window after launch — never uses a revision. */
+  bugFixWindowDays: 60,
   capacityPerMonth: null as number | null,
   includes: [
     'The pages your business actually needs — Home, Services, About, Contact, and whatever else earns its place',
@@ -71,12 +75,12 @@ export const FREE_BUILD = {
     'Custom functionality where it helps — quote forms, booking buttons, service-area maps',
     'Basic on-page SEO hygiene: titles, descriptions, speed',
     'Google Business Profile connection',
-    'Revisions until it says what you mean',
-    'Bug fixes, free — if we caused it, we fix it, no clock on it',
+    'One revision round — the "change it" pass for structure, layout, and what the site does',
+    'Bug fixes free for 60 days after launch — if we broke it, we fix it, and it never uses your revision',
   ],
   notIncludedFree: [
     'Standalone web apps — booking systems, portals, internal tools — quoted per project',
-    'Ongoing edits and new content — quoted plainly (bug fixes are always free)',
+    'Ongoing edits and new content — quoted plainly (bug fixes in the first 60 days are free)',
     'Hosting and maintenance — optional Care Plan, or run it yourself for roughly $0–20/month',
     'Photography and logo design',
     'Ongoing growth services — ask us',

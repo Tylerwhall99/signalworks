@@ -1,0 +1,191 @@
+---
+/**
+ * DEMO SITE — fictional business, clearly badged, noindexed.
+ * "Evergreen & Stone" shows what a free landscaping build looks like —
+ * serif, warm, editorial; deliberately unlike both the HVAC demo and the
+ * Signalworks brand so the range is visible.
+ */
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Evergreen & Stone — Landscape Design, San Gabriel Valley (Demo)</title>
+    <meta
+      name="description"
+      content="Demo website: a sample landscaping site built by Signalworks."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <a class="demo-badge" href="/">
+      <strong>DEMO</strong> — a sample build by Signalworks. Fictional
+      business. Want one like it? →
+    </a>
+
+    <header class="hd">
+      <div class="wrap hd-in">
+        <span class="logo">Evergreen <span class="amp">&amp;</span> Stone</span>
+        <nav class="hd-nav">
+          <a href="#work">Services</a>
+          <a href="#process">Process</a>
+          <a class="hd-cta" href="tel:+16265550178">(626) 555-0178</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <h1>Gardens that belong<br />to this valley.</h1>
+        <p class="sub">
+          Drought-wise landscape design, build, and care for homes across
+          the San Gabriel Valley — native where it counts, lush where it
+          matters.
+        </p>
+        <a class="btn" href="#quote">Start a conversation</a>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="wrap">
+        <p class="kick">Services</p>
+        <div class="work-grid">
+          <div class="w-item">
+            <h3>Design &amp; build</h3>
+            <p>Full-yard rethinks: planting plans, hardscape, lighting, irrigation — drawn first, then built as drawn.</p>
+          </div>
+          <div class="w-item">
+            <h3>Drought conversions</h3>
+            <p>Lawn-to-native conversions that qualify for local turf-replacement rebates where available.</p>
+          </div>
+          <div class="w-item">
+            <h3>Monthly care</h3>
+            <p>Pruning, seasonal color, irrigation checks — the same two people, the same week, every month.</p>
+          </div>
+          <div class="w-item">
+            <h3>Stonework</h3>
+            <p>Paths, patios, seat walls, and dry-stack borders set to last longer than the trees.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="wrap">
+        <p class="kick">Process</p>
+        <ol class="steps">
+          <li><h3>Walk the yard</h3><p>An hour on site. You talk about how you want to live in it; we take notes and measurements.</p></li>
+          <li><h3>See the plan</h3><p>A drawn plan with plant lists and a written price. Changes happen on paper, where they're cheap.</p></li>
+          <li><h3>We build it</h3><p>A start date, an end date, and a crew that cleans up every evening.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="quote" id="quote">
+      <div class="wrap q-in">
+        <div>
+          <h2>Tell us about your yard.</h2>
+          <p>
+            A few sentences is plenty. We'll come walk it with you —
+            mornings, weekends, whatever the workweek allows.
+          </p>
+          <p class="hours">Serving Pasadena · Altadena · Arcadia · Monrovia · Sierra Madre · San Marino</p>
+        </div>
+        <form class="q-form" aria-label="Quote request (demo)">
+          <label>Name <input type="text" /></label>
+          <label>Neighborhood <input type="text" /></label>
+          <label>What are you imagining? <textarea rows="3"></textarea></label>
+          <button type="button" class="btn" disabled>Send (disabled in demo)</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="ft">
+      <div class="wrap">
+        <p>
+          Evergreen &amp; Stone is a <strong>fictional business</strong> —
+          this page is a sample build by <a href="/">Signalworks</a>, shown
+          as an example of the free website offer.
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      body {
+        font-family: Georgia, 'Times New Roman', serif;
+        color: #26301f;
+        background: #f7f5ee;
+        line-height: 1.65;
+      }
+      .wrap { max-width: 62rem; margin-inline: auto; padding-inline: 1.4rem; }
+      h1, h2, h3 { font-weight: 600; line-height: 1.1; }
+
+      .demo-badge {
+        display: block; background: #1d2916; color: #d9e4c8; font-size: 0.8rem;
+        text-align: center; padding: 0.5rem 1rem; text-decoration: none;
+        font-family: -apple-system, sans-serif;
+      }
+      .demo-badge strong { color: #e9c46a; letter-spacing: 0.08em; }
+      .demo-badge:hover { color: #fff; }
+
+      .hd { background: #f7f5ee; border-bottom: 1px solid #ddd8c8; position: sticky; top: 0; z-index: 10; }
+      .hd-in { display: flex; align-items: center; justify-content: space-between; min-height: 4.2rem; }
+      .logo { font-size: 1.35rem; color: #2f4222; letter-spacing: 0.01em; }
+      .amp { color: #b3562e; font-style: italic; }
+      .hd-nav { display: flex; gap: 1.4rem; align-items: center; font-family: -apple-system, sans-serif; font-size: 0.92rem; }
+      .hd-nav a { color: #4b5a3e; text-decoration: none; }
+      .hd-nav a:hover { color: #26301f; text-decoration: underline; }
+      .hd-cta { font-weight: 700; color: #2f4222 !important; }
+
+      .hero { padding: 6rem 0 4.5rem; background: linear-gradient(180deg, #eef0e2, #f7f5ee); text-align: center; }
+      .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); color: #2f4222; }
+      .sub { max-width: 46ch; margin: 1.2rem auto 0; color: #57644a; font-size: 1.15rem; }
+      .btn {
+        display: inline-block; margin-top: 2rem; background: #2f4222; color: #f7f5ee;
+        font-family: -apple-system, sans-serif; font-weight: 600; font-size: 0.95rem;
+        padding: 0.95em 1.7em; border-radius: 3px; text-decoration: none; border: none; cursor: pointer;
+      }
+      .btn:hover { background: #223218; }
+      .btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+      .kick {
+        font-family: -apple-system, sans-serif; font-size: 0.78rem; font-weight: 700;
+        letter-spacing: 0.22em; text-transform: uppercase; color: #b3562e; margin-bottom: 1.4rem;
+      }
+      .work { padding: 4rem 0; }
+      .work-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+      .w-item { border-top: 2px solid #2f4222; padding-top: 1rem; }
+      .w-item h3 { color: #2f4222; font-size: 1.25rem; margin-bottom: 0.4rem; }
+      .w-item p { color: #57644a; font-size: 1rem; }
+
+      .process { padding: 3.4rem 0; background: #eef0e2; }
+      .steps { list-style: none; padding: 0; counter-reset: n; display: grid; gap: 1.8rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+      .steps li { counter-increment: n; }
+      .steps li::before {
+        content: counter(n, decimal-leading-zero);
+        font-family: -apple-system, sans-serif; font-weight: 700; color: #b3562e; letter-spacing: 0.1em;
+        display: block; margin-bottom: 0.5rem;
+      }
+      .steps h3 { color: #2f4222; font-size: 1.2rem; margin-bottom: 0.3rem; }
+      .steps p { color: #57644a; }
+
+      .quote { padding: 4rem 0 4.6rem; }
+      .q-in { display: grid; gap: 2.4rem; grid-template-columns: 1fr; }
+      @media (min-width: 48rem) { .q-in { grid-template-columns: 1fr 1fr; } }
+      .quote h2 { font-size: 2rem; color: #2f4222; margin-bottom: 0.6rem; }
+      .hours { margin-top: 1.2rem; color: #57644a; font-size: 0.95rem; }
+      .q-form {
+        background: #fff; border: 1px solid #ddd8c8; border-radius: 6px; padding: 1.6rem;
+        display: grid; gap: 1rem; font-family: -apple-system, sans-serif;
+      }
+      .q-form label { font-weight: 600; font-size: 0.88rem; color: #2f4222; display: grid; gap: 0.35rem; }
+      .q-form input, .q-form textarea { font: inherit; padding: 0.65em 0.8em; border: 1.5px solid #c9c3ae; border-radius: 4px; width: 100%; }
+
+      .ft { background: #1d2916; color: #a9b894; padding: 1.6rem 0; font-size: 0.85rem; font-family: -apple-system, sans-serif; }
+      .ft a { color: #d9e4c8; }
+    </style>
+  </body>
+</html>
