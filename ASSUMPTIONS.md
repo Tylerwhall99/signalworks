@@ -229,3 +229,22 @@ items are the ones worth reviewing before launch.
   reduced-motion static steps, all acceptance greps clean (single "rankings"
   hit is the disclaimer refusing to promise rankings), redirects built,
   zero placeholder text. OG image regenerated for the free offer.
+
+## Widened welcome (2026-08-14)
+
+- Per Tyler: home services stays the marketing focus, but nobody gets
+  scared away. Changes: hero welcome line under the CTAs, an "I'm not in
+  home services" FAQ (explicitly covering online stores with checkout in
+  the client's own payment account), "Online store / e-commerce" added to
+  both intake trade dropdowns, the intake footer note widened, about page
+  and footer meta softened from "for home services businesses" to
+  "specialty, not a fence," meta description updated.
+- The hero H1 stays home-services (the redraft spec's targeting rule);
+  the welcome happens in the supporting copy, not by diluting the
+  headline.
+- **Delivery-readiness flag:** the site now openly welcomes e-commerce
+  requests, but the catalog ledger's e-commerce rows are still OPEN — A2
+  (Stripe flow tested end-to-end on a demo) and A3 (Shopify Partner
+  account). Recommend closing A2 before the first store intake arrives;
+  the FAQ promise (checkout in the client's own payment account) matches
+  the runbook's client-owned-Stripe rule.

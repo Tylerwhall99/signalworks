@@ -16,7 +16,7 @@ export const BRAND = {
   tagline: 'Websites and apps that get service businesses found, called, and booked.',
   // Default meta description; individual pages override it.
   description:
-    'Signalworks builds free, professional websites for home services businesses — HVAC, plumbing, electrical, roofing, landscaping. You own it outright: domain, files, everything. Built in days with AI-assisted development.',
+    'Signalworks builds free, professional websites — home services businesses first (HVAC, plumbing, electrical, roofing, landscaping), every business welcome. You own it outright: domain, files, everything. Built in days with AI-assisted development.',
 } as const;
 
 export const CONTACT = {

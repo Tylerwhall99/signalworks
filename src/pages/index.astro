@@ -160,6 +160,10 @@ const STEPS = [
             >How is this free?</a
           >
         </div>
+        <p class="hero-welcome">
+          Home services is our specialty, not a requirement — online stores,
+          law firms, any business is welcome.
+        </p>
         <p class="scroll-hint" aria-hidden="true">How it works</p>
       </div>
     </section>
@@ -439,6 +443,18 @@ const STEPS = [
             </div>
           </details>
           <details class="faq">
+            <summary>I’m not in home services — can I still get one?</summary>
+            <div class="faq-body">
+              <p>
+                Yes. Home services is our focus, not a fence — law firms,
+                online stores, restaurants, any real business. We’d be glad
+                to build yours. That includes stores: product pages and
+                checkout, wired to a payment account in your own name, like
+                everything else we hand over.
+              </p>
+            </div>
+          </details>
+          <details class="faq">
             <summary>How fast?</summary>
             <div class="faq-body">
               <p>
@@ -551,6 +567,7 @@ const STEPS = [
                     <option>Roofing</option>
                     <option>Landscaping</option>
                     <option>Law firm</option>
+                    <option>Online store / e-commerce</option>
                     <option>Other</option>
                   </select>
                 </div>
@@ -698,6 +715,7 @@ const STEPS = [
                     <option>Roofing</option>
                     <option>Landscaping</option>
                     <option>Law firm</option>
+                    <option>Online store / e-commerce</option>
                     <option>Other</option>
                   </select>
                 </div>
@@ -862,8 +880,9 @@ const STEPS = [
             </form>
           </div>
           <p class="muted" style="margin-top: var(--space-4); font-size: var(--text-sm);">
-            We also work with law firms and other service businesses that
-            live on inbound calls.
+            Not in home services? Same offer, same terms — law firms, online
+            stores, restaurants, any real business. Pick your line in the
+            form or write it in.
           </p>
         </div>
       </section>
@@ -1379,6 +1398,12 @@ const STEPS = [
       .hero-ghost:hover {
         border-color: var(--footer-paper);
         color: var(--footer-paper);
+      }
+      .hero-welcome {
+        margin: var(--space-4) auto 0;
+        font-size: var(--text-sm);
+        color: var(--film-mid);
+        max-width: 52ch;
       }
 
       /* ---- Scenes ---- */
