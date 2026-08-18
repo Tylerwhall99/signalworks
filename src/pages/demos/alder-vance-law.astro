@@ -1,0 +1,194 @@
+---
+/**
+ * DEMO SITE — fictional business, clearly badged, noindexed.
+ * "Alder & Vance Family Law" shows the secondary audience (law firms) a
+ * free build in their register: restrained, serif, credible. No fictional
+ * credentials or bar numbers — structure carries the demo, not fake proof.
+ */
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alder & Vance Family Law — Pasadena (Demo)</title>
+    <meta
+      name="description"
+      content="Demo website: a sample law-firm site built by Signalworks."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <a class="demo-badge" href="/">
+      <strong>DEMO</strong> — a sample build by Signalworks. Fictional firm.
+      Want one like it? →
+    </a>
+
+    <header class="hd">
+      <div class="wrap hd-in">
+        <span class="logo">Alder <span class="amp">&amp;</span> Vance</span>
+        <nav class="hd-nav">
+          <a href="#practice">Practice areas</a>
+          <a href="#approach">How we work</a>
+          <a class="hd-cta" href="tel:+16265550194">(626) 555-0194</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="wrap">
+        <p class="kick">Family law · Pasadena</p>
+        <h1>Hard chapters deserve<br />clear counsel.</h1>
+        <p class="sub">
+          Divorce, custody, and support matters handled with plain
+          explanations, written fee agreements, and a phone that gets
+          answered.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="#consult">Request a consultation</a>
+          <a class="btn ghost" href="tel:+16265550194">Call the office</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice" id="practice">
+      <div class="wrap">
+        <h2>Practice areas</h2>
+        <div class="pr-grid">
+          <div class="pr"><h3>Divorce &amp; separation</h3><p>From uncontested filings to complex asset division — explained in English before it's filed in legalese.</p></div>
+          <div class="pr"><h3>Custody &amp; visitation</h3><p>Parenting plans built around the children's schedule, not the court's vocabulary.</p></div>
+          <div class="pr"><h3>Support matters</h3><p>Child and spousal support calculated, documented, and modified when life changes.</p></div>
+          <div class="pr"><h3>Mediation</h3><p>When both sides want out of the fight, a faster, quieter, less expensive path.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach">
+      <div class="wrap ap-in">
+        <div>
+          <h2>How we work</h2>
+          <ul class="ap-list">
+            <li><strong>Flat-fee initial consultation.</strong> One meeting, one price, told to you when you book — never a surprise.</li>
+            <li><strong>Written fee agreements.</strong> Every engagement starts with the costs on paper.</li>
+            <li><strong>Plain answers.</strong> If we can't explain a filing to you simply, we haven't finished thinking about it.</li>
+            <li><strong>Your calls returned.</strong> Within one business day, by a person who knows your file.</li>
+          </ul>
+        </div>
+        <div class="ap-note">
+          <p>
+            "The hardest part of family law isn't the law — it's not
+            knowing what happens next. Our job is making sure you always
+            do."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="consult" id="consult">
+      <div class="wrap co-in">
+        <div>
+          <h2>Request a consultation</h2>
+          <p>
+            Tell us briefly what's happening. We'll reply within one
+            business day with available times and the flat consultation
+            fee.
+          </p>
+          <p class="hours">Office: Mon–Fri 8:30am–5:30pm · Old Pasadena</p>
+        </div>
+        <form class="co-form" aria-label="Consultation request (demo)">
+          <label>Name <input type="text" /></label>
+          <label>Phone or email <input type="text" /></label>
+          <label>What's the matter about? <textarea rows="3"></textarea></label>
+          <button type="button" class="btn" disabled>Send (disabled in demo)</button>
+          <p class="conf">Sent confidentially. A consultation request does not create an attorney-client relationship.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="ft">
+      <div class="wrap">
+        <p>
+          Alder &amp; Vance is a <strong>fictional firm</strong> — this page
+          is a sample build by <a href="/">Signalworks</a>, shown as an
+          example of the free website offer.
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      body {
+        font-family: Georgia, 'Times New Roman', serif;
+        color: #262220;
+        background: #faf8f5;
+        line-height: 1.65;
+      }
+      .wrap { max-width: 62rem; margin-inline: auto; padding-inline: 1.4rem; }
+      h1, h2, h3 { font-weight: 600; line-height: 1.12; }
+
+      .demo-badge {
+        display: block; background: #221d1b; color: #e6ddd3; font-size: 0.8rem;
+        text-align: center; padding: 0.5rem 1rem; text-decoration: none;
+        font-family: -apple-system, sans-serif;
+      }
+      .demo-badge strong { color: #d9a441; letter-spacing: 0.08em; }
+      .demo-badge:hover { color: #fff; }
+
+      .hd { background: #faf8f5; border-bottom: 1px solid #e2dbd1; position: sticky; top: 0; z-index: 10; }
+      .hd-in { display: flex; align-items: center; justify-content: space-between; min-height: 4.2rem; }
+      .logo { font-size: 1.35rem; color: #2c2320; letter-spacing: 0.02em; }
+      .amp { color: #7d2a35; font-style: italic; }
+      .hd-nav { display: flex; gap: 1.4rem; align-items: center; font-family: -apple-system, sans-serif; font-size: 0.92rem; }
+      .hd-nav a { color: #5b514b; text-decoration: none; }
+      .hd-nav a:hover { color: #262220; text-decoration: underline; }
+      .hd-cta { font-weight: 700; color: #7d2a35 !important; }
+
+      .hero { padding: 5.5rem 0 4.2rem; background: #2c2320; color: #f3ede5; }
+      .kick { font-family: -apple-system, sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #d9a441; }
+      .hero h1 { font-size: clamp(2.2rem, 5.4vw, 3.6rem); margin: 0.9rem 0 1rem; }
+      .sub { color: #cfc4b6; max-width: 46ch; font-size: 1.12rem; }
+      .cta-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2rem; }
+      .btn {
+        display: inline-block; background: #7d2a35; color: #f3ede5;
+        font-family: -apple-system, sans-serif; font-weight: 600; font-size: 0.95rem;
+        padding: 0.9em 1.6em; border-radius: 3px; text-decoration: none; border: 1.5px solid #7d2a35; cursor: pointer;
+      }
+      .btn:hover { background: #641f29; border-color: #641f29; }
+      .btn.ghost { background: transparent; border-color: #8d7f70; color: #f3ede5; }
+      .btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+      .practice { padding: 4rem 0; }
+      .practice h2, .approach h2, .consult h2 { font-size: 1.9rem; color: #2c2320; margin-bottom: 1.4rem; }
+      .pr-grid { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+      .pr { border-top: 2px solid #7d2a35; padding-top: 1rem; }
+      .pr h3 { font-size: 1.2rem; color: #2c2320; margin-bottom: 0.4rem; }
+      .pr p { color: #5b514b; font-size: 0.98rem; }
+
+      .approach { padding: 3.6rem 0; background: #f1ebe2; }
+      .ap-in { display: grid; gap: 2.4rem; grid-template-columns: 1fr; }
+      @media (min-width: 48rem) { .ap-in { grid-template-columns: 3fr 2fr; } }
+      .ap-list { list-style: none; padding: 0; display: grid; gap: 0.9rem; color: #4a413c; }
+      .ap-list strong { color: #2c2320; }
+      .ap-note {
+        align-self: center; border-left: 3px solid #d9a441; padding-left: 1.4rem;
+        font-size: 1.25rem; font-style: italic; color: #5b514b;
+      }
+
+      .consult { padding: 4rem 0 4.6rem; }
+      .co-in { display: grid; gap: 2.4rem; grid-template-columns: 1fr; }
+      @media (min-width: 48rem) { .co-in { grid-template-columns: 1fr 1fr; } }
+      .hours { margin-top: 1.2rem; color: #5b514b; font-size: 0.95rem; }
+      .co-form {
+        background: #fff; border: 1px solid #e2dbd1; border-radius: 5px; padding: 1.6rem;
+        display: grid; gap: 1rem; font-family: -apple-system, sans-serif;
+      }
+      .co-form label { font-weight: 600; font-size: 0.88rem; color: #2c2320; display: grid; gap: 0.35rem; }
+      .co-form input, .co-form textarea { font: inherit; padding: 0.65em 0.8em; border: 1.5px solid #cfc5b8; border-radius: 4px; width: 100%; }
+      .conf { font-size: 0.78rem; color: #8d8178; }
+
+      .ft { background: #221d1b; color: #a99c8f; padding: 1.6rem 0; font-size: 0.85rem; font-family: -apple-system, sans-serif; }
+      .ft a { color: #e6ddd3; }
+    </style>
+  </body>
+</html>

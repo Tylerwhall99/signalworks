@@ -291,3 +291,22 @@ items are the ones worth reviewing before launch.
   - Two demo sites under /demos/ (fictional businesses, DEMO-badged,
     noindexed, sitemap-excluded, 555 numbers, disabled demo forms) in
     deliberately distinct design systems to show range honestly.
+
+## "What else can you do now" batch (2026-08-17, second)
+
+- Third demo site: /demos/alder-vance-law/ — fictional Pasadena family-law
+  firm for the secondary audience. Same rules as the other demos (badge,
+  noindex, sitemap-excluded, 555 number, disabled form) and deliberately
+  no fictional attorney credentials — even a demo doesn't fake bar
+  numbers.
+- Domain research to unblock the name decision: signalworks.la and
+  madebysignalworks.com read AVAILABLE via whois; signalworksweb/
+  hellosignalworks/usesignalworks all taken, as were the fresh-name
+  candidates checked (dialworks, callworks, sitesignal, firstcallsites,
+  ringline.co). Registrar-confirm before relying on whois.
+- New operating docs (all referenced by existing promises but previously
+  nonexistent): client-domain-instructions.md (runbook's "5-step
+  instructions"), gbp-connection-checklist.md (the free build's GBP
+  deliverable; checklist half of ledger A5), care-plan-agreement.md
+  (draft, attorney review), owners-guide-template.md (the handoff
+  email's promised guide).
