@@ -79,3 +79,47 @@ Annual prepay: 2 months free on any plan (10× monthly).
 /services/ page, /terms/, the hosting FAQ, scope-table note,
 docs/care-plan-agreement.md, docs/free-build-agreement.md ¶4, and the
 owner's-guide template.
+
+## Payments — "Get Paid Online" via Stripe Connect (added 2026-08-18)
+
+**Model:** Stripe Connect **Standard** accounts — the client owns a full
+Stripe account (dashboard, payouts, KYC) connected to Signalworks as the
+platform. Honors the runbook rule (never process payments through our
+account) and the ownership promise (they can disconnect anytime and keep
+the account). Signalworks collects a disclosed per-transaction
+application fee; funds never touch us.
+
+**Deliverables (every tier, setup free):**
+- "Pay your invoice" page on the client's site (invoice # + amount, or
+  emailed payment links)
+- Deposit collection on estimates/bookings
+- Payouts to the client's own Stripe account, next business day
+- Store clients: same account powers checkout
+- Stripe's 2.9% + 30¢ passes through unchanged; our fee disclosed on the
+  page and in the agreement
+
+**Fee ladder — the fee falls as the plan rises:**
+
+| Tier | Signalworks platform fee | Client total per transaction |
+| --- | --- | --- |
+| Free build, no plan | 0.75% | 3.65% + 30¢ |
+| Lights On ($29) | 0.50% | 3.40% + 30¢ |
+| Care Plan ($99) | 0.25% | 3.15% + 30¢ |
+| Front Office ($249) | 0% (Stripe cost only) | 2.90% + 30¢ |
+| Custom retainer | negotiated | — |
+
+**Market:** Jobber / Housecall Pro ≈ 3.1% + 30¢ all-in; Square in-person
+2.6% + 10¢. Site copy should say plainly: "Already on Jobber or
+Housecall Pro? Keep it — this is for businesses without a field app who
+still want to skip 'mail a check.'"
+
+**Requires before selling:**
+- Stripe platform account with Connect enabled (Tyler) → catalog ledger
+  A2 becomes a must and widens to: Connect onboarding flow + pay page
+  creating Checkout Sessions with `application_fee_amount` via a
+  Cloudflare Pages Function + one end-to-end demo transaction.
+- Disclosure in: pay page footer, Care/Front Office agreements,
+  free-build agreement "not free" list ("payment processing: Stripe's
+  fees plus a disclosed Signalworks platform fee"), and /terms/.
+- Attorney review line: Stripe is merchant of record; clients complete
+  their own verification in Stripe's flow; 1099-K reporting is theirs.

@@ -112,10 +112,11 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   Finds the potholes before a real client is in the car.
 - [ ] ⚡ GitHub org structure for client repos (repo per client domain,
   per the runbook).
-- [ ] 👤 **Stripe account** — Care Plan billing needs it, and closing
-  catalog row A2 (one demo checkout, end-to-end) makes the site's
-  e-commerce welcome honest. ⚡ I build the demo store flow once the
-  account exists.
+- [ ] 👤 **Stripe account, with Connect enabled** — needed for Care Plan
+  billing AND the "Get Paid Online" payments offer (see
+  docs/pricing-proposal-care-suite.md). Closing catalog row A2 now means:
+  Connect onboarding + pay page + one real demo transaction. ⚡ I build
+  all of it once the account exists.
 - [ ] 👤 Decide client hosting lane: Vercel Pro team (~$20/mo, smooth
   transfer flow) vs. all-Cloudflare (free). The runbook supports either.
 - [ ] 👤 Where intake submissions get tracked (a simple sheet is fine;
