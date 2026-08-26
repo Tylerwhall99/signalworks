@@ -59,9 +59,17 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 - [ ] 👤 Create an analytics account (Plausible ~$9/mo, privacy-friendly,
   no cookie banner needed — or GA4 free). ⚡ I wire it (config slot
   already exists).
-- [ ] 👤 Create a GitHub account/org. ⚡ I push the repo — right now it
-  exists only on this machine, which is the biggest single point of
-  failure on this list.
+- [x] ⚡ **Offsite backup (stopgap, done 2026-08-26)** — full repo
+  history bundled to Google Drive at
+  `Google Drive/…/signalworks-backup/signalworks-repo.bundle` (442K,
+  verified complete). If this laptop died today, everything is
+  recoverable. Re-run `git bundle create` after big changes, or let
+  GitHub take over below.
+- [ ] 👤 Create a free GitHub account, then tell me the username. ⚡ I
+  create the repo and push all 21 commits — that makes the backup
+  automatic instead of manual, gives you version history you can browse
+  from any device, and is the same setup the runbook uses for client
+  repos ("the repo is the product").
 - [ ] 👤 Pick a host — **recommendation: Cloudflare Pages** (free tier
   allows commercial use; the runbook already prefers it for client
   handoffs, so your own site is the dry run). ⚡ I connect and deploy.
@@ -102,11 +110,21 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   before every first commit, per the runbook.
 - [ ] 👤 **Bookkeeping** from dollar zero: QuickBooks or Wave (free), plus
   the business card for every expense.
-- [ ] 👤 **USPTO trademark search** for "Signalworks" — feeds the section
-  0 name decision. **Red team rates this the critical-path item:** four
-  variants registered in the last year means clearing (or changing) the
-  name this week costs nothing; after handles/GBP/agreements it costs
-  everything.
+- [ ] 👤 **USPTO trademark search** for "Signalworks" (10 minutes, free,
+  no lawyer needed). **This is a look-up, not a filing, and it is NOT a
+  recommendation to rename.** Go to tmsearch.uspto.gov → search
+  "signalworks" (also try "signal works") → read the results:
+  - Nothing live, or only in unrelated industries (e.g. railroad
+    equipment, audio hardware) → **keep the name, proceed.** Different
+    industries can share a name; that's normal and legal.
+  - Someone has a LIVE registration covering website design, software,
+    marketing, or advertising services → that's the one case worth a
+    $200 lawyer conversation before printing anything.
+  The domains being taken is a *marketing* annoyance (people googling you
+  find someone else), not automatically a legal problem. The only reason
+  this is early on the list: if the rare bad case is true, learning it
+  now costs nothing and learning it after handles/GBP/client agreements
+  costs everything.
 
 ## 3 · Delivery readiness — be ready before the first intake arrives
 
@@ -115,10 +133,12 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   Finds the potholes before a real client is in the car.
 - [ ] ⚡ GitHub org structure for client repos (repo per client domain,
   per the runbook).
-- [ ] 👤 **Stripe platform (Long Hall Financial Connect) readiness** —
-  the platform exists; before any client connects: (a) configure a
-  Signalworks brand profile/statement descriptor on the platform so
-  clients don't meet an unfamiliar holding company mid-onboarding, (b)
+- [ ] 👤 **Stripe platform readiness** — Tyler's plan (2026-08-26):
+  create a **separate Signalworks tenant/account inside the LHF Stripe
+  organization**, which cleanly solves the red team's top blocker — the
+  client-facing brand is Signalworks, books stay separable, and LHF stays
+  the parent. Then: (a) confirm the public business name + statement
+  descriptor on that tenant reads "Signalworks," (b)
   update the platform's business description for the web-design use case
   (Stripe ToS: accurate representation), (c) attorney blesses the
   LHF-platform/Signalworks-brand structure, (d) CPA confirms how
