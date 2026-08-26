@@ -123,3 +123,18 @@ still want to skip 'mail a check.'"
   fees plus a disclosed Signalworks platform fee"), and /terms/.
 - Attorney review line: Stripe is merchant of record; clients complete
   their own verification in Stripe's flow; 1099-K reporting is theirs.
+
+## Platform entity (updated 2026-08-19, per Tyler)
+
+Stripe Connect is ALREADY set up through Tyler's holding company, **Long
+Hall Financial** — that existing platform will be used rather than a new
+Signalworks Stripe account. Implications to resolve (red-team audit +
+attorney):
+- Client-facing disclosure must name the platform entity: clients will
+  see Long Hall Financial in Stripe onboarding/statements unless a
+  Signalworks profile/descriptor is configured on the platform.
+- Entity structure question changes: Signalworks operating as a
+  brand/DBA under Long Hall Financial may simplify (or complicate) the
+  CPA conversation in checklist §2.
+- Stripe platform profile should accurately reflect the web-design
+  platform use case (Stripe ToS: accurate business representation).
