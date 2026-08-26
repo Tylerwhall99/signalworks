@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { CARE_PLAN, FREE_BUILD } from '../config';
+import { CARE_PLAN_FLOOR, CARE_PLAN_DEFAULT, FREE_BUILD } from '../config';
 ---
 
 <Base
@@ -24,7 +24,9 @@ import { CARE_PLAN, FREE_BUILD } from '../config';
           intake answers — including custom functionality on the site where
           it helps, like quote forms and booking buttons. One revision
           round is included. First working draft within
-          {FREE_BUILD.draftTimeline} of intake.
+          {FREE_BUILD.draftTimeline} of your confirmed slot — we confirm
+          within one business day of intake, and if the month is full,
+          you'll know then.
         </p>
 
         <h2>Revisions vs. bugs</h2>
@@ -49,17 +51,18 @@ import { CARE_PLAN, FREE_BUILD } from '../config';
         <p>
           You own the site. Your domain is registered in your own account
           from day one. At launch we transfer the code and hosting into
-          accounts in your name, or host it for you on the
-          {CARE_PLAN.name} — your choice, changeable later.
+          accounts in your name, or host it for you on a care plan — your
+          choice, changeable later.
         </p>
 
         <h2>Hosting</h2>
         <p>
           The build is free. Running any website costs hosting: roughly
-          $0–20 a month if you run it yourself, or {CARE_PLAN.price} if we
-          handle hosting, updates, and support. If you ever leave the
-          {CARE_PLAN.name}, we hand everything over within 5 business days
-          at no charge.
+          $0–20 a month if you run it yourself, or a care plan from
+          {CARE_PLAN_FLOOR.price} if we handle it — {CARE_PLAN_DEFAULT.name}
+          at {CARE_PLAN_DEFAULT.price} adds monthly content edits. Every
+          plan cancels anytime: if you leave, we hand everything over
+          within 5 business days at no charge.
         </p>
 
         <h2>Images and content</h2>
@@ -67,6 +70,25 @@ import { CARE_PLAN, FREE_BUILD } from '../config';
           You confirm you have the right to use the photos, logos, and
           testimonials you give us. We only publish testimonials you have
           written permission to use.
+        </p>
+
+        <h2>Online payments (optional)</h2>
+        <p>
+          If you ask us to set up online payments — invoice payments,
+          deposits, checkout — they run through your own Stripe account,
+          connected to a payments platform operated by Long Hall Financial,
+          Signalworks' parent company. Stripe's processing fees pass
+          through unchanged; our platform share is disclosed in writing
+          before the payment page goes live, and shown on the page itself.
+          You can disconnect your Stripe account anytime and keep it.
+        </p>
+
+        <h2>What an "edit" is</h2>
+        <p>
+          On care plans, an edit is one request email covering up to three
+          small changes to existing pages — hours, prices, photos, wording.
+          New pages and redesign-scale changes are quoted in writing first.
+          Unused edits don't roll over.
         </p>
 
         <h2>Our archive copy</h2>

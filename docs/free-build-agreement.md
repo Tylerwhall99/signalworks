@@ -21,7 +21,8 @@ ______________________________.
    contact form that reaches your inbox, on-site functionality where it
    helps (quote forms, booking buttons), basic on-page SEO, and a Google
    Business Profile connection. First working draft within five business
-   days of receiving your intake.
+   days of your confirmed slot (we confirm within one business day of
+   intake; if capacity is full you'll know at confirmation).
 
 2. **One revision round is included.** A revision is a change of mind —
    structure, layout, what the site does. Further revision rounds, new
@@ -34,7 +35,7 @@ ______________________________.
 
 4. **You own it.** The domain is registered in your own account from day
    one. At launch we transfer the site's code and hosting into accounts
-   in your name — or host it for you on the Care Plan ($150/month,
+   in your name — or host it for you on a care plan (from $29/month,
    cancel anytime; if you cancel, we complete the full handoff within 5
    business days at no charge). Your choice, changeable later.
 
@@ -49,12 +50,19 @@ ______________________________.
 7. **Our record of the work.** We keep an archived copy of the finished
    site and may show it in our portfolio. Initial here to opt out: ____
 
-8. **Either of us can walk away before launch.** If we're not a fit, you
+8. **If we're unavailable** (illness, emergency), written response
+   clocks pause for up to 10 business days; beyond that you may cancel
+   and receive everything delivered to date plus the handoff
+   instructions in your owner's guide. *(Attorney: bless or tighten.)*
+
+9. **Either of us can walk away before launch.** If we're not a fit, you
    keep whatever has been delivered to you and owe nothing.
 
 **Not included free** (quoted plainly if you want them): standalone web
 apps (booking systems, portals, internal tools), ongoing edits and new
-content, photography and logo design, and ongoing growth services.
+content, photography and logo design, ongoing growth services, and
+payment processing (Stripe's fees plus a disclosed platform fee, per the
+care-plan agreement).
 
 | | |
 | --- | --- |

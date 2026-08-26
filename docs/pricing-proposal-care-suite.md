@@ -138,3 +138,21 @@ attorney):
   CPA conversation in checklist §2.
 - Stripe platform profile should accurately reflect the web-design
   platform use case (Stripe ToS: accurate business representation).
+
+
+## Red-team amendments (2026-08-19, applied)
+
+- FAQ "how do you make money" now discloses the payments platform share.
+- 5-day draft promise re-anchored to "confirmed slot" (confirmation
+  within 1 business day; capacity said at confirmation) — site, terms,
+  film, agreements all match.
+- Edit unit defined everywhere: one request email, up to three small
+  changes to existing pages; no rollover.
+- Lights On bug coverage scoped to "what we built"; third-party breakage
+  = free diagnosis + written quote.
+- Unavailability clause added to both agreements (10-business-day pause,
+  then cancel-with-handoff). Attorney to bless.
+- Walk-away bug-window re-entry procedure added to the runbook close-out.
+- UNIT ECONOMICS (open): track hours on the first 3 builds; assumed
+  conversion is undocumented — set a real target (e.g. 20% to Care $99)
+  and compare against measured build-hours before scaling outreach.

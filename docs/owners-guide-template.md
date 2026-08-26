@@ -25,7 +25,7 @@ recovery email is yours.
   does nothing): email [signalworks email]. If we built it and it broke,
   the fix is free for 60 days after launch — after that, we'll tell you
   plainly what it costs before touching anything.
-- **Words, hours, prices, photos need updating:** [Care Plan clients:
+- **Words, hours, prices, photos need updating:** [Care-plan clients:
   email what changed; it's done within 2 business days.] [Walk-away
   clients: email us for a small written quote, or edit yourself — the
   walkthrough video shows how.]

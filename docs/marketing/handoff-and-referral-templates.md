@@ -23,7 +23,7 @@ Also attached:
   written quote first
 
 No subscription started, nothing auto-bills. If you ever want the
-hosting-and-updates plan later ($150/month, cancel anytime), it's there;
+hosting-and-updates plan later (from $29/month, cancel anytime), it's there;
 if not, this is goodbye and the site is still yours.
 
 One favor, only if you're happy: if you know one other business owner
@@ -36,7 +36,7 @@ works.
 
 Same as above, with the middle paragraph swapped:
 
-> Your Care Plan is active: I handle hosting, updates, backups, and
+> Your care plan is active: I handle hosting, updates, backups, and
 > support, and content edits land within 2 business days — just email
 > what changed. Cancel anytime; if you do, everything moves into your
 > name within 5 business days at no charge.

@@ -2,9 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import {
-  CARE_PLAN,
+  ADD_ONS,
+  CARE_PLANS,
   CLEARED_SERVICES,
-  FREE_BUILD,
+  CUSTOM_RETAINER,
   LIVE_SERVICES,
   serviceHref,
 } from '../../config';
@@ -66,9 +67,9 @@ import {
             )
           }
           <p class="muted" style="margin-top: var(--space-3);">
-            <strong>{CARE_PLAN.name}</strong> — {CARE_PLAN.price},
-            {CARE_PLAN.priceNote}. Hosting, updates, and support, with full
-            handoff within 5 business days at no charge if you ever cancel.
+            <a href="#plans">Care plans</a> run from {CARE_PLANS[0].price} —
+            hosting, updates, and support in fixed quantities, cancel
+            anytime.
           </p>
           {
             LIVE_SERVICES.length > 0 && (
@@ -99,6 +100,78 @@ import {
     </div>
   </section>
 
+  <section class="section section--rule" id="plans">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Care plans</span>
+        <h2>After launch: three plans, plain quantities.</h2>
+        <p class="muted">
+          Every plan is optional and cancels anytime — if you leave, the
+          full handoff into your accounts happens within 5 business days at
+          no charge. You own everything throughout.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        {
+          CARE_PLANS.map((plan) => (
+            <div class="card plan-card">
+              <h3>{plan.name}</h3>
+              <p class="plan-price">{plan.price}</p>
+              <p class="muted plan-blurb">{plan.blurb}</p>
+              <ul class="checklist">
+                {plan.includes.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p class="muted" style="margin-top: var(--space-4);">
+        <strong>{CUSTOM_RETAINER.name}</strong> — {CUSTOM_RETAINER.price}.
+        {CUSTOM_RETAINER.blurb}
+      </p>
+      <p class="muted" style="margin-top: var(--space-3); font-size: var(--text-sm);">
+        An "edit" is one request email covering up to three small changes
+        to existing pages. Unused edits don't roll over — plans are
+        quantities, not fine print. <a href="/terms/">Full terms</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--rule">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <span class="eyebrow">Add-ons</span>
+        <h2>One-off work, priced before it starts.</h2>
+        <p class="muted">
+          Attach to any plan, or buy on their own — every one quoted in
+          writing before work begins.
+        </p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Add-on</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+          {
+            ADD_ONS.map((a) => (
+              <tr>
+                <td>{a.name}</td>
+                <td>{a.price}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+      <p class="muted" style="margin-top: var(--space-4); font-size: var(--text-sm);">
+        Getting paid online — invoice payments and deposits through your
+        own Stripe account — can be added to any plan. Ask us; fees are
+        disclosed in writing before anything goes live.
+      </p>
+    </div>
+  </section>
+
   <CtaBand />
 </Base>
 
@@ -106,5 +179,25 @@ import {
   .svc-h {
     font-size: var(--text-xl);
     margin-bottom: var(--space-3);
+  }
+
+  .plan-card h3 {
+    font-size: var(--text-xl);
+  }
+
+  .plan-price {
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--blue);
+    margin: var(--space-2) 0;
+  }
+
+  .plan-blurb {
+    margin-bottom: var(--space-3);
+  }
+
+  .plan-card .checklist li {
+    font-size: var(--text-sm);
   }
 </style>

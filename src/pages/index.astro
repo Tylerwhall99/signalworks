@@ -10,7 +10,8 @@
 import {
   ANALYTICS,
   BRAND,
-  CARE_PLAN,
+  CARE_PLAN_FLOOR,
+  CARE_PLAN_DEFAULT,
   CLEARED_SERVICES,
   CONTACT,
   FREE_BUILD,
@@ -45,7 +46,7 @@ const STEPS = [
     label: 'STEP 02 / 05 — DRAFT ONE',
     eyebrow: 'Step 02 · Draft one',
     title: 'We build draft one. A real working site, not a wireframe.',
-    sub: `Within ${FREE_BUILD.draftTimeline}.`,
+    sub: `Within ${FREE_BUILD.draftTimeline} of your confirmed slot.`,
   },
   {
     id: 'revise',
@@ -217,7 +218,7 @@ const STEPS = [
         <div class="scene-copy">
           <span class="film-eyebrow">{STEPS[1].eyebrow}</span>
           <h2 class="film-h film-h--small">{STEPS[1].title}</h2>
-          <p class="mono-tag" id="s2-tag">● WITHIN FIVE BUSINESS DAYS</p>
+          <p class="mono-tag" id="s2-tag">● FIVE BUSINESS DAYS FROM YOUR CONFIRMED SLOT</p>
         </div>
       </section>
 
@@ -368,8 +369,8 @@ const STEPS = [
                 {FREE_BUILD.notIncludedFree.map((item) => <li>{item}</li>)}
               </ul>
               <p class="muted" style="margin-top: var(--space-3); font-size: var(--text-sm);">
-                {CARE_PLAN.name}: {CARE_PLAN.price}, {CARE_PLAN.priceNote}.
-                Details on the <a href="/services/">services page</a>.
+                Care plans from {CARE_PLAN_FLOOR.price}, cancel anytime —
+                details on the <a href="/services/">services page</a>.
               </p>
             </div>
           </div>
@@ -400,12 +401,13 @@ const STEPS = [
               <p>
                 No. At launch, everything moves into accounts in your name —
                 code, hosting, domain. Running any website costs hosting:
-                roughly $0–20 a month if you handle it yourself, or
-                {CARE_PLAN.price.replace('/month', ' a month')} on our
-                {CARE_PLAN.name} and we handle hosting, updates, and support.
-                The build is free either way, and if you ever leave the
-                {CARE_PLAN.name} we hand everything over within 5 business
-                days at no charge.
+                roughly $0–20 a month if you handle it yourself, or a care
+                plan from {CARE_PLAN_FLOOR.price.replace('/month', ' a month')}
+                and we handle it — the {CARE_PLAN_DEFAULT.name} at
+                {CARE_PLAN_DEFAULT.price.replace('/month', ' a month')} adds
+                monthly content edits. The build is free either way, and if
+                you ever leave a plan we hand everything over within 5
+                business days at no charge.
               </p>
             </div>
           </details>
@@ -437,8 +439,11 @@ const STEPS = [
             <summary>How do you make money if I never buy anything?</summary>
             <div class="faq-body">
               <p>
-                On you, we don’t. Across everyone we build for, enough hire
-                us for ongoing work that it works out.
+                On you, we don’t — with one disclosed exception: if you ask
+                us to set up online payments, we earn a small platform
+                share of each transaction, shown to you in writing before
+                anything goes live. Otherwise, across everyone we build
+                for, enough hire us for ongoing work that it works out.
               </p>
             </div>
           </details>
@@ -459,7 +464,9 @@ const STEPS = [
                 online stores, restaurants, any real business. We’d be glad
                 to build yours. That includes stores: product pages and
                 checkout, wired to a payment account in your own name, like
-                everything else we hand over.
+                everything else we hand over. One honest note: a store done
+                right can take longer than a brochure site, so store builds
+                get a written timeline when we confirm your slot.
               </p>
             </div>
           </details>
@@ -468,7 +475,9 @@ const STEPS = [
             <div class="faq-body">
               <p>
                 First working draft within {FREE_BUILD.draftTimeline} of
-                intake.
+                your confirmed slot. We confirm within one business day of
+                your intake — and if the month is full, you’ll know then,
+                not after.
               </p>
             </div>
           </details>

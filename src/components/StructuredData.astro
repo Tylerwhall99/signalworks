@@ -3,7 +3,7 @@
  * JSON-LD for the home page. Everything derives from src/config.ts, so
  * updating the offer or contact details there keeps structured data in sync.
  */
-import { BRAND, CARE_PLAN, CONTACT, SITE_URL } from '../config';
+import { BRAND, CARE_PLANS, CONTACT, SITE_URL } from '../config';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -36,13 +36,13 @@ const schema = {
         price: '0',
         priceCurrency: 'USD',
       },
-      {
+      ...CARE_PLANS.map((plan) => ({
         '@type': 'Offer',
-        name: CARE_PLAN.name,
-        description: CARE_PLAN.summary,
-        price: CARE_PLAN.price.replace(/[^0-9.]/g, ''),
+        name: plan.name,
+        description: plan.blurb,
+        price: plan.price.replace(/[^0-9.]/g, ''),
         priceCurrency: 'USD',
-      },
+      })),
     ],
   },
 };

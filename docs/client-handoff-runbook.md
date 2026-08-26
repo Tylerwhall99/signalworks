@@ -26,8 +26,9 @@ The repo is the product. Lovable and Claude Code are build tools — never let a
 - [ ] **Analytics:** transfer full ownership; remove yourself unless they ask you to stay (get that in writing).
 - [ ] **Hand over:** repo or zip, all image assets with license notes, form-service login, and a one-page "how to get edits made" note.
 - [ ] **Close out:** remove every access of yours, then confirm in writing: "Site is live, everything is in your name, here's what you have."
+- [ ] **Bug-window re-entry (60 days):** the handoff email includes the 30-second re-invite steps (host collaborator invite + repo access) so "we fix it free" never becomes a runaround after access removal. Target: fix landed same week as re-invite.
 
-## Launch-day — Care Plan client ($150/mo)
+## Launch-day — care-plan client (from $29/mo)
 
 Site stays on your Vercel team; you keep the repo; they still own the domain. The clause that makes this an easy yes and keeps "no catch" honest:
 
@@ -36,7 +37,7 @@ Site stays on your Vercel team; you keep the repo; they still own the domain. Th
 ## Terms-page language (paste-able)
 
 - "You own the site. At launch we transfer the code and hosting into accounts in your name, or host it for you on the Care Plan — your choice, changeable later."
-- "The build is free. Running any website costs hosting: roughly $0–20 a month if you run it yourself, or $150 a month if we handle hosting, updates, and support."
+- "The build is free. Running any website costs hosting: roughly $0–20 a month if you run it yourself, or a care plan from $29 a month if we handle it."
 - "If you ever leave the Care Plan, we hand everything over within 5 business days at no charge."
 
 ## Gotchas

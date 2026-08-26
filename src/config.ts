@@ -72,7 +72,7 @@ export const FREE_BUILD = {
     'Mobile-first layout, tested on real phones',
     'Click-to-call, placed where thumbs go',
     'A contact form that reaches a real inbox',
-    'Custom functionality where it helps — quote forms, booking buttons, service-area maps',
+    'Custom functionality where it helps — quote forms, booking buttons, service-area maps (sized to the draft window; bigger asks get a written timeline first)',
     'Basic on-page SEO hygiene: titles, descriptions, speed',
     'Google Business Profile connection',
     'One revision round — the "change it" pass for structure, layout, and what the site does',
@@ -81,25 +81,91 @@ export const FREE_BUILD = {
   notIncludedFree: [
     'Standalone web apps — booking systems, portals, internal tools — quoted per project',
     'Ongoing edits and new content — quoted plainly (bug fixes in the first 60 days are free)',
-    'Hosting and maintenance — optional Care Plan, or run it yourself for roughly $0–20/month',
+    'Hosting and maintenance — optional care plans from $29/month, or run it yourself for roughly $0–20/month',
     'Photography and logo design',
     'Ongoing growth services — ask us',
   ],
 } as const;
 
-export const CARE_PLAN = {
-  name: 'Care Plan',
-  price: '$150/month',
-  priceNote: 'optional, cancel anytime',
-  summary:
-    'We handle hosting, updates, and support so you never think about the website again. Not required — at launch everything can move into accounts in your name instead.',
-  includes: [
-    'Hosting, software updates, backups, and monitoring',
-    'Content edits within 2 business days — just email what changed',
-    'Support from the person who built the site',
-    'Cancel anytime: full handoff within 5 business days at no charge — code, hosting, everything in your name',
-  ],
+export interface CarePlan {
+  id: string;
+  name: string;
+  /** Display price, e.g. "$29/month". Edit here only. */
+  price: string;
+  blurb: string;
+  includes: string[];
+}
+
+/**
+ * The care & support ladder (docs/pricing-proposal-care-suite.md).
+ * Every plan: optional, cancel anytime, full handoff within 5 business
+ * days at no charge, client owns everything throughout. Quantities and
+ * response times only — never outcomes.
+ */
+export const CARE_PLANS: CarePlan[] = [
+  {
+    id: 'lights-on',
+    name: 'Lights On',
+    price: '$29/month',
+    blurb: 'Your site runs itself; we keep the lights on.',
+    includes: [
+      'Hosting, SSL, daily backups, uptime monitoring',
+      'Software updates',
+      'Bug coverage for what we built, extended while you subscribe',
+      'Email support — replies within 2 business days',
+      'No edits included; add them one-off, always quoted first',
+    ],
+  },
+  {
+    id: 'care',
+    name: 'Care Plan',
+    price: '$99/month',
+    blurb: 'For owners who never want to think about the website again.',
+    includes: [
+      'Everything in Lights On',
+      '2 content edits per month, done within 2 business days',
+      'Support replies within 1 business day',
+      'A monthly one-paragraph site note: uptime, form counts, anything needing attention',
+    ],
+  },
+  {
+    id: 'front-office',
+    name: 'Front Office',
+    price: '$249/month',
+    blurb: 'For businesses whose site is a workhorse.',
+    includes: [
+      'Everything in Care Plan',
+      '6 content edits per month; urgent edits same business day',
+      'Up to 2 hours/month of small feature work',
+      'Priority queue on everything',
+      'Quarterly tune-up: speed check, content review call, Google Business Profile refresh',
+    ],
+  },
+];
+
+export const CUSTOM_RETAINER = {
+  name: 'Custom retainer',
+  price: 'quoted, from $500/month',
+  blurb:
+    'Multi-location companies, web-app maintenance, or varying monthly scope — scoped in writing per company, with a monthly plain-English statement of exactly what was done.',
 } as const;
+
+export interface AddOn {
+  name: string;
+  price: string;
+}
+
+/** Attach to any plan, or buy one-off. */
+export const ADD_ONS: AddOn[] = [
+  { name: 'Extra content edit', price: '$25 (5-pack $100)' },
+  { name: 'New page on an existing site', price: '$150 flat' },
+  { name: 'Campaign / landing page', price: '$250 flat' },
+  { name: 'Email deliverability setup (one-time)', price: '$99' },
+];
+
+/** Cheapest plan, for "from $X/month" copy — derived, never hardcode. */
+export const CARE_PLAN_FLOOR = CARE_PLANS[0]!;
+export const CARE_PLAN_DEFAULT = CARE_PLANS[1]!;
 
 /**
  * Paid ongoing services the site may NAME. DECISION 6 — unfilled. A service

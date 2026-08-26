@@ -103,7 +103,10 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 - [ ] 👤 **Bookkeeping** from dollar zero: QuickBooks or Wave (free), plus
   the business card for every expense.
 - [ ] 👤 **USPTO trademark search** for "Signalworks" — feeds the section
-  0 name decision.
+  0 name decision. **Red team rates this the critical-path item:** four
+  variants registered in the last year means clearing (or changing) the
+  name this week costs nothing; after handles/GBP/agreements it costs
+  everything.
 
 ## 3 · Delivery readiness — be ready before the first intake arrives
 
@@ -112,11 +115,19 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   Finds the potholes before a real client is in the car.
 - [ ] ⚡ GitHub org structure for client repos (repo per client domain,
   per the runbook).
-- [ ] 👤 **Stripe account, with Connect enabled** — needed for Care Plan
-  billing AND the "Get Paid Online" payments offer (see
-  docs/pricing-proposal-care-suite.md). Closing catalog row A2 now means:
-  Connect onboarding + pay page + one real demo transaction. ⚡ I build
-  all of it once the account exists.
+- [ ] 👤 **Stripe platform (Long Hall Financial Connect) readiness** —
+  the platform exists; before any client connects: (a) configure a
+  Signalworks brand profile/statement descriptor on the platform so
+  clients don't meet an unfamiliar holding company mid-onboarding, (b)
+  update the platform's business description for the web-design use case
+  (Stripe ToS: accurate representation), (c) attorney blesses the
+  LHF-platform/Signalworks-brand structure, (d) CPA confirms how
+  platform-fee revenue books across entities. ⚡ Then I build Connect
+  onboarding + pay page + one demo transaction, closing catalog A2.
+- [ ] 👤 **Track hours on the first three free builds** — the whole model
+  rests on an unmeasured conversion assumption (CFO flag). Real numbers
+  for build-hours and plan conversion decide capacity and whether the
+  fee ladder needs tuning.
 - [ ] 👤 Decide client hosting lane: Vercel Pro team (~$20/mo, smooth
   transfer flow) vs. all-Cloudflare (free). The runbook supports either.
 - [ ] 👤 Where intake submissions get tracked (a simple sheet is fine;

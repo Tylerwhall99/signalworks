@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check:launch": "npm run build && ! grep -rlE 'PLACEHOLDER|signalworks\\.example' dist/ && echo 'LAUNCH CHECK PASSED: no placeholders in dist'"
   },
   "dependencies": {
     "astro": "^5.0.0",

@@ -310,3 +310,37 @@ items are the ones worth reviewing before launch.
   deliverable; checklist half of ledger A5), care-plan-agreement.md
   (draft, attorney review), owners-guide-template.md (the handoff
   email's promised guide).
+
+## Red-team audit + care-suite go-live (2026-08-19)
+
+- CEO/COO/CFO red-team ran (3 agents, all completed). Full findings in
+  the workflow output; every fixable finding was applied this pass:
+  - FAQ "how do you make money" now discloses the payments platform
+    share (it would have become false the day payments shipped).
+  - 5-day draft promise re-anchored to "confirmed slot" with a
+    1-business-day confirmation + capacity-said-at-confirmation, in the
+    film, FAQ, terms, and agreement (was uncapped per-intake — a solo
+    builder breach waiting for one good forum post).
+  - Store builds get "a written timeline at confirmation" (A2 still
+    open); custom functionality bounded to the draft window.
+  - Edit unit defined everywhere: one request email, ≤3 small changes,
+    no rollover. Lights On bug coverage scoped to "what we built" with
+    third-party breakage = free diagnosis + quote.
+  - Unavailability clause (10-business-day pause, then cancel+handoff)
+    added to both agreements for attorney blessing.
+  - Runbook walk-away close-out gained a bug-window re-entry step.
+  - `npm run check:launch` added — fails if PLACEHOLDER or
+    signalworks.example appears in dist (the deploy guard).
+  - All $150 references synced out of living docs (source-of-record
+    prompt docs left verbatim).
+- Care suite went live sitewide as typed config data: CARE_PLANS
+  ($29/$99/$249), CUSTOM_RETAINER, ADD_ONS, floor/default helpers;
+  services page gained #plans + add-ons sections; structured data,
+  terms, FAQ, footer, agreements all derive from it.
+- Long Hall Financial platform disclosure added to /terms/ and the
+  care-plan agreement. Tyler-side before any payments client: Signalworks
+  brand profile/descriptor on the LHF Connect platform, attorney blessing
+  of the structure, CPA on intercompany revenue booking.
+- Board items only Tyler can close: USPTO/name (critical path), insurance
+  before launch, GitHub push, hours-tracking on first 3 builds
+  (conversion assumption is unmeasured), Turnstile at deploy.
