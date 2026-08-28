@@ -14,9 +14,10 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   signalworks.site) were all registered within the last year — other
   people are actively branding on this name. Options: (a) find an angle
   that's free (signalworks.build / .dev / .studio looked possibly open —
-  verify at a registrar), (b) run a quick USPTO trademark search and
-  decide if the crowd is a problem, (c) consider a name adjustment now,
-  while it costs nothing. Everything below (email, socials, GBP) waits on
+  verify at a registrar), (b) ~~run a USPTO search~~ **done — a LIVE PENDING
+  `SIGNALWORKS` application exists in class 042 (web design services),
+  serial 99570293; see §2**, (c) consider a name adjustment now, while it
+  costs nothing. Everything below (email, socials, GBP) waits on
   this.
 - [ ] 👤 Buy the domain in **your own registrar account** (the same rule
   the runbook gives clients).
@@ -110,21 +111,30 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   before every first commit, per the runbook.
 - [ ] 👤 **Bookkeeping** from dollar zero: QuickBooks or Wave (free), plus
   the business card for every expense.
-- [ ] 👤 **USPTO trademark search** for "Signalworks" (10 minutes, free,
-  no lawyer needed). **This is a look-up, not a filing, and it is NOT a
-  recommendation to rename.** Go to tmsearch.uspto.gov → search
-  "signalworks" (also try "signal works") → read the results:
-  - Nothing live, or only in unrelated industries (e.g. railroad
-    equipment, audio hardware) → **keep the name, proceed.** Different
-    industries can share a name; that's normal and legal.
-  - Someone has a LIVE registration covering website design, software,
-    marketing, or advertising services → that's the one case worth a
-    $200 lawyer conversation before printing anything.
-  The domains being taken is a *marketing* annoyance (people googling you
-  find someone else), not automatically a legal problem. The only reason
-  this is early on the list: if the rare bad case is true, learning it
-  now costs nothing and learning it after handles/GBP/client agreements
-  costs everything.
+- [x] 👤 **USPTO trademark search — DONE 2026-08-26. Result: not clean.**
+  Tyler's search returned 3 results; two visible:
+  - `SIGNALWORKS` — **DEAD/CANCELLED**, Signal Science Inc. (CA),
+    class 009. Irrelevant — cancelled marks don't block anyone.
+  - `SIGNALWORKS` — **LIVE / PENDING**, Jon L. Thomas (individual),
+    serial **99570293**, classes **009 and 042**. Visible recital:
+    "Downloadable mobile applications for tracking the user's…"
+  **Why 042 matters:** class 042 is the class that covers website design
+  and development services — the exact class Signalworks would operate
+  and register in. An identical wordmark, pending, in your class is the
+  one scenario the earlier note flagged as worth real advice.
+  **Nuance that cuts both ways:** it is *pending*, not registered
+  (applications get refused, abandoned, and opposed all the time), and
+  the visible text is the 009 recital — the actual **042 services
+  wording is the deciding fact and isn't visible in the search results.**
+  Pull the full record at tsdr.uspto.gov (search serial 99570293) or have
+  an attorney do it.
+- [ ] 👤 **Trademark attorney consult (~$200–500, 30 minutes) — now
+  justified, was optional.** Ask exactly: (1) what does serial 99570293
+  actually claim in class 042, (2) can I *use* Signalworks for web design
+  services under common law, (3) could I ever *register* it, (4) does
+  their pending application create real cease-and-desist exposure. Use vs.
+  register are different questions with different answers. Not legal
+  advice from me — I can read the record fields, not give an opinion.
 
 ## 3 · Delivery readiness — be ready before the first intake arrives
 

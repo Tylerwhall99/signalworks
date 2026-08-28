@@ -344,3 +344,22 @@ items are the ones worth reviewing before launch.
 - Board items only Tyler can close: USPTO/name (critical path), insurance
   before launch, GitHub push, hours-tracking on first 3 builds
   (conversion assumption is unmeasured), Turnstile at deploy.
+
+## Trademark finding (2026-08-26)
+
+- Tyler ran the USPTO search. Result is NOT clean: a LIVE/PENDING
+  `SIGNALWORKS` application (serial 99570293, Jon L. Thomas) covers
+  classes 009 and 042 — and 042 is the class covering website design and
+  development services. A second SIGNALWORKS mark is DEAD/CANCELLED
+  (Signal Science Inc.) and blocks nothing. A third result was not
+  visible in the screenshot.
+- Decisive unknown: the actual class-042 services wording on 99570293
+  (not visible in search results; TSDR API now requires a key, so it
+  wasn't machine-retrievable). That wording determines whether this is a
+  real conflict or a narrow app-tracking claim that merely shares a word.
+- Status: name decision escalated from "verify" to "get advice before
+  investing." Attorney consult added to the checklist. Nothing in the
+  repo assumes a rename; if Tyler changes the name, BRAND.name in
+  src/config.ts plus the OG/avatar/banner renders are the mechanical
+  work (~1 hour), and it gets much more expensive after handles, GBP,
+  and signed client agreements exist.
