@@ -66,11 +66,11 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   verified complete). If this laptop died today, everything is
   recoverable. Re-run `git bundle create` after big changes, or let
   GitHub take over below.
-- [ ] 👤 Create a free GitHub account, then tell me the username. ⚡ I
-  create the repo and push all 21 commits — that makes the backup
-  automatic instead of manual, gives you version history you can browse
-  from any device, and is the same setup the runbook uses for client
-  repos ("the repo is the product").
+- [x] ⚡👤 **GitHub — DONE 2026-08-27.** Repo live (private) at
+  github.com/Tylerwhall99/signalworks, all history pushed, SSH key
+  authorized, git identity set (Tyler Hall <tylerwhall99@gmail.com>).
+  Future commits sync with a push; this also unlocks Cloudflare Pages
+  connect-to-repo deployment when hosting lands.
 - [ ] 👤 Pick a host — **recommendation: Cloudflare Pages** (free tier
   allows commercial use; the runbook already prefers it for client
   handoffs, so your own site is the dry run). ⚡ I connect and deploy.
