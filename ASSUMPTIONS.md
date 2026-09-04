@@ -389,3 +389,40 @@ items are the ones worth reviewing before launch.
   (wire + end-to-end test both forms) and the placeholder kill are
   impossible until they arrive. 4 PLACEHOLDER strings remain in dist by
   necessity.
+
+## Upsell / conversion pass (docs/site-upsell-prompt.md, 2026-09-01)
+
+- Executed with flags as sent: ladder = Lead Capture $297 / Reputation
+  Engine $197 (+$97 bundled) / Hosted $29 · Care Plan $150; AI
+  Receptionist OFF (section + FAQ skipped); chat widget slot built as a
+  commented placement (no snippet provided); prices shown with "cancel
+  anytime" beside every one; calculator defaults $350 / 5.
+- /services/ rebuilt as the full ladder page (care-plan section replaced;
+  custom-builds/stores + payments disclosure and the add-ons table kept
+  below as "Beyond the ladder"). Homepage gained the compact ladder and
+  the missed-call calculator (value × calls × 4.3, live, labeled "Your
+  numbers, simple math — not a projection"). Film step 5 + why-free now
+  name the paid layer. New FAQs: cancel-a-service, do-I-need-paid.
+- Conversion adds: sticky mobile bottom bar (site-wide; hides while the
+  intake section is on screen; Call button appears only once the real
+  phone number exists), phone in both headers (same gating), "Biggest
+  headache right now?" dropdown in both intake paths (11/20 questions
+  now), SMS consent checkbox both forms (unchecked default; sends
+  sms_consent=yes only when checked — absent means no).
+- **Held back deliberately: the Full Front Office $797 bundle.** Its
+  "list $1,041" only sums with the disabled AI Receptionist ($397); the
+  visible ladder totals $644, making the anchor price dishonest until
+  the AI section ships. It goes live the day that flag flips.
+- Copy edit inside "improve without changing claims": "Watch your Google
+  reviews climb…" → "Reviews come because you asked — not because you
+  got lucky" (removes the outcome-promise shape, keeps the mechanism).
+- Precondition honesty: the prompt requires the repair checklist green;
+  forms/contact FACTS are still missing, so end-to-end form tests remain
+  impossible and 12 placeholder strings remain (footer/contact +
+  form-fallback notes). Everything else on the acceptance list passes:
+  375px no-overflow + sticky bar verified, wizard counts 1/11 and 1/20,
+  calculator math exact (500×3×4.3=$6,450 tested), violation grep clean
+  (only the /about/ "rankings" disclaimer, which is the anti-promise).
+- GHL note for delivery: A2P texting registration per client takes
+  days-to-weeks — start at kickoff (catalog A6 discipline applies to the
+  Lead Capture and Reputation services now being sold).

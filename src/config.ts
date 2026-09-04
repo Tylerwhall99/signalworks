@@ -149,12 +149,45 @@ export const CARE_PLAN_FLOOR = CARE_PLANS[0]!;
 export const CARE_PLAN_DEFAULT = CARE_PLANS[1]!;
 
 /**
- * Paid ongoing services the site may NAME. DECISION 6 — unfilled. A service
- * goes in this list only when it passes the two-week test: delivery could
- * begin within two weeks of a client saying yes. While empty, the site says
- * "ongoing growth services" at category level and names nothing.
+ * The paid-services ladder (site-upsell-prompt.md, 2026-09-01). Only
+ * cleared services appear — Tyler declared these deliverable (GHL-backed).
+ * Every price is month-to-month, cancel anytime, 5-day handoff.
  */
-export const CLEARED_SERVICES: string[] = [];
+export interface LadderService {
+  id: string;
+  hook: string;
+  name: string;
+  price: string;
+  bundleNote?: string;
+  blurb: string;
+}
+
+export const SERVICE_LADDER: LadderService[] = [
+  {
+    id: 'lead-capture',
+    hook: 'Never miss a call',
+    name: 'Lead Capture System',
+    price: '$297/month',
+    blurb:
+      'Missed calls get an instant text back. Website chats go straight to your phone. Every lead — call, text, chat, form — lands in one inbox with instant follow-up. Booking built in.',
+  },
+  {
+    id: 'reputation',
+    hook: 'Look as good as your work',
+    name: 'Reputation Engine',
+    price: '$197/month',
+    bundleNote: '$97/month when added to Lead Capture',
+    blurb:
+      'A review request goes out by text after every job. We draft the responses, you approve. Reviews come because you asked — not because you got lucky.',
+  },
+];
+
+/** Names woven into the "why free" story. */
+export const CLEARED_SERVICES: string[] = [
+  'lead capture',
+  'reviews & reputation',
+  'hosting & site care',
+];
 
 export type ServiceStatus = 'live' | 'planned';
 

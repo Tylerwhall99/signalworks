@@ -1,139 +1,92 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import {
-  ADD_ONS,
-  CARE_PLANS,
-  CLEARED_SERVICES,
-  LIVE_SERVICES,
-  serviceHref,
-} from '../../config';
+import { ADD_ONS, CARE_PLANS, SERVICE_LADDER } from '../../config';
 ---
 
 <Base
   title="Services"
-  description="A free website build for home services businesses, ongoing growth services quoted plainly, and custom web apps scoped per project."
+  description="The website is free. These are the month-to-month services that make it ring — lead capture, reviews, and site care. Every one cancels anytime."
 >
   <section class="section">
     <div class="container">
       <span class="eyebrow">Services</span>
-      <h1>The free site, and what comes after.</h1>
+      <h1>The website is free. This is how we get paid.</h1>
       <p class="lede" style="margin-top: var(--space-4);">
-        The build is free and it's yours. Everything beyond it is optional,
-        quoted plainly, and never a surprise on an invoice.
+        The website is free. These are the services that make it ring — and
+        they're how we get paid. Every one is month-to-month, cancel
+        anytime, everything handed over within 5 business days if you
+        leave.
       </p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="ladder">
     <div class="container">
-      <div class="grid grid--3">
-        <div class="card">
-          <h2 class="svc-h">Free website</h2>
-          <p class="muted">
-            Up to five pages that earn their place, copy written from your
-            intake, mobile-first, click-to-call, live on your own domain.
-            One revision round included, and bug fixes are free for 60 days
-            after launch. You own all of it.
-          </p>
-          <p style="margin-top: var(--space-3);">
-            <a href="/#included">Full scope →</a><br />
-            <a href="/#start">Start my free site →</a>
-          </p>
-        </div>
-
-        <div class="card">
-          <h2 class="svc-h">Ongoing services</h2>
-          {
-            CLEARED_SERVICES.length > 0 ? (
-              <>
-                <p class="muted">
-                  The month-after-month work, quoted plainly before anything
-                  starts:
-                </p>
-                <ul class="checklist">
-                  {CLEARED_SERVICES.map((s) => (
-                    <li>{s}</li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <p class="muted">
-                Ongoing growth services — the work that takes sustained
-                effort month after month. Ask us what fits your business;
-                you'll get a plain written quote, never a pitch deck.
-              </p>
-            )
-          }
-          <p class="muted" style="margin-top: var(--space-3);">
-            <a href="#plans">Care plans</a> run from {CARE_PLANS[0].price} —
-            hosting, updates, and support in fixed quantities, cancel
-            anytime.
-          </p>
-          {
-            LIVE_SERVICES.length > 0 && (
-              <ul class="checklist" style="margin-top: var(--space-3);">
-                {LIVE_SERVICES.map((s) => (
-                  <li>
-                    <a href={serviceHref(s)}>{s.navLabel ?? s.name}</a>
-                  </li>
-                ))}
-              </ul>
-            )
-          }
-        </div>
-
-        <div class="card">
-          <h2 class="svc-h">Custom builds &amp; stores</h2>
-          <p class="muted">
-            Online stores with checkout, booking flows, quote builders,
-            portals, internal tools — scoped in writing and quoted per
-            project. A written spec and a fixed number before any money
-            changes hands, and you own the code from day one. If we set up
-            online payments for you, they run through your own Stripe
-            account and our platform share of each transaction is disclosed
-            in writing before anything goes live.
-          </p>
-          <p style="margin-top: var(--space-3);">
-            <a href="/contact/">Ask about a custom build →</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--rule" id="plans">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Care plans</span>
-        <h2>After launch: two plans, plain quantities.</h2>
-        <p class="muted">
-          Every plan is optional and cancels anytime — if you leave, the
-          full handoff into your accounts happens within 5 business days at
-          no charge. You own everything throughout.
-        </p>
-      </div>
-      <div class="grid grid--2">
+      <div class="ladder">
         {
-          CARE_PLANS.map((plan) => (
-            <div class="card plan-card">
-              <h3>{plan.name}</h3>
-              <p class="plan-price">{plan.price}</p>
-              <p class="muted plan-blurb">{plan.blurb}</p>
-              <ul class="checklist">
-                {plan.includes.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
+          SERVICE_LADDER.map((svc, i) => (
+            <div class="card rung">
+              <span class="rung-num" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p class="rung-hook">“{svc.hook}”</p>
+              <h2 class="rung-name">{svc.name}</h2>
+              <p class="rung-price">
+                {svc.price}
+                <span class="cancel-note">cancel anytime</span>
+              </p>
+              {svc.bundleNote && <p class="rung-bundle">{svc.bundleNote}</p>}
+              <p class="muted">{svc.blurb}</p>
             </div>
           ))
         }
+
+        <div class="card rung" id="plans">
+          <span class="rung-num" aria-hidden="true">
+            {String(SERVICE_LADDER.length + 1).padStart(2, '0')}
+          </span>
+          <p class="rung-hook">“Site handled”</p>
+          <h2 class="rung-name">
+            {CARE_PLANS.map((p) => p.name).join(' · ')}
+          </h2>
+          <p class="rung-price">
+            {CARE_PLANS.map((p) => p.price).join(' · ')}
+            <span class="cancel-note">cancel anytime</span>
+          </p>
+          <p class="muted">
+            {CARE_PLANS[0].name}: we run hosting, uptime, and security
+            updates. {CARE_PLANS[1].name}: all of that plus 3 monthly
+            content edits and a monthly report. Or run it yourself for
+            ~$0–20/mo — we'll set that up free either way.
+          </p>
+          <p class="muted" style="font-size: var(--text-sm); margin-top: var(--space-3);">
+            An "edit" is one request email covering up to three small
+            changes to existing pages. Unused edits don't roll over.
+            <a href="/terms/">Full terms</a>.
+          </p>
+        </div>
       </div>
-      <p class="muted" style="margin-top: var(--space-3); font-size: var(--text-sm);">
-        An "edit" is one request email covering up to three small changes
-        to existing pages. Unused edits don't roll over — plans are
-        quantities, not fine print. <a href="/terms/">Full terms</a>.
-      </p>
+    </div>
+  </section>
+
+  <section class="section section--rule">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <span class="eyebrow">Beyond the ladder</span>
+        <h2>Custom builds &amp; stores — quoted per project.</h2>
+        <p class="muted">
+          Online stores with checkout, booking flows, quote builders,
+          portals, internal tools — scoped in writing with a fixed number
+          before any money changes hands, and you own the code from day
+          one. If we set up online payments for you, they run through your
+          own Stripe account and our platform share of each transaction is
+          disclosed in writing before anything goes live.
+        </p>
+        <p style="margin-top: var(--space-3);">
+          <a href="/contact/">Ask about a custom build →</a>
+        </p>
+      </div>
     </div>
   </section>
 
@@ -142,10 +95,6 @@ import {
       <div class="section-head">
         <span class="eyebrow">Add-ons</span>
         <h2>One-off work, priced before it starts.</h2>
-        <p class="muted">
-          Attach to any plan, or buy on their own — every one quoted in
-          writing before work begins.
-        </p>
       </div>
       <table>
         <thead>
@@ -169,28 +118,71 @@ import {
 </Base>
 
 <style>
-  .svc-h {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-3);
+  .ladder {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 46rem;
   }
 
-  .plan-card h3 {
-    font-size: var(--text-xl);
+  .rung {
+    position: relative;
+    padding-left: calc(var(--space-4) + 3.2rem);
   }
 
-  .plan-price {
+  .rung-num {
+    position: absolute;
+    left: var(--space-4);
+    top: var(--space-4);
     font-family: var(--font-mono);
-    font-size: var(--text-lg);
     font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--signal);
+  }
+
+  .rung-hook {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: var(--space-1);
+  }
+
+  .rung-name {
+    font-size: var(--text-xl);
+  }
+
+  .rung-price {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-lg);
     color: var(--blue);
     margin: var(--space-2) 0;
   }
 
-  .plan-blurb {
-    margin-bottom: var(--space-3);
+  .cancel-note {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-left: 0.7em;
   }
 
-  .plan-card .checklist li {
+  .rung-bundle {
     font-size: var(--text-sm);
+    color: var(--ink-soft);
+    margin-bottom: var(--space-2);
+  }
+
+  @media (max-width: 40rem) {
+    .rung {
+      padding-left: var(--space-4);
+    }
+    .rung-num {
+      position: static;
+      display: block;
+      margin-bottom: var(--space-1);
+    }
   }
 </style>

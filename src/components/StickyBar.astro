@@ -1,0 +1,80 @@
+---
+import { CONTACT, NAV_CTA } from '../config';
+
+const ctaHref = Astro.url.pathname === '/' ? '#start' : '/#start';
+const hasPhone = !CONTACT.phone.includes('PLACEHOLDER');
+---
+
+<div class="sticky-bar" id="sticky-bar">
+  <a href={ctaHref} class="sb-cta">{NAV_CTA.label}</a>
+  {hasPhone && <a href={`tel:${CONTACT.phone}`} class="sb-call">Call</a>}
+</div>
+
+<!-- GHL chat widget slot (flag ENABLE_CHAT_WIDGET): paste the embed
+     snippet directly below. Position bottom-right; on mobile give it
+     bottom: 4.75rem so it clears this sticky bar. -->
+
+<style>
+  .sticky-bar {
+    display: none;
+  }
+
+  @media (max-width: 47.99rem) {
+    .sticky-bar {
+      display: flex;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 70;
+      gap: 1px;
+      background: var(--line-strong);
+      border-top: 1px solid var(--line-strong);
+      transition: transform 250ms ease;
+    }
+
+    .sticky-bar.is-hidden {
+      transform: translateY(110%);
+    }
+
+    :global(body) {
+      padding-bottom: 3.6rem;
+    }
+
+    .sb-cta,
+    .sb-call {
+      display: block;
+      text-align: center;
+      padding: 1rem 0.5rem;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      text-decoration: none;
+    }
+
+    .sb-cta {
+      flex: 1;
+      background: var(--signal-strong);
+      color: #fff;
+    }
+
+    .sb-call {
+      flex: 0 0 5.5rem;
+      background: var(--paper-raised);
+      color: var(--blue);
+    }
+  }
+</style>
+
+<script>
+  // Hide the bar while the intake section is on screen (its own CTA rules there).
+  const bar = document.getElementById('sticky-bar');
+  const start = document.getElementById('start');
+  if (bar && start && 'IntersectionObserver' in window) {
+    new IntersectionObserver(
+      (entries) => {
+        bar.classList.toggle('is-hidden', entries[0].isIntersecting);
+      },
+      { rootMargin: '0px 0px -20% 0px' }
+    ).observe(start);
+  }
+</script>

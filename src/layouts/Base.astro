@@ -1,6 +1,7 @@
 ---
 import { BRAND, SITE_URL } from '../config';
 import Header from '../components/Header.astro';
+import StickyBar from '../components/StickyBar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
@@ -44,5 +45,6 @@ const canonical = new URL(Astro.url.pathname, SITE_URL).href;
       <slot />
     </main>
     <Footer />
+    <StickyBar />
   </body>
 </html>

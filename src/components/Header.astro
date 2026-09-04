@@ -1,5 +1,5 @@
 ---
-import { BRAND, NAV, NAV_CTA } from '../config';
+import { BRAND, CONTACT, NAV, NAV_CTA } from '../config';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -38,6 +38,15 @@ const isActive = (href: string) =>
               </a>
             </li>
           ))
+        }
+        {
+          !CONTACT.phone.includes('PLACEHOLDER') && (
+            <li>
+              <a href={`tel:${CONTACT.phone}`} class="site-nav__phone">
+                {CONTACT.phone}
+              </a>
+            </li>
+          )
         }
         <li class="site-nav__cta">
           <a href={NAV_CTA.href} class="btn btn--primary">{NAV_CTA.label}</a>
@@ -109,6 +118,11 @@ const isActive = (href: string) =>
     text-decoration-color: var(--signal);
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
+  }
+
+  .site-nav__phone {
+    font-weight: 700 !important;
+    color: var(--blue) !important;
   }
 
   .nav-toggle {
