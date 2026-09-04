@@ -5,7 +5,6 @@ import {
   ADD_ONS,
   CARE_PLANS,
   CLEARED_SERVICES,
-  CUSTOM_RETAINER,
   LIVE_SERVICES,
   serviceHref,
 } from '../../config';
@@ -32,9 +31,9 @@ import {
         <div class="card">
           <h2 class="svc-h">Free website</h2>
           <p class="muted">
-            The pages your business needs, copy written from your intake,
-            mobile-first, click-to-call, live on your own domain. One
-            revision round included, and bug fixes are free for 60 days
+            Up to five pages that earn their place, copy written from your
+            intake, mobile-first, click-to-call, live on your own domain.
+            One revision round included, and bug fixes are free for 60 days
             after launch. You own all of it.
           </p>
           <p style="margin-top: var(--space-3);">
@@ -85,12 +84,15 @@ import {
         </div>
 
         <div class="card">
-          <h2 class="svc-h">Custom builds &amp; web apps</h2>
+          <h2 class="svc-h">Custom builds &amp; stores</h2>
           <p class="muted">
-            Booking flows, quote builders, client portals, internal tools —
-            custom software scoped in writing and quoted per project. A
-            written spec and a fixed number before any money changes hands,
-            and you own the code from day one.
+            Online stores with checkout, booking flows, quote builders,
+            portals, internal tools — scoped in writing and quoted per
+            project. A written spec and a fixed number before any money
+            changes hands, and you own the code from day one. If we set up
+            online payments for you, they run through your own Stripe
+            account and our platform share of each transaction is disclosed
+            in writing before anything goes live.
           </p>
           <p style="margin-top: var(--space-3);">
             <a href="/contact/">Ask about a custom build →</a>
@@ -104,14 +106,14 @@ import {
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Care plans</span>
-        <h2>After launch: three plans, plain quantities.</h2>
+        <h2>After launch: two plans, plain quantities.</h2>
         <p class="muted">
           Every plan is optional and cancels anytime — if you leave, the
           full handoff into your accounts happens within 5 business days at
           no charge. You own everything throughout.
         </p>
       </div>
-      <div class="grid grid--3">
+      <div class="grid grid--2">
         {
           CARE_PLANS.map((plan) => (
             <div class="card plan-card">
@@ -127,10 +129,6 @@ import {
           ))
         }
       </div>
-      <p class="muted" style="margin-top: var(--space-4);">
-        <strong>{CUSTOM_RETAINER.name}</strong> — {CUSTOM_RETAINER.price}.
-        {CUSTOM_RETAINER.blurb}
-      </p>
       <p class="muted" style="margin-top: var(--space-3); font-size: var(--text-sm);">
         An "edit" is one request email covering up to three small changes
         to existing pages. Unused edits don't roll over — plans are
@@ -164,11 +162,6 @@ import {
           }
         </tbody>
       </table>
-      <p class="muted" style="margin-top: var(--space-4); font-size: var(--text-sm);">
-        Getting paid online — invoice payments and deposits through your
-        own Stripe account — can be added to any plan. Ask us; fees are
-        disclosed in writing before anything goes live.
-      </p>
     </div>
   </section>
 

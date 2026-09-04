@@ -16,11 +16,12 @@ ______________________________.
 ## What we're agreeing to
 
 1. **The build is free.** We design, write, and build a website for your
-   business at no charge: the pages your business needs, copy written
-   from your intake answers, mobile-first layout, click-to-call, a
-   contact form that reaches your inbox, on-site functionality where it
-   helps (quote forms, booking buttons), basic on-page SEO, and a Google
-   Business Profile connection. First working draft within five business
+   business at no charge: up to five pages that earn their place (Home,
+   Services, About, Contact, plus one), copy written from your intake
+   answers, mobile-first layout, click-to-call, a contact form that
+   reaches your inbox, quote forms / booking links / service-area maps
+   where they help, basic on-page SEO, and a Google Business Profile
+   connection. First working draft within five business
    days of your confirmed slot (we confirm within one business day of
    intake; if capacity is full you'll know at confirmation).
 
@@ -58,8 +59,9 @@ ______________________________.
 9. **Either of us can walk away before launch.** If we're not a fit, you
    keep whatever has been delivered to you and owe nothing.
 
-**Not included free** (quoted plainly if you want them): standalone web
-apps (booking systems, portals, internal tools), ongoing edits and new
+**Not included free** (quoted plainly if you want them): online stores
+(products, checkout, payments), standalone web apps (booking systems,
+portals, internal tools), pages beyond five, ongoing edits and new
 content, photography and logo design, ongoing growth services, and
 payment processing (Stripe's fees plus a disclosed platform fee, per the
 care-plan agreement).

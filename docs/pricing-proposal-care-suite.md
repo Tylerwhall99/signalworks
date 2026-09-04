@@ -156,3 +156,20 @@ attorney):
 - UNIT ECONOMICS (open): track hours on the first 3 builds; assumed
   conversion is undocumented — set a real target (e.g. 20% to Care $99)
   and compare against measured build-hours before scaling outreach.
+
+
+## ROLLBACK (2026-08-31, per site-repair-prompt.md — this supersedes the suite above)
+
+The locked model: TWO tiers — **Hosted $29/mo** (hosting, uptime,
+security updates) and **Care Plan $150/mo** (everything in Hosted + 3
+content edits/mo + monthly report). No $99 tier, no Front Office, no
+custom-retainer line on the site. Five-page cap restored on the free
+build; free scope for functionality = quote forms, booking links,
+service-area maps exactly. Stores are never free — brochure site free
+for store brands, the store itself quoted. Rev-share disclosure removed
+from the money FAQ; it lives where paid store builds are described
+(services page + terms + agreements). Fee-ladder remap for two tiers:
+no plan 0.75% / Hosted 0.50% / Care Plan 0.25% (was keyed to the dead
+tiers; Tyler to confirm before the first payments client).
+Deliverability add-on repriced $99 → $100 so the "no $99 anywhere"
+acceptance grep can pass without a false positive.

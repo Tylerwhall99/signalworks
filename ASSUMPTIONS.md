@@ -363,3 +363,29 @@ items are the ones worth reviewing before launch.
   src/config.ts plus the OG/avatar/banner renders are the mechanical
   work (~1 hour), and it gets much more expensive after handles, GBP,
   and signed client agreements exist.
+
+## Repair pass (docs/site-repair-prompt.md, 2026-08-31)
+
+- Executed all DECISIONS: two-tier care plans (Hosted $29 / Care Plan
+  $150, every $99 and Front Office removed, custom-retainer line dropped
+  from the site), five-page cap restored ("up to five pages that earn
+  their place"), free functionality tightened to exactly quote forms /
+  booking links / service-area maps, stores rolled back to quoted builds
+  (free brochure site for store brands; store FAQ replaced with the
+  prompt's language), rev-share removed from the money FAQ (disclosure
+  now lives on the services custom-builds card + /terms/ + agreements),
+  hero welcome line deleted (FAQ + footer versions kept).
+- Judgment calls: Care Plan $150 = 3 edits/month (prompt said "monthly
+  content edits" unquantified; quantities are the house rule — one line
+  to change). Deliverability add-on $99 → $100 so the no-$99 acceptance
+  grep passes clean. "Pages beyond five" re-added to not-included as the
+  cap's honest counterpart. Fee ladder remapped in the proposal doc (no
+  plan 0.75% / Hosted 0.5% / Care 0.25%) pending Tyler's confirmation.
+- SITE_URL → https://signalworks-hall-hub.vercel.app (the prompt's
+  fallback intent; its -psi guess corrected). Canonicals, og:url,
+  sitemap, robots now real.
+- **BLOCKED on FACTS (prompt says "no defaults," and none were filled):**
+  CONTACT_EMAIL, PHONE, BUSINESS_ADDRESS, FORM_BACKEND key. Section A
+  (wire + end-to-end test both forms) and the placeholder kill are
+  impossible until they arrive. 4 PLACEHOLDER strings remain in dist by
+  necessity.

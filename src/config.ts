@@ -8,8 +8,8 @@
  * real numbers exist — FREE_BUILD.capacityPerMonth and CLEARED_SERVICES.
  */
 
-// Real domain goes here before launch. Used for canonical URLs, sitemap, and structured data.
-export const SITE_URL = 'https://signalworks.example';
+// Vercel preview URL until the real domain lands; swap once, everything follows.
+export const SITE_URL = 'https://signalworks-hall-hub.vercel.app';
 
 export const BRAND = {
   name: 'Signalworks',
@@ -67,20 +67,21 @@ export const FREE_BUILD = {
   bugFixWindowDays: 60,
   capacityPerMonth: null as number | null,
   includes: [
-    'The pages your business actually needs — Home, Services, About, Contact, and whatever else earns its place',
+    'Home, Services, About, Contact — up to five pages that earn their place',
     'Copy written from your intake answers — you talk, we write',
     'Mobile-first layout, tested on real phones',
     'Click-to-call, placed where thumbs go',
     'A contact form that reaches a real inbox',
-    'Custom functionality where it helps — quote forms, booking buttons, service-area maps (sized to the draft window; bigger asks get a written timeline first)',
+    'Quote forms, booking links, and service-area maps — anything beyond that is quoted first',
     'Basic on-page SEO hygiene: titles, descriptions, speed',
     'Google Business Profile connection',
     'One revision round — the "change it" pass for structure, layout, and what the site does',
     'Bug fixes free for 60 days after launch — if we broke it, we fix it, and it never uses your revision',
   ],
   notIncludedFree: [
+    'Online stores — products, checkout, payments — a quoted build with a written price and timeline first',
     'Standalone web apps — booking systems, portals, internal tools — quoted per project',
-    'Ongoing edits and new content — quoted plainly (bug fixes in the first 60 days are free)',
+    'Pages beyond five, ongoing edits, and new content — quoted plainly (bug fixes in the first 60 days are free)',
     'Hosting and maintenance — optional care plans from $29/month, or run it yourself for roughly $0–20/month',
     'Photography and logo design',
     'Ongoing growth services — ask us',
@@ -104,14 +105,13 @@ export interface CarePlan {
  */
 export const CARE_PLANS: CarePlan[] = [
   {
-    id: 'lights-on',
-    name: 'Lights On',
+    id: 'hosted',
+    name: 'Hosted',
     price: '$29/month',
     blurb: 'Your site runs itself; we keep the lights on.',
     includes: [
       'Hosting, SSL, daily backups, uptime monitoring',
-      'Software updates',
-      'Bug coverage for what we built, extended while you subscribe',
+      'Security and software updates',
       'Email support — replies within 2 business days',
       'No edits included; add them one-off, always quoted first',
     ],
@@ -119,36 +119,17 @@ export const CARE_PLANS: CarePlan[] = [
   {
     id: 'care',
     name: 'Care Plan',
-    price: '$99/month',
+    price: '$150/month',
     blurb: 'For owners who never want to think about the website again.',
     includes: [
-      'Everything in Lights On',
-      '2 content edits per month, done within 2 business days',
+      'Everything in Hosted',
+      '3 content edits per month, done within 2 business days',
       'Support replies within 1 business day',
-      'A monthly one-paragraph site note: uptime, form counts, anything needing attention',
-    ],
-  },
-  {
-    id: 'front-office',
-    name: 'Front Office',
-    price: '$249/month',
-    blurb: 'For businesses whose site is a workhorse.',
-    includes: [
-      'Everything in Care Plan',
-      '6 content edits per month; urgent edits same business day',
-      'Up to 2 hours/month of small feature work',
-      'Priority queue on everything',
-      'Quarterly tune-up: speed check, content review call, Google Business Profile refresh',
+      'A monthly report: uptime, form submissions, what changed',
     ],
   },
 ];
 
-export const CUSTOM_RETAINER = {
-  name: 'Custom retainer',
-  price: 'quoted, from $500/month',
-  blurb:
-    'Multi-location companies, web-app maintenance, or varying monthly scope — scoped in writing per company, with a monthly plain-English statement of exactly what was done.',
-} as const;
 
 export interface AddOn {
   name: string;
@@ -160,7 +141,7 @@ export const ADD_ONS: AddOn[] = [
   { name: 'Extra content edit', price: '$25 (5-pack $100)' },
   { name: 'New page on an existing site', price: '$150 flat' },
   { name: 'Campaign / landing page', price: '$250 flat' },
-  { name: 'Email deliverability setup (one-time)', price: '$99' },
+  { name: 'Email deliverability setup (one-time)', price: '$100' },
 ];
 
 /** Cheapest plan, for "from $X/month" copy — derived, never hardcode. */

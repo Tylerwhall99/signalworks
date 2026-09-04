@@ -12,20 +12,16 @@ ______________________________.
 **Start date:** ____________
 
 **Plan** (check one), billed monthly, cancel anytime:
-- [ ] **Lights On — $29/month** — hosting, SSL, daily backups, uptime
-  monitoring, software updates, extended bug coverage, email support
+- [ ] **Hosted — $29/month** — hosting, SSL, daily backups, uptime
+  monitoring, security and software updates, email support
   (2-business-day replies). No edits included.
-- [ ] **Care Plan — $99/month** — everything in Lights On, plus 2 content
+- [ ] **Care Plan — $150/month** — everything in Hosted, plus 3 content
   edits/month (2-business-day turnaround), 1-business-day support
-  replies, and a monthly site note.
-- [ ] **Front Office — $249/month** — everything in Care Plan, plus 6
-  edits/month, same-business-day urgent edits, up to 2 hours/month of
-  small feature work, priority queue, quarterly tune-up.
-- [ ] **Custom retainer — $______/month** per the attached written scope.
+  replies, and a monthly report.
 
-Add-ons (any plan, quoted in writing before work starts): extra edit $25
-(5-pack $100) · new page $150 · campaign/landing page $250 · email
-deliverability setup $99 one-time.
+Add-ons (either plan, quoted in writing before work starts): extra edit
+$25 (5-pack $100) · new page $150 · campaign/landing page $250 · email
+deliverability setup $100 one-time.
 
 **Payments (optional):** if you ask us to set up online payments (invoice
 payments, deposits, checkout), they run through your own Stripe account,
