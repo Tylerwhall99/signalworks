@@ -12,7 +12,7 @@ Your website: **[domain]** — live since [date], built by The Free Website Co.
 | --- | --- | --- |
 | Domain | [registrar] | your account ([email]) |
 | Website code | [GitHub repo / zip delivered] | your account |
-| Hosting | [Cloudflare Pages / other] | your account |
+| Hosting | [[hosting provider]] | your account |
 | Contact form | [form service] | your account |
 | Google Business Profile | business.google.com | your account |
 
