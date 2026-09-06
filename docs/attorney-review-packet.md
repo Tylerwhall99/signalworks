@@ -1,6 +1,6 @@
 # Attorney review packet — The Free Website Co.
 
-Prepared 2026-09-06 for a one-sitting review (target: 30–45 minutes of attorney time).
+Prepared 2026-09-06 for a one-sitting review (target: 45–60 minutes of attorney time). Questions 16–21 concern the business name and were added after a research pass; if time is short, they are the ones worth the most.
 
 ## What the business is, in four lines
 
@@ -45,9 +45,18 @@ Prepared 2026-09-06 for a one-sitting review (target: 30–45 minutes of attorne
 13. The intake form's SMS-consent checkbox (unchecked by default; the business will text only with consent): is the wording adequate under the TCPA and California law for a small business doing 10DLC-registered texting?
 14. /privacy/ was drafted to CalOPPA; the owner believes CCPA thresholds do not apply. Confirm, and flag anything missing for a site whose forms collect name, email, phone, and business details from Californians.
 
+**The name (added 2026-09-06, after a research pass)**
+
+15. "The Free Website Co." is composed entirely of ordinary words describing the service. Our reading of USPTO's own materials puts it at the descriptive-to-generic end of the spectrum, and every other US trademark we found in the "FREE WEBSITE ___" family is dead. Is this name registrable on the Principal Register at all? If only on the Supplemental Register, or only with a Section 2(f) showing years from now, please say so plainly — the owner would rather know now than pay to find out.
+16. **THE FREE WEBSITE GUYS**, US serial **97059883**, is a live registered mark in **Class 042** owned by The Free Website Guys LLC, a US company running the same business model (free website builds monetized on follow-on paid work, trading since 2020). Does "The Free Website Co." create a likelihood of confusion with it? What is the realistic exposure — a demand letter, an opposition if we ever file, or nothing?
+17. **freewebsitecompany.com** is a live US-facing site launched around May 2026 with a near-identical offer, trading visibly as "Chroma Marketing Company." Does its existence change anything for us in either direction?
+18. **The domain has a prior identity.** freewebsiteco.com previously hosted a business trading as "The Free Website Company" (archived captures confirm the title "The Free Website Company | #1 Web design and development company" as late as August/October 2025; the prior operator appears to have been based in India). The registration lapsed and the owner re-registered it on 2026-09-06. Does inheriting a domain whose prior occupant used a near-identical name in the same industry create any residual risk — a claim by that party, or an argument that our use is not distinct?
+19. **An Australian sole trader** (Callum Ray Gracie, ABN 70 955 241 477, Sunshine Coast QLD) holds an Australian *business name* registration for "THE FREE WEBSITE CO" from 1 Nov 2025 and operates freewebsiteco.com.au. We found no trademark registration for him in Australia or anywhere. We believe this is irrelevant to a US business because trademark rights are territorial — please confirm, and flag anything that would change it (for example if we later sell into Australia, or if the business is sold to an international buyer).
+20. **Given all of the above, the plan is: keep the name, never file for it, never spend money defending it, and build the sellable asset elsewhere** — the domain, the Google Business Profile and reviews, the recurring contracts, the documented process, and a separate distinctive operating brand for paid services. Is that sound, and is there anything about it that would trouble a buyer during diligence?
+
 **Insurance (30-second opinion)**
 
-15. The owner is quoting general liability and professional/E&O coverage. Do these agreements' promises (60-day bug window, 5-day handoff, response-time commitments) raise anything a standard tech E&O policy would exclude?
+21. The owner is quoting general liability and professional/E&O coverage. Do these agreements' promises (60-day bug window, 5-day handoff, response-time commitments) raise anything a standard tech E&O policy would exclude?
 
 ## What the owner would like back
 
