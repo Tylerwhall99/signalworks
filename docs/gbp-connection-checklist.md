@@ -18,6 +18,17 @@
     their own Google account (10 minutes, screen-share offered);
     verification (postcard/phone/video) can take days — start early.
 
+- [ ] **Service-area business or storefront?** Most home-services clients
+  go to the customer and work from home. If so: business type is
+  **service-area business**, and the street address must be **cleared from
+  the profile** — Google's own instruction for businesses run from a
+  residential address. A visible home address on a contractor's profile is
+  a real-world safety and accuracy problem, not a formatting nit.
+- [ ] **Service areas** → the same towns listed on the site, so the profile
+  and the site agree. Google caps this at **20 cities, postal codes, or
+  counties, and rejects states and countries**; the whole area should sit
+  within about two hours' drive.
+
 ## At launch (30 minutes, with the client's login on a call)
 
 - [ ] **Website field** → the new domain.

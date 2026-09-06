@@ -53,14 +53,29 @@ Site stays on your hosting; you keep the repo; they still own the domain. **This
 - "The build is free. Running any website costs hosting: roughly $0–20 a month if you run it yourself, or a care plan from $29 a month if we handle it."
 - "If you ever leave the Care Plan, we hand everything over within 5 business days at no charge."
 
-## Templates this runbook still needs
+## Templates — all in the starter
 
-Flagged by the 2026-09-06 dry run; write each one the first time you need it, then keep it:
+Written 2026-09-06 after the dry run flagged them as missing. They live in
+`~/client-sites/_starter/` so they travel with every build:
 
-- Close-out email ("site is live, everything is in your name, here's what you have")
-- Image-license note that ships with the handed-over assets
-- Bug-window re-invite email (the 30-second access steps, sent inside the 60 days)
-- Care-plan owner's guide and care-plan handoff checklist
+| Template | File |
+| --- | --- |
+| Draft-review email (opens the revision round) | `docs/draft-review-email.md` |
+| Close-out email ("site is live, everything is in your name") | `docs/close-out-email.md` |
+| Image-license note shipped with the assets | `docs/image-license-note.md` |
+| Bug-window re-invite steps (inside the 60 days) | `docs/re-invite-steps.md` |
+| Intake questions | `docs/intake-questions.md` (mirrors this repo's copy) |
+| Care-plan owner's guide | `OWNERS-GUIDE-care-plan.md` |
+| Care-plan handoff checklist | `HANDOFF-CHECKLIST-care-plan.md` |
+
+## The starter
+
+`~/client-sites/_starter` is the build template: Astro 5 pinned, one
+`src/config.ts` holding every fact and every line of copy, a contact form with
+honeypot and a plain disabled state, a privacy page generated from config, a
+go-live guard that fails the build if anything is still a placeholder, and
+`scripts/check.sh` (placeholders, dead links, banned words, invented proof,
+colour contrast). Read `STARTER.md` before the next build.
 
 ## Gotchas
 

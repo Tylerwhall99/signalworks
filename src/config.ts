@@ -94,11 +94,12 @@ export const FREE_BUILD = {
   capacityPerMonth: null as number | null,
   includes: [
     'Home, Services, About, Contact — up to five pages that earn their place',
+    'A privacy policy page, written to match your site — included, and it does not count toward your five',
     'Copy written from your intake answers — you talk, we write',
     'Mobile-first layout, tested on real phones',
     'Click-to-call, placed where thumbs go',
     'A contact form that reaches a real inbox',
-    'Quote forms, booking links, and service-area maps — anything beyond that is quoted first',
+    'Quote forms, booking links, and a service-area map — anything beyond that is quoted first',
     'Basic on-page SEO hygiene: titles, descriptions, speed',
     'Google Business Profile connection',
     'One revision round — the "change it" pass for structure, layout, and what the site does',

@@ -25,10 +25,12 @@ recovery email is yours.
   does nothing): email [Free Website Co. email]. If we built it and it broke,
   the fix is free for 60 days after launch — after that, we'll tell you
   plainly what it costs before touching anything.
-- **Words, hours, prices, photos need updating:** [Care-plan clients:
-  email what changed; it's done within 2 business days.] [Walk-away
-  clients: email us for a small written quote, or edit yourself — the
-  walkthrough video shows how.]
+- **Words, hours, prices, photos need updating:** [Care Plan ($150/mo)
+  clients: email what changed; it's done within 2 business days, 3 edits
+  a month included.] [Hosted ($29/mo) clients: no edits are included —
+  email what changed and you'll get a written price first, usually $25.]
+  [Walk-away clients: email us for a small written quote, or edit
+  yourself — the walkthrough video shows how.]
 - **You want something new** (a page, a feature): email us; you'll get a
   plain written quote and can always say no.
 
