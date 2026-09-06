@@ -120,3 +120,78 @@ Every one of these is a decision a real client should make instead. They are lis
 3. **Hosting has to be settled first** — Vercel Hobby forbids commercial use, and that applies to client sites too. See `docs/hosting-lane-decision.md`.
 4. **The agreements have to come back from the attorney** before any client signs. See `docs/attorney-review-packet.md`.
 
+
+---
+
+## The fix pass — what got done
+
+After the audit, a fix pass applied **33 changes** and deliberately left **9** alone. The demo redeployed clean: six pages returning 200, five security headers, noindex and the demo badge intact.
+
+### Applied
+
+- Launch flip reduced to two edits in one file: astro.config.mjs now imports SITE_URL from src/config.ts, and public/robots.txt was replaced by src/pages/robots.txt.ts which emits Disallow when DEMO is true and Allow + the real sitemap URL otherwise. Verified by a scratch build with DEMO=false.
+- Go-live guard added at the bottom of src/config.ts: throws when DEMO is false and the form endpoint/key, licence, email, BUILDER contact details, or SITE_URL (still vercel.app/pages.dev) are unset, plus any leftover {{TOKEN}} in the content blocks. It fires from astro.config.mjs, so the build dies before generating anything — verified: 'Not ready to go live (DEMO is false): CONTACT_FORM.endpoint / accessKey, BUSINESS.license, BUSINESS.email, SITE_URL (still a vercel.app address), BUILDER.email, BUILDER.phone'.
+- filled() replaces startsWith('[') everywhere: rejects empty strings, [bracketed placeholders] and unreplaced {{TOKENS}}. Kills the mailto:"", '<p>License </p>' and "email":"" cases the audit reproduced.
+- 'Licensed' and 'insured' now render independently; BUSINESS.insured is actually read, defaults to false, and intake asks for it in writing (question 1.10). A licensed-but-uninsured client can no longer get an invented claim.
+- WCAG AA contrast fixed: ink text on orange buttons (5.05:1), current nav link is navy with a 3px orange underline (10:1), band body #6b4405 (5.93:1), hover goes lighter to yellow rather than darker. scripts/contrast.mjs checks 21 pairs and fails the build.
+- src/pages/privacy.astro added, generated from config (business name, form vendor, analytics vendor, cookies, contact route), linked in the footer and in a one-line note under the form. Live at /privacy/ (200).
+- JSON-LD always emits address (addressLocality/addressRegion/addressCountry, street+postal only when real), plus image, sameAs from a new LINKS config, and optional priceRange. Fixes the Rich Results error for every service-area client.
+- Contact-form fallback rewritten: the notice renders first followed by one Call button, dead fields removed entirely, wrapper is a <section aria-labelledby> instead of a div with aria-label.
+- Call-back promise unified into BUSINESS.callback ('We call back within one business day.'), used in all three places. No more 'we'll call you back today' against Mon-Sat hours.
+- All headlines, subheads and paragraphs moved out of the five .astro files into a COPY block in config; added BUSINESS.region, BUSINESS.trade and BUSINESS.schemaType. Client two edits config only.
+- scripts/og.mjs committed and wired as prebuild (og.png + apple-touch-icon.png + favicon-32.png, and seeds a default favicon.svg in the brand palette when none exists). scripts/check.sh + links.mjs + contrast.mjs committed and wired as postbuild — a failing check fails the build.
+- check.sh gained a title (<=60 chars) and meta-description (<=160 chars) check, which immediately caught an over-long home description I had just introduced. Also fixes the SEO nit generically rather than per-client.
+- Portability: .node-version ('22'), vercel.json (trailingSlash + X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options, CSP frame-ancestors), public/_headers with the identical list for Cloudflare, and .gitignore changed to keep .env.example. All five headers verified on the live response.
+- Config slots added for the features the offer promises but the code lacked: BOOKING.url, SERVICE_AREA_MAP (list/svg/embed), ANALYTICS (plausible + GA4, loads only when set and DEMO is false), LINKS (google/yelp/facebook, rendered in the footer and as sameAs).
+- Hand-traced public/service-area.svg with the eight towns shipped for this build — local file, no external request, no privacy-page consequence. Starter defaults to 'list' mode.
+- Favicon set extended (apple-touch-icon 180px + favicon-32.png, both <link>ed); footer copyright year corrected client-side by a two-line inline script; footer column headings changed from h3 to h2 so the 404 heading order is valid; canonical tag skipped when noSchema is set.
+- Draft-review stage inserted into HANDOFF-CHECKLIST.md between build and launch: preview URL + CLIENT-TO-CONFIRM.md, client replies with one consolidated list (that IS the revision round), apply, written approval saved. docs/draft-review-email.md written.
+- CLIENT-TO-CONFIRM.md written for this build, listing every sentence not taken verbatim from intake — the trust claims, the six service detail paragraphs, the whole About page — plus the facts still needed and the things deliberately left off.
+- OWNERS-GUIDE.md rewritten: the 'edit src/config.ts' bullet became 'email us what changed, written price the same day, usually $25-$150'; self-editing moved to an optional appendix with five numbered GitHub-web-editor steps; the access-key-is-public explanation added; our details are {{tokens}} the build enforces.
+- OWNERS-GUIDE-care-plan.md and HANDOFF-CHECKLIST-care-plan.md written: site stays on our Pro team, per-plan edit terms (Hosted includes no edits, Care Plan 3/month), what 'daily backups' and 'uptime monitoring' actually consist of, a 'To cancel' section, and 'the walk-away checklist is the cancellation procedure'.
+- Form wiring moved out of README.md into HANDOFF-CHECKLIST.md as our step, done on a screen-share under the client's business email, with the Web3Forms one-address-per-key limitation and the inbox-forwarding-rule workaround written down.
+- DOMAIN-INSTRUCTIONS.md: hard-coded Vercel A record 76.76.21.21 and the CNAME table deleted in favour of 'we send the exact two records at launch'; added the Porkbun-plus-Cloudflare-Pages CNAME sentence; DNS-collaborator advice limited to Cloudflare.
+- docs/intake-questions.md written from scratch (the file the runbook referenced but which never existed) — every question maps to a config field, with required yes/no per trust claim and per hero promise, and the licence/insurance questions marked required.
+- docs/close-out-email.md, docs/re-invite-steps.md and docs/image-license-note.md written, all tokenised from BUILDER. HANDOFF-CHECKLIST.md 'Hand over' now names the client's 1Password vault and says to share it then remove ourselves.
+- check.sh fails the build when DEMO is false if any client-facing document still has an unfilled [placeholder] or {{TOKEN}} (markdown links, checkboxes and code spans stripped first so they don't false-positive); docs/ templates are listed for the record but never fail. Verified on a simulated real launch: it correctly caught {{OUR_EMAIL}}, {{OUR_PHONE}} and {{WALKTHROUGH_URL}}.
+- GBP section gained the two service-area-business lines: business type -> service-area business with the address cleared, and service areas -> the same eight cities as config. Also added: save the profile URL into LINKS.google.
+- HANDOFF-CHECKLIST.md 'Before launch day' gained a real-device step (one real iPhone and one real Android over cellular: every page, every tel: link, form submit, sticky call bar clearing the home indicator, anchor jumps) and 'record the 5-minute Loom walkthrough and link it in the guide'.
+- Domain step gained 'set the custom domain as primary and redirect the *.vercel.app hostname to it (Cloudflare Pages: leave pages.dev), then delete stale duplicate deployments'.
+- The signed-terms step was rewritten from 'simulated as signed' to a stated pre-client blocker naming the DRAFT-for-attorney-review agreement, the DocuSign template, and where the signed copy lives (1Password vault entry + Drive folder).
+- ~/client-sites/_starter created as its own git repo — the task's second deliverable. Every client-specific value is a {{TOKEN}}; STARTER.md documents every token, the optional features, what runs on each build, which document goes to whom and when, and the seven process gaps that still block a real client.
+- Starter verified by a second fake build (Evergreen Landscaping, deliberately a different trade), about four minutes, built clean. It earned its keep: it caught PAGES hard-coding the word 'HVAC' (title came out 'Evergreen Landscaping — Fresno HVAC') and the JSON-LD @type fixed at HVACBusiness. Both are now BUSINESS.trade and BUSINESS.schemaType.
+- STARTER-RECOMMENDATION.md marked superseded, pointing at the built starter, with a note that where the two disagree the starter is right.
+- Deployed with vercel --yes --prod and verified live: all six pages 200, all five security headers present, robots.txt still Disallow, noindex and demo badge intact, privacy page live, JSON-LD carrying addressLocality. Both repos committed clean.
+
+### Deliberately not done, and why
+
+This list matters as much as the one above. Each of these was left open rather than faked.
+
+- BLOCKER LEFT OPEN — the contact form still has no Web3Forms key and has never delivered a message. Creating the account requires an account signup and a password, which I will not do on Tyler's behalf, and there is no throwaway monitoring inbox to point it at. So the POST path (access_key/subject/from_name/redirect hidden fields, botcheck honeypot, /contact/?sent=1) is still untested code. Everything around it is done — the config slots, the fallback, the privacy page naming the vendor, the checklist step with the one-address-per-key workaround — but the 10-minute manual close-out (create key, paste, deploy, submit from a phone, record delivery time and spam check in DRY-RUN-LOG.md) must happen before client one. Logged as pothole 4.
+- Not pushed to GitHub. No gh CLI is installed and no credentials are available. More to the point, the real gap is a decision rather than a command: personal account vs a freewebsiteco-clients org is an open item in LAUNCH-CHECKLIST §3, and creating the org under Tyler's account would pre-empt his call. The naming convention (org, named after the domain, business-slug before the domain exists, renamed at launch) is now written into HANDOFF-CHECKLIST.md. Rule zero is still false for this build — logged as pothole 6.
+- No edits to anything under ~/signalworks — explicitly out of bounds for this task. Three changes are queued there for Tyler and recorded in the log: the FREE_BUILD.includes service-area-map wording, the two service-area-business lines for gbp-connection-checklist.md, and the wrong care-plan bracket in owners-guide-template.md (it promises edits within 2 business days, which is the $150 Care Plan; the $29 Hosted plan includes none).
+- No real-device testing — no phone available to me. Rather than claim it, it is now a required line in the pre-launch list naming the specific iOS risks (backdrop-filter on the call bar, env(safe-area-inset-bottom), tel: links, anchor jumps under the sticky header).
+- Hosting decision (Vercel Pro ~$20/mo vs Cloudflare Pages) not made — it costs money and is Tyler's call. Logged as a blocker with the Hobby-is-non-commercial reason, not worked around.
+- Attorney review of the free-build agreement and the new privacy-page template not obtained; entity decision not made. Both are LAUNCH-CHECKLIST §0/§2 and both block client one. The dry run now surfaces the agreement as unsignable rather than simulating past it, which is what the audit asked for.
+- Care-plan operational choices (which uptime monitor, where backup bundles live, what generates the monthly report) documented as named open decisions in HANDOFF-CHECKLIST-care-plan.md rather than invented. These are things the $29 and $150 plans are sold on, so guessing them would have been worse than flagging them.
+- No walkthrough video recorded. Instead the build now fails while {{WALKTHROUGH_URL}} is unfilled, and recording it is a checklist line — so the gap is enforced rather than silently shipped.
+- Old duplicate production deployments on the Vercel project not pruned, and no custom domain exists to make primary. The checklist covers both for a real launch; I also avoided a redundant extra deploy at the end, since the last two commits were markdown only and the live site already matches HEAD's dist.
+
+## The starter now exists
+
+`~/client-sites/_starter` is its own git repo and the second deliverable of this exercise. Every client-specific value is a `{{TOKEN}}`; `STARTER.md` documents all of them. It ships:
+
+- One `src/config.ts` holding every fact **and every line of copy**, so a client build never means editing a page file.
+- A go-live guard that throws during the build if the form key, licence, contact details, or site URL are still unset when `DEMO = false`.
+- `scripts/check.sh`: placeholders, dead links, banned words, invented-proof patterns, colour contrast, and title/description lengths. It also fails the build if a client-facing *document* still has an unfilled token.
+- A privacy page generated from config, a contact form with a plain disabled state, and WCAG AA contrast on every button.
+- The handoff templates the runbook was missing: draft-review email, close-out email, image-license note, bug-window re-invite steps, and care-plan variants of the owner's guide and checklist.
+
+**It was tested by building a second fake client** (Evergreen Landscaping, a different trade on purpose) in about four minutes. That build caught a hardcoded page title the starter had inherited, which is the starter earning its keep on its first use.
+
+## Corrections it queued for this repo, now applied
+
+- The owner's guide told **every** care-plan client that edits are done within two business days. That is the $150 Care Plan. The $29 Hosted plan includes no edits at all, so a Hosted client would have been promised something they had not bought. Now split by plan.
+- The Google Business Profile checklist had no service-area-business path, even though most home-services clients work from home. It now says to clear the street address and cap service areas at 20 entries.
+- The public offer now names the privacy page and says it does not count toward the five.
+
