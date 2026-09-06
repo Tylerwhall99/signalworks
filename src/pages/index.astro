@@ -19,8 +19,7 @@ import {
   FREE_BUILD,
   NAV,
   NAV_CTA,
-  SITE_URL,
-} from '../config';
+  SITE_URL, CONTACT_READY } from '../config';
 import Footer from '../components/Footer.astro';
 import StickyBar from '../components/StickyBar.astro';
 import StructuredData from '../components/StructuredData.astro';
@@ -796,9 +795,18 @@ const STEPS = [
               {
                 !hasEndpoint && (
                   <p class="muted intake-fallback">
-                    Intake opens shortly. Today, email
-                    <a href={`mailto:${CONTACT.email}`}> {CONTACT.email}</a>
-                    with these answers and we’ll take it from there.
+                    {CONTACT_READY.email ? (
+                      <>
+                        Intake opens shortly. Today, email
+                        <a href={`mailto:${CONTACT.email}`}> {CONTACT.email}</a>
+                        with these answers and we’ll take it from there.
+                      </>
+                    ) : (
+                      <>
+                        Intake opens in the next few days — we’re moving onto
+                        the new domain. Keep your answers; check back shortly.
+                      </>
+                    )}
                   </p>
                 )
               }
@@ -1025,9 +1033,18 @@ const STEPS = [
               {
                 !hasEndpoint && (
                   <p class="muted intake-fallback">
-                    Intake opens shortly. Today, email
-                    <a href={`mailto:${CONTACT.email}`}> {CONTACT.email}</a>
-                    with these answers and we’ll take it from there.
+                    {CONTACT_READY.email ? (
+                      <>
+                        Intake opens shortly. Today, email
+                        <a href={`mailto:${CONTACT.email}`}> {CONTACT.email}</a>
+                        with these answers and we’ll take it from there.
+                      </>
+                    ) : (
+                      <>
+                        Intake opens in the next few days — we’re moving onto
+                        the new domain. Keep your answers; check back shortly.
+                      </>
+                    )}
                   </p>
                 )
               }

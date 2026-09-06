@@ -38,6 +38,18 @@ export const CONTACT = {
   notifyEmail: '',
 } as const;
 
+/**
+ * Which contact details are real. Anything still reading *_PLACEHOLDER is
+ * hidden sitewide (footer, contact page, structured data, form fallbacks)
+ * so a public visitor never sees scaffolding. Fill CONTACT above and these
+ * flip on their own.
+ */
+export const CONTACT_READY = {
+  email: !CONTACT.email.includes('PLACEHOLDER'),
+  phone: !CONTACT.phone.includes('PLACEHOLDER'),
+  address: !CONTACT.address.includes('PLACEHOLDER'),
+} as const;
+
 /** Optional analytics. Set a Plausible domain to inject the script site-wide. */
 export const ANALYTICS = {
   plausibleDomain: '',

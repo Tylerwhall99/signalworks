@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { ANALYTICS, BRAND, CONTACT } from '../config';
+import { ANALYTICS, BRAND, CONTACT, CONTACT_READY } from '../config';
 ---
 
 <Base
@@ -54,10 +54,16 @@ import { ANALYTICS, BRAND, CONTACT } from '../config';
 
         <h2>Deletion</h2>
         <p>
-          Want your information gone? Email
-          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> and we'll
-          delete your submissions and confirm in writing. No forms, no
-          hoops, no "retention period."
+          Want your information gone?
+          {CONTACT_READY.email ? (
+            <>
+              Email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+            </>
+          ) : (
+            <>Reach us at the address on the <a href="/contact/">contact page</a></>
+          )}
+          {' '}and we'll delete your submissions and confirm in writing. No
+          forms, no hoops, no "retention period."
         </p>
 
         <h2>Questions</h2>

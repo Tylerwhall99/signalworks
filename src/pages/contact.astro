@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { CONTACT } from '../config';
+import { CONTACT, CONTACT_READY } from '../config';
 
 const hasForm = CONTACT.formEndpoint.length > 0;
+const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
 ---
 
 <Base
@@ -25,16 +26,30 @@ const hasForm = CONTACT.formEndpoint.length > 0;
     <div class="container contact-grid">
       <div>
         <h2 class="contact-h">Direct</h2>
-        <ul class="contact-list">
-          <li>
-            <span class="eyebrow" style="margin-bottom: var(--space-1);">Email</span>
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-          </li>
-          <li>
-            <span class="eyebrow" style="margin-bottom: var(--space-1);">Phone</span>
-            <a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a>
-          </li>
-        </ul>
+        {
+          hasDirect ? (
+            <ul class="contact-list">
+              {CONTACT_READY.email && (
+                <li>
+                  <span class="eyebrow" style="margin-bottom: var(--space-1);">Email</span>
+                  <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+                </li>
+              )}
+              {CONTACT_READY.phone && (
+                <li>
+                  <span class="eyebrow" style="margin-bottom: var(--space-1);">Phone</span>
+                  <a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a>
+                </li>
+              )}
+            </ul>
+          ) : (
+            <p class="muted">
+              Direct email and phone are being set up on the new domain and
+              will appear here within days. The <a href="/#start">intake form</a>
+              is the way in meanwhile.
+            </p>
+          )
+        }
         <div class="contact-next">
           <h2 class="contact-h">What happens after you write</h2>
           <ol class="steps">

@@ -3,7 +3,7 @@
  * JSON-LD for the home page. Everything derives from src/config.ts, so
  * updating the offer or contact details there keeps structured data in sync.
  */
-import { BRAND, CARE_PLANS, CONTACT, SITE_URL } from '../config';
+import { BRAND, CARE_PLANS, CONTACT, CONTACT_READY, SITE_URL } from '../config';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -11,11 +11,12 @@ const schema = {
   name: BRAND.name,
   description: BRAND.description,
   url: SITE_URL,
-  email: CONTACT.email,
-  telephone: CONTACT.phone,
+  // Contact fields appear only once they are real (see CONTACT_READY).
+  ...(CONTACT_READY.email ? { email: CONTACT.email } : {}),
+  ...(CONTACT_READY.phone ? { telephone: CONTACT.phone } : {}),
   address: {
     '@type': 'PostalAddress',
-    streetAddress: CONTACT.address,
+    ...(CONTACT_READY.address ? { streetAddress: CONTACT.address } : {}),
     addressLocality: 'Los Angeles',
     addressRegion: 'CA',
     addressCountry: 'US',

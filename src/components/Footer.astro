@@ -1,5 +1,5 @@
 ---
-import { BRAND, CONTACT, NAV } from '../config';
+import { BRAND, CONTACT, CONTACT_READY, NAV } from '../config';
 
 const year = new Date().getFullYear();
 ---
@@ -42,9 +42,21 @@ const year = new Date().getFullYear();
       <div>
         <p class="site-footer__heading">Contact</p>
         <ul>
-          <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
-          <li><a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a></li>
-          <li class="site-footer__address">{CONTACT.address}</li>
+          {CONTACT_READY.email && (
+            <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+          )}
+          {CONTACT_READY.phone && (
+            <li><a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a></li>
+          )}
+          {CONTACT_READY.address && (
+            <li class="site-footer__address">{CONTACT.address}</li>
+          )}
+          {!CONTACT_READY.email && !CONTACT_READY.phone && (
+            <li class="site-footer__address">
+              Email and phone are being set up on the new domain. The
+              <a href="/#start">intake form</a> is the way in for now.
+            </li>
+          )}
         </ul>
       </div>
     </div>
