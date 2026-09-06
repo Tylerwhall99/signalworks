@@ -121,6 +121,23 @@ const STEPS = [
     }
     <script is:inline>
       document.documentElement.classList.add('js');
+      // Film-header menu on phones. Closes on selection so the anchor jump
+      // isn't hidden behind an open panel.
+      document.addEventListener('DOMContentLoaded', function () {
+        var fh = document.getElementById('film-header');
+        var tg = fh && fh.querySelector('.fh-toggle');
+        if (!fh || !tg) return;
+        tg.addEventListener('click', function () {
+          var open = fh.classList.toggle('is-open');
+          tg.setAttribute('aria-expanded', String(open));
+        });
+        fh.querySelectorAll('#film-nav a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            fh.classList.remove('is-open');
+            tg.setAttribute('aria-expanded', 'false');
+          });
+        });
+      });
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.classList.add('film-off');
       }
@@ -143,7 +160,17 @@ const STEPS = [
         <span class="fh-mark" aria-hidden="true"></span>
         {BRAND.short}
       </a>
-      <nav class="fh-nav" aria-label="Main">
+      <button
+        class="fh-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="film-nav"
+        aria-label="Menu"
+      >
+        <span class="fh-bar" aria-hidden="true"></span>
+        <span class="fh-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="fh-nav" id="film-nav" aria-label="Main">
         {
           NAV.filter((n) => n.href !== '/').map((n) => (
             <a href={n.href} class="fh-link">
@@ -1588,6 +1615,22 @@ const STEPS = [
         align-items: center;
         gap: var(--space-4);
       }
+      .fh-toggle {
+        display: none;
+        background: none;
+        border: none;
+        padding: 0.75rem 0.25rem;
+        cursor: pointer;
+        color: var(--chrome);
+      }
+      .fh-bar {
+        display: block;
+        width: 1.5rem;
+        height: 2px;
+        background: currentColor;
+        margin-block: 3px;
+        transition: transform 150ms ease;
+      }
       .fh-link {
         font-weight: 550;
         font-size: var(--text-sm);
@@ -1749,12 +1792,6 @@ const STEPS = [
         0%, 100% { opacity: 0.35; transform: translateY(0); }
         50% { opacity: 1; transform: translateY(6px); }
       }
-      @media (max-width: 21.99rem) {
-        .fh-skip {
-          display: none;
-        }
-      }
-
       @media (prefers-reduced-motion: reduce) {
         .scroll-hint { animation: none; }
       }
@@ -2241,8 +2278,10 @@ const STEPS = [
         .fh-link {
           display: none;
         }
-        /* Longer wordmark since the rename: keep the whole header on one
-           line at phone widths — nothing wraps, the skip link gives way first. */
+        /* Phones: wordmark + hamburger only. The CTA and skip link used to sit
+           beside the (now longer) wordmark and pushed past the right edge —
+           measured 8px of overflow at 375px. Everything else moves into a
+           dropdown so the bar can never overflow at any width. */
         .film-header {
           gap: 0.75rem;
           padding-inline: 1rem;
@@ -2252,20 +2291,54 @@ const STEPS = [
           white-space: nowrap;
           flex-shrink: 0;
         }
+        .fh-toggle {
+          display: block;
+        }
         .fh-nav {
-          gap: 0.75rem;
-          min-width: 0;
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.5rem 1rem 1rem;
+          background: color-mix(in srgb, var(--film-bg) 96%, transparent);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        .film-header.on-light .fh-nav {
+          background: color-mix(in srgb, var(--paper) 96%, transparent);
+          border-bottom-color: var(--line);
+        }
+        .film-header.is-open .fh-nav {
+          display: flex;
+        }
+        .fh-nav .fh-link,
+        .fh-nav .fh-skip,
+        .fh-nav .fh-phone {
+          display: block;
+          padding: 0.85rem 0;
+          font-size: var(--text-base);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .film-header.on-light .fh-nav .fh-link,
+        .film-header.on-light .fh-nav .fh-skip {
+          border-bottom-color: var(--line);
         }
         .fh-cta {
-          white-space: nowrap;
-          padding: 0.55em 0.85em;
-          font-size: var(--text-xs);
-        }
-        .fh-skip {
+          display: block;
+          margin-top: 0.85rem;
+          text-align: center;
           white-space: nowrap;
         }
-        .fh-phone {
-          display: none;
+        .film-header.is-open .fh-bar:first-of-type {
+          transform: translateY(4px) rotate(45deg);
+        }
+        .film-header.is-open .fh-bar:nth-of-type(2) {
+          transform: translateY(-4px) rotate(-45deg);
         }
         /* Centered hero copy must never slide under the fixed header on
            short phone viewports. */
