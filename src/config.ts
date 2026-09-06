@@ -34,6 +34,12 @@ export const CONTACT = {
    * forms render but submissions show a direct-email fallback instead.
    */
   formEndpoint: '',
+  /**
+   * Web3Forms access key. Web3Forms authenticates by a hidden `access_key`
+   * field on every submission, not by the URL, so the endpoint alone is not
+   * enough — both must be set together. `npm run go-live -- --key=…` does it.
+   */
+  accessKey: '',
   /** Where the form endpoint should deliver submissions. DECISION 7 — unfilled. */
   notifyEmail: '',
 } as const;
@@ -44,6 +50,15 @@ export const CONTACT = {
  * so a public visitor never sees scaffolding. Fill CONTACT above and these
  * flip on their own.
  */
+/**
+ * Dial-safe phone for `tel:` links. Browsers mostly cope with "(213) 555-0142"
+ * but some Android dialers and older iOS versions choke on the punctuation,
+ * so links use this and the visible text uses CONTACT.phone.
+ */
+export const PHONE_HREF = CONTACT.phone.includes('PLACEHOLDER')
+  ? ''
+  : `+1${CONTACT.phone.replace(/\D/g, '').replace(/^1/, '')}`;
+
 export const CONTACT_READY = {
   email: !CONTACT.email.includes('PLACEHOLDER'),
   phone: !CONTACT.phone.includes('PLACEHOLDER'),

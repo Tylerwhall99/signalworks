@@ -1,5 +1,5 @@
 ---
-import { BRAND, CONTACT, CONTACT_READY, NAV } from '../config';
+import { BRAND, CONTACT, CONTACT_READY, NAV, PHONE_HREF } from '../config';
 
 const year = new Date().getFullYear();
 ---
@@ -46,7 +46,7 @@ const year = new Date().getFullYear();
             <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
           )}
           {CONTACT_READY.phone && (
-            <li><a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a></li>
+            <li><a href={`tel:${PHONE_HREF}`}>{CONTACT.phone}</a></li>
           )}
           {CONTACT_READY.address && (
             <li class="site-footer__address">{CONTACT.address}</li>

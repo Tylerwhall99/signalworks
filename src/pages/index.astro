@@ -19,7 +19,7 @@ import {
   FREE_BUILD,
   NAV,
   NAV_CTA,
-  SITE_URL, CONTACT_READY, SEARCH_VERIFICATION } from '../config';
+  SITE_URL, CONTACT_READY, SEARCH_VERIFICATION, PHONE_HREF } from '../config';
 import Footer from '../components/Footer.astro';
 import StickyBar from '../components/StickyBar.astro';
 import StructuredData from '../components/StructuredData.astro';
@@ -28,7 +28,8 @@ import '../styles/global.css';
 const pageTitle = `${BRAND.name} — Free professional websites for home services businesses`;
 const canonical = new URL('/', SITE_URL).href;
 
-const hasEndpoint = CONTACT.formEndpoint.length > 0;
+// A Web3Forms POST fails without the access key, so both are required.
+const hasEndpoint = CONTACT.formEndpoint.length > 0 && CONTACT.accessKey.length > 0;
 
 const clearedText =
   CLEARED_SERVICES.length > 0
@@ -152,7 +153,7 @@ const STEPS = [
         }
         {
           !CONTACT.phone.includes('PLACEHOLDER') && (
-            <a href={`tel:${CONTACT.phone}`} class="fh-phone">
+            <a href={`tel:${PHONE_HREF}`} class="fh-phone">
               {CONTACT.phone}
             </a>
           )
@@ -663,6 +664,15 @@ const STEPS = [
                 something fast.
               </p>
               <input type="hidden" name="form_type" value="quickstart" />
+              {CONTACT.accessKey && (
+                <input type="hidden" name="access_key" value={CONTACT.accessKey} />
+              )}
+              <input
+                type="hidden"
+                name="subject"
+                value="New free-site intake (Quickstart) — freewebsiteco.com"
+              />
+              <input type="hidden" name="from_name" value="The Free Website Co. intake" />
               <p class="hp-field" aria-hidden="true">
                 <label for="qs-website-hp">Leave this field empty</label>
                 <input
@@ -840,6 +850,15 @@ const STEPS = [
                 The more you give us, the closer draft one lands.
               </p>
               <input type="hidden" name="form_type" value="detailed" />
+              {CONTACT.accessKey && (
+                <input type="hidden" name="access_key" value={CONTACT.accessKey} />
+              )}
+              <input
+                type="hidden"
+                name="subject"
+                value="New free-site intake (Detailed) — freewebsiteco.com"
+              />
+              <input type="hidden" name="from_name" value="The Free Website Co. intake" />
               <p class="hp-field" aria-hidden="true">
                 <label for="dt-website-hp">Leave this field empty</label>
                 <input

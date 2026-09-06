@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import { CONTACT, CONTACT_READY } from '../config';
+import { CONTACT, CONTACT_READY, PHONE_HREF } from '../config';
 
-const hasForm = CONTACT.formEndpoint.length > 0;
+const hasForm = CONTACT.formEndpoint.length > 0 && CONTACT.accessKey.length > 0;
 const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
 ---
 
@@ -38,7 +38,7 @@ const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
               {CONTACT_READY.phone && (
                 <li>
                   <span class="eyebrow" style="margin-bottom: var(--space-1);">Phone</span>
-                  <a href={`tel:${CONTACT.phone}`}>{CONTACT.phone}</a>
+                  <a href={`tel:${PHONE_HREF}`}>{CONTACT.phone}</a>
                 </li>
               )}
             </ul>
@@ -88,6 +88,13 @@ const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
             class="contact-form"
           >
             <h2 class="contact-h">Or use the form</h2>
+            <input type="hidden" name="access_key" value={CONTACT.accessKey} />
+            <input
+              type="hidden"
+              name="subject"
+              value="Contact form — freewebsiteco.com"
+            />
+            <input type="hidden" name="from_name" value="The Free Website Co. contact" />
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" required autocomplete="name" />

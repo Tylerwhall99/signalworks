@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check:launch": "npm run build && ! grep -rlE 'PLACEHOLDER|signalworks\\.example' dist/ && echo 'LAUNCH CHECK PASSED: no placeholders in dist'"
+    "check:launch": "npm run build && ! grep -rlE 'PLACEHOLDER|signalworks\\.example' dist/ && echo 'LAUNCH CHECK PASSED: no placeholders in dist'",
+    "status": "node scripts/launch-status.mjs",
+    "go-live": "node scripts/go-live.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0",

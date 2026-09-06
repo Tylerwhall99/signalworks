@@ -1,5 +1,5 @@
 ---
-import { BRAND, CONTACT, NAV, NAV_CTA } from '../config';
+import { BRAND, CONTACT, NAV, NAV_CTA, PHONE_HREF } from '../config';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -42,7 +42,7 @@ const isActive = (href: string) =>
         {
           !CONTACT.phone.includes('PLACEHOLDER') && (
             <li>
-              <a href={`tel:${CONTACT.phone}`} class="site-nav__phone">
+              <a href={`tel:${PHONE_HREF}`} class="site-nav__phone">
                 {CONTACT.phone}
               </a>
             </li>

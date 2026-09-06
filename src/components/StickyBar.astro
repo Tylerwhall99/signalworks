@@ -1,5 +1,5 @@
 ---
-import { CONTACT, NAV_CTA } from '../config';
+import { CONTACT, NAV_CTA, PHONE_HREF } from '../config';
 
 const ctaHref = Astro.url.pathname === '/' ? '#start' : '/#start';
 const hasPhone = !CONTACT.phone.includes('PLACEHOLDER');
@@ -7,7 +7,7 @@ const hasPhone = !CONTACT.phone.includes('PLACEHOLDER');
 
 <div class="sticky-bar" id="sticky-bar">
   <a href={ctaHref} class="sb-cta">{NAV_CTA.label}</a>
-  {hasPhone && <a href={`tel:${CONTACT.phone}`} class="sb-call">Call</a>}
+  {hasPhone && <a href={`tel:${PHONE_HREF}`} class="sb-call">Call</a>}
 </div>
 
 <!-- GHL chat widget slot (flag ENABLE_CHAT_WIDGET): paste the embed
