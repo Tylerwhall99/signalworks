@@ -8,7 +8,7 @@
 
 ## What the research found
 
-**1. Vercel Hobby forbids commercial use.** Vercel's fair-use page: "Hobby teams are restricted to non-commercial personal use only. All commercial usage of the platform requires either a Pro or Enterprise plan." Its definition includes "Advertising the sale of a product or service," which our site does. Vercel can pause offending sites. ([fair use](https://vercel.com/docs/limits/fair-use-guidelines))
+**1. Vercel Hobby forbids commercial use.** Vercel's fair-use page: "Hobby teams are restricted to non-commercial personal use only. All commercial usage of the platform requires either a Pro or Enterprise plan." Its definition includes "Advertising the sale of a product or service," which our site does. Vercel says it "will reach out before taking action to address unreasonable usage"; account and deployment pausing is documented separately. ([fair use](https://vercel.com/docs/limits/fair-use-guidelines), [pausing](https://vercel.com/kb/guide/why-is-my-account-deployment-blocked))
 
 **2. Vercel Pro is $20 per seat per month.** One deploying seat included; viewer seats free. Pro adds commercial use, a $20/month usage credit, 1 TB transfer, and email support. ([Pro](https://vercel.com/docs/plans/pro-plan), [Hobby](https://vercel.com/docs/plans/hobby))
 
@@ -32,7 +32,9 @@
 
 ## Recommendation
 
-Cloudflare Workers Free. It is allowed for business use, costs $0, has no bandwidth cap, and can later host client sites under the $29/mo Hosted plan.
+Cloudflare Workers Free, **for this site only**. It is allowed for business use, costs $0, and has no bandwidth cap.
+
+**Important limit on reusing it for clients.** Cloudflare's self-serve terms 2.2.1(a) prohibit "rent, lease, loan, export, or sell access to the Services to any third party." Hosting paying clients' sites on your own free account is exactly that clause. The sanctioned product for hosting third-party customer sites is **Workers for Platforms at $25/month**. So the $29/month Hosted plan does not ride free on this decision — either each client gets their own Cloudflare account (which also fits the "you own it" promise better), or Workers for Platforms becomes a $25/month cost of the Hosted plan. Worth settling before selling the first Hosted plan; it does not block moving this one site today.
 
 One catch: to serve the bare domain (not only www), the nameservers must move from GoDaddy to Cloudflare. Cloudflare imports the existing DNS records and assigns "two authoritative Cloudflare nameservers." ([add a site](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/), [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/))
 
@@ -42,7 +44,7 @@ Owner (20 minutes):
 1. Create a free Cloudflare account.
 2. Click "Onboard a domain," enter freewebsiteco.com, pick Free. Review the imported DNS records and note the two nameservers.
 3. At GoDaddy, replace the nameservers with those two. Usually live within hours.
-4. In Cloudflare DNS, delete the two old Vercel records (A 76.76.21.21 and CNAME www); Cloudflare requires this.
+4. In Cloudflare DNS, delete any pre-existing record at the apex and www hostnames. Cloudflare's docs state a Custom Domain cannot be created on a hostname that already has a CNAME record. Check the actual values in the dashboard after the DNS import rather than assuming.
 5. Approve the "Cloudflare Workers & Pages" GitHub app for Tylerwhall99/signalworks.
 
 Claude (commands):
@@ -60,8 +62,16 @@ Nothing breaks mid-switch; Vercel serves until the nameservers move. Afterward, 
 
 - Vercel Hobby: $0, but not permitted for this site.
 - Vercel Pro: $240 plus tax (one seat); more if usage exceeds the credit.
-- Cloudflare Workers Free: $0. Workers Paid ($5/mo) is not needed.
+- Cloudflare Workers Free: $0 for this site. Workers Paid ($5/mo) is not needed for it. Hosting client sites later is a separate question: Workers for Platforms is $25/mo, or each client gets their own account.
 - Domain renewal is unchanged in every lane.
+
+## Fact-check corrections applied 2026-09-06
+
+An independent pass re-opened every cited source. 30 of 33 claims held. Three were corrected above:
+
+1. "Vercel can pause offending sites" was not on the fair-use page cited; the pausing policy lives on a separate page, now cited.
+2. The claim that client sites could later ride the $29/month Hosted plan on this account was wrong, and the reason matters: Cloudflare's terms forbid selling access to the service to third parties. Workers for Platforms ($25/mo) is the sanctioned path.
+3. The instruction to delete a specific Vercel A record was uncited. Cloudflare documents the conflict for CNAME records; verify actual values in the dashboard.
 
 ## Caveats and unverified points
 

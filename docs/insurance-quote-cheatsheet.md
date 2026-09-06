@@ -28,7 +28,7 @@ Goal: general liability (GL) and tech E&O quotes from Hiscox, NEXT, Thimble and 
 | Written contracts | 100% of clients (use a signed scope on every job) |
 | Vehicles for work | Personal car only |
 
-Sources for the fields: Hiscox's application asks "Projected annual (12 months) gross revenue" in bands starting at $0 to $50,000, and "Is E&O coverage currently in force?" ([Hiscox form](https://www.hiscox.com/documents/brokers/misc-pl/10783_Entrepreneurs_Professional_Liability_Consultants_Application.pdf)). NEXT asks profession, address, structure, start year, "estimated annual payroll and revenue," then yes/no claims-history questions; about 10 minutes ([NEXT](https://www.nextinsurance.com/blog/business-insurance-quote-online/)). Thimble asks only ZIP, crew size and coverage length ([Thimble](https://www.thimble.com/industry/professional-services-business-insurance/software-developer)). Insureon asks current and projected revenue, largest-client revenue, percent of clients with written contracts, and whether subcontractors carry E&O ([Insureon](https://www.insureon.com/small-business-insurance/professional-liability/application)).
+Sources for the fields: Hiscox's application asks "Projected annual (12 months) gross revenue" in bands starting at $0 to $50,000, and "Is E&O coverage currently in force?" ([Hiscox form](https://www.hiscox.com/documents/brokers/misc-pl/10783_Entrepreneurs_Professional_Liability_Consultants_Application.pdf)). NEXT asks profession, address, structure, start year, "estimated annual payroll and revenue," then yes/no claims-history questions; about 10 minutes ([NEXT](https://www.nextinsurance.com/blog/business-insurance-quote-online/)). Thimble asks ZIP, crew size, coverage length and coverage limit ($1M or $2M; Thimble says most businesses pick $2M because the price difference is small) ([Thimble](https://www.thimble.com/industry/professional-services-business-insurance/software-developer)). Insureon asks current and projected revenue, largest-client revenue, percent of clients with written contracts, and whether subcontractors carry E&O ([Insureon](https://www.insureon.com/small-business-insurance/professional-liability/application)).
 
 ## 3. Limits to buy
 
@@ -44,7 +44,7 @@ Sources for the fields: Hiscox's application asks "Projected annual (12 months) 
 | Thimble | Median $7.20/mo, freelancers | GL+PL bundle median $60/mo; 2022 data ([source](https://www.thimble.com/blog/freelancer-consultant-insurance-cost)) |
 | Insureon | $38/mo, $1M/$2M | Tech E&O $94/mo, $1M/$1M; updated June 22, 2026 ([source](https://www.insureon.com/technology-business-insurance/web-designers/cost)) |
 
-Expect roughly $50 to $140 a month for both. Cyber is separate; Insureon puts it at $111/mo.
+Expect roughly **$40 to $140 a month for both — this is my estimate from the table above, not a figure any insurer publishes.** The low end is NEXT's published floors ($19 + $19); Hiscox's worked examples land near $72; Insureon's medians land near $132. Cyber is separate; Insureon puts it at $111/mo.
 
 ## 5. Five questions to ask before buying
 
@@ -52,7 +52,7 @@ Expect roughly $50 to $140 a month for both. Cyber is separate; Insureon puts it
 2. If a client site is hacked or a contact form leaks customer data, does this policy respond, or do I need cyber?
 3. The 60-day bug-fix promise and five-day draft promise are contractual. Is breach of contract or late delivery excluded? Is the cost of redoing the work covered?
 4. This is claims-made. What is my retroactive date, and what happens if I cancel or switch carriers?
-5. Is copyright infringement (stock photos, fonts, AI images) covered, and at what limit? Hiscox adds $200,000 automatically.
+5. Is copyright infringement (stock photos, fonts, AI images) covered, and at what limit? Ask specifically: Hiscox publishes $200,000 of **software** copyright coverage for "most IT consultants and technology service providers" — that is a narrower thing than image or font infringement, and it is not stated for the web-designer class. Since your clients supply photos and logos, this is the question to press hardest. Note $200,000 would itself fall below the $250K sublimit floor flagged as a red flag below.
 
 ## 6. Red flags
 
@@ -62,6 +62,10 @@ Expect roughly $50 to $140 a month for both. Cyber is separate; Insureon puts it
 - Being steered into "IT consultant" or "software publisher" when a web-design class exists.
 - Guessing revenue low to cut premium. Hiscox's form warns false or misleading answers can void the policy.
 - Thimble's E&O is not sold in NY or WA. Fine for CA; matters if you move.
+
+## Fact-check corrections applied 2026-09-06
+
+An independent pass re-opened every cited source. 27 of 30 claims held. Three were corrected above: Thimble's fourth rating input (coverage limit), the combined premium range (now labeled as an estimate, floor lowered to $40 to match NEXT's own published figures), and the Hiscox copyright figure, which covers *software* copyright for IT consultants and is not the stock-photo or AI-image coverage the first draft implied.
 
 ## Caveats and unverified points
 

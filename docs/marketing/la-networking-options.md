@@ -1,140 +1,105 @@
 # In-person networking options — Los Angeles
 
-> Researched and drafted 2026-09-06. Sources were fetched, not recalled.
+> Researched 2026-09-06, then independently fact-checked. Of 73 factual claims in the first draft, 55 held and 18 did not. This version keeps only what a second pass could confirm by reopening the source, and says plainly where something could not be verified. Same rule the business applies to its own website: nothing stated as fact unless it checks out.
 
-# In-person networking in LA for The Free Website Co., Sept–Oct 2026
+**Ranked for one thing:** how many home-services contractors are likely to be in the room, per dollar and per hour. Confirm before you drive — event pages change.
 
-Ranked for one thing: how many home-services contractors are likely to be in the room, per dollar and per hour. Everything dated below comes from a page I read on 2026-09-06 (links at the end). Confirm before you drive.
+---
 
-## Ranked list
+## The short answer
 
-### 1. CLCA Los Angeles / San Gabriel Valley chapter (landscape contractors)
-- **What it is:** Local chapter of the California Landscape Contractors Association. Runs evening seminars, vendor expos, and tours around LA County.
-- **Who attends:** C-27 licensed landscape contractors, suppliers, landscape designers. The chapter's own event listings price events for non-members (for example, $20 non-member for the Feb 19 Eat & Meet expo, $30 non-member for the March 19 drip-irrigation demo), so guests are expected.
-- **Next known dates:**
-  - **Thu Sept 24, 2026, 6:00–8:00 PM** — Firescaping Seminar (Prof. Doug Kent), Southwest Boulder & Stone, Gardena. Cost: TBA on the page.
-  - **Thu Oct 22, 2026, 4:00–7:00 PM** — LA/SGV Nursery Tour "Cultivars & Colors," Landscape Warehouse Nursery, Pasadena. Cost: TBA on the page.
-- **Cost to visit:** Not yet posted for these two; recent chapter events ran $10–$30 for non-members. Email clcalasgvchapter@yahoo.com to confirm.
-- **URL:** https://www.clca-lasgv.org/calendar
-- **Why this one:** The room is your exact customer (landscaping is one of your first five trades) and the events are small enough to actually talk to people.
+If you go to one thing in September, make it the **Burbank Chamber mixer on Thursday Sept 17** ($25, price and venue both confirmed) or the **LA Small Business Expo on Wednesday Sept 30** (free, roughly 1,500 owners). If you want a room that is *only* your customer, wait for **IHACI on Nov 17** — 3,800 HVAC professionals in one building.
 
-### 2. ABC Southern California — San Fernando office (merit-shop construction contractors)
-- **What it is:** Associated Builders and Contractors' SoCal chapter. Runs free morning compliance classes at its San Fernando training center, plus fundraisers.
-- **Who attends:** Non-union construction contractors and their office staff; ABC SoCal also runs HVAC and electrical apprenticeship programs.
-- **Next known dates:**
-  - **Tue Sept 15, 2026, 8:00–10:00 AM** — "Nailing Down Annualization, AB 889, and Prevailing Wage Basics," ABC SoCal San Fernando, 12979 Arroyo Ave, San Fernando 91340. The ticket shown is Member: $0.00; no non-member ticket is displayed. Organizer: Devin Carty, dcarty@abcsocal.org. Ask before you go.
-  - **Fri Oct 16, 2026, 8:00 AM–12:00 PM** — Sporting Clays Tournament, LA Clays, 831 Rosemead Blvd, South El Monte 91733. $175 individual shooter (5-person team $1,000). The registration page makes no member/non-member distinction. Contact: rjohnson@abcsocal.net.
-- **Cost to visit:** Sept 15 class: free for members, non-member price not published. Oct 16 clays: $175.
-- **URL:** https://abcsocal.org/events/
-- **Why this one:** Contractors show up to a 2-hour prevailing-wage class because it costs them money not to; you get 90 minutes of coffee-line conversations with owners who are in growth mode.
+---
 
-### 3. BNI — two visitor-friendly chapters
-- **What it is:** Weekly referral groups; one member per business category. Regional rules (BNI4Success, Greater LA): you may visit twice total (one chapter twice or two chapters once), no invitation needed but contact the chapter president first, and you may not pitch in a chapter where your category is already taken. "Most chapters have a nominal meeting fee."
-- **Who attends:** 20–40 local business owners per chapter, one per trade. Check the chapter's member list before visiting to see which trades are in the room and whether the web-design seat is open.
-- **Chapters with published schedules:**
-  - **BNI Breakfast Club** — Wednesdays 8:00 AM, hybrid, Fogo de Chão, 133 N La Cienega Blvd, Beverly Hills 90211. 36 members. https://bni.la/en-US/chapterdetail?chapterId=vsV2fGjMISNYqXKcyA0OBg%3D%3D&name=BNI+BNI+Breakfast+Club
-  - **BNI We Mean Business** — Thursdays 7:15–8:30 AM. In person the first Thursday of each month at The Daily Grill, 2500 Hollywood Way, Burbank 91505; Zoom the other weeks. **Next in-person: Thu Oct 1, 2026.** Register in advance; no entry after 7:30 AM without registration. https://www.meetup.com/wemeanbusiness/
-  - Three more West LA chapters are listed (BNI Professionals, BNI Team Builders, BNI Westside Winners) at https://bni.la/en-US/findachapter, but their day/time pages did not load for me.
-- **Cost to visit:** "Nominal meeting fee" (amount not published); We Mean Business lists no visitor cost.
-- **Why this one:** Plumbers, electricians, and HVAC are classic BNI seats. If a chapter has them and the web-design seat is open, you are the only web person 30 business owners see every week. Two free-ish visits let you test that before committing.
+## Confirmed events
 
-### 4. Burbank Chamber of Commerce — Chamber Mixer at Courtyard by Marriott
-- **What it is:** Monthly evening mixer; this one includes a behind-the-scenes visit to West Coast Customs next door.
-- **Who attends:** Burbank-area chamber members and guests. Non-members welcome.
-- **Next known date:** **Thu Sept 17, 2026, 5:30–7:30 PM**, Courtyard by Marriott, 2100 W Empire Ave, Burbank 91504.
-- **Cost to visit:** $15 members / $25 non-members (plus small service fee).
-- **URL:** https://www.burbankchamber.org/event-details/chamber-mixer-at-courtyard-by-marriott
-- **Why this one:** The only chamber mixer in the window with a published non-member price and an exact address. Cheap, close to the Valley trades, and a good first rep for your two-sentence intro.
-- **Also on their calendar:** State of the City luncheon, Thu Oct 15, 2026, 11:00 AM–1:30 PM, LA Marriott Burbank Airport (cost not listed). https://www.burbankchamber.org/calendar
+### 1. IHACI Trade Show — the single best room for your niche
+- **When:** Tue Nov 17, 2026, 9:00 AM – 6:00 PM
+- **Where:** Pasadena Convention Center
+- **Who:** 3,800+ HVAC/R professionals, 120+ exhibitors
+- **Cost:** Attendee registration opens summer 2026; no price stated yet
+- **Why:** Nothing else on this list puts you in front of that many of your exact customer at once. It is two months out, which is enough time to have the site, the Google profile, and business cards ready. Treat it as the target date.
 
-### 5. Los Angeles Small Business Expo
-- **What it is:** Large one-day expo: exhibitor floor, 35+ free workshops, speed networking.
-- **Who attends:** Roughly 1,500 small-business owners and startups from across LA (per The Valley Economic Alliance listing).
-- **Next known date:** **Wed Sept 30, 2026, 9:30 AM–5:00 PM**, Pasadena Convention Center, 300 E Green St, Pasadena 91101.
-- **Cost to visit:** Free general admission with registration (per The Valley Economic Alliance listing; the Eventbrite page does not display prices).
-- **URL:** https://www.eventbrite.com/e/los-angeles-small-business-expo-2026-registration-1748632088649
-- **Why this one:** Generalist crowd, so lower hit rate on contractors, but it is free and big enough that a few hours of walking the floor will turn up some. Skip the paid tiers.
+### 2. CLCA Los Angeles / San Gabriel Valley — landscape contractors
+- **Thu Sept 24, 2026, 6:00–8:00 PM** — Firescaping Seminar (Prof. Doug Kent), Southwest Boulder & Stone, Gardena. Cost listed as TBA.
+- **Thu Oct 22, 2026, 4:00–7:00 PM** — Nursery Tour "Cultivars & Colors," Landscape Warehouse Nursery, Pasadena. Cost not yet posted.
+- **What non-members have paid recently:** $20 (Feb 19 "Eat & Meet" expo) and $30 (March 19 drip-irrigation demo). Members paid $0–10.
+- **Contact:** clcalasgvchapter@yahoo.com to confirm price and register.
+- **Why:** Licensed landscape contractors, small enough rooms to actually talk to people.
 
-### 6. Lomita Chamber of Commerce — September Business Mixer
-- **What it is:** Small South Bay chamber mixer with a ribbon cutting at 6:00 PM.
-- **Who attends:** Chamber members, local businesses, and community members; registration required.
-- **Next known date:** **Wed Sept 30, 2026, 5:30–7:00 PM**, Floral 101, 2170 Lomita Blvd, Lomita 90717.
-- **Cost to visit:** Not shown on the Eventbrite page (no refunds noted).
-- **URL:** https://www.eventbrite.com/e/lomita-chamber-business-mixer-september-2026-tickets-1998995029946
-- **Why this one:** Small-town chamber rooms are easy to work and give you the South Bay. Note it is the same day as the Pasadena expo; pick one.
+### 3. Burbank Chamber of Commerce mixer — best confirmed value
+- **When:** Thu Sept 17, 2026, 5:30–7:30 PM
+- **Where:** Courtyard by Marriott, 2100 W Empire Ave, Burbank 91504
+- **Cost:** $15 members / $25 non-members, plus a small service fee
+- **Extra:** Includes a behind-the-scenes visit to West Coast Customs next door, which makes it an easier room to start conversations in.
+- Also: **Burbank State of the City luncheon, Thu Oct 15, 11:00 AM – 1:30 PM**, LA Marriott Burbank Airport. Cost not listed.
 
-## Worth a slot, lower priority
+### 4. LA Small Business Expo — free, biggest room
+- **When:** Wed Sept 30, 2026, 9:30 AM – 5:00 PM
+- **Where:** Pasadena Convention Center, 300 E Green St, Pasadena 91101
+- **Cost:** General admission free with registration
+- **Scale:** Roughly 1,500 small-business owners, 35+ free workshops
+- **Why:** Free, large, and local. Not contractor-specific, but the price is right and small-business owners all need the same thing you sell.
 
-- **SCORE Los Angeles in-person workshops (free):**
-  - Mon Sept 28, 2026, 4:30 PM — "Starting a Business: What You Need to Know," 1719 S Robertson Blvd, LA 90035.
-  - Sat Oct 17, 2026, 10:30 AM — same topic, 140 S Altadena Dr, Pasadena 91107.
-  - Thu Oct 22, 2026, 12:30 PM — "How to Generate More Leads for Your Business With SEO (AI and Google Search)," 1719 S Robertson Blvd, LA 90035.
-  - URL: https://www.score.org/losangeles/local-workshops (64 of the 70 listed events are online; these are the in-person ones through October).
-  - Why: You will meet new business owners, not established contractors. The Oct 22 SEO session is the one to attend; people there are actively looking for the thing you sell.
-- **Long Beach SBDC (free, in person):** Thu Sept 24, 2026, 11:30 AM–1:00 PM, "Funding Your Growth For Existing and Start-up Small Businesses," and 2:00–3:30 PM, "How To Build A Road Map To Start Your Business," both at North Long Beach Higher Education Center, 635 E South St, Long Beach 90805. https://longbeachsbdc.org/workshops/. The other LA-network SBDCs I checked (Pacific Coast Regional, Pasadena City College, LA Regional network calendar) list only webinars for Sept–Oct.
+### 5. ABC Southern California — merit-shop construction contractors
+- **Tue Sept 15, 2026, 8:00–10:00 AM** — prevailing-wage seminar, ABC SoCal San Fernando, 12979 Arroyo Ave, San Fernando 91340. Ticket shows Member: $0.00; no non-member ticket displayed, so **email Devin Carty (dcarty@abcsocal.org) before you go.**
+- **Fri Oct 16, 2026, 8:00 AM – 12:00 PM** — Sporting Clays Tournament, LA Clays, 831 Rosemead Blvd, South El Monte 91733. $175 individual, $1,000 for a five-person team. Registration makes no member/non-member distinction. Contact rjohnson@abcsocal.net.
+- **Why:** Contractors attend compliance classes because skipping them costs money. The clays tournament is expensive but is four hours beside the same people.
 
-## Put on the calendar now (outside Sept–Oct)
+### 6. BNI — two visits, spend them carefully
+- **The rules, confirmed:** you may visit twice total in the region (one chapter twice, or two chapters once each). No invitation needed, but contact the chapter president first. One member per business category, so you cannot pitch in a chapter where the web-design seat is taken. "Most chapters have a nominal meeting fee."
+- **BNI We Mean Business** — Thursdays 7:15–8:30 AM. In person the **first Thursday of each month** at The Daily Grill, 2500 Hollywood Way, Burbank 91505; Zoom the other weeks. **Next in-person: Thu Oct 1, 2026.** Register in advance; no entry after 7:30 AM without registration. No visitor cost listed. https://www.meetup.com/wemeanbusiness/
+- **Why:** Plumbers, electricians, and HVAC are classic BNI seats. Check the chapter's member list before visiting — if those trades are present and the web-design seat is open, you are the only web person 30 owners see every week.
 
-- **IHACI HVAC/R/Sheet Metal Trade Show — Tue Nov 17, 2026, 9:00 AM–6:00 PM**, Pasadena Convention Center. 3,800+ HVAC/R/SM professionals, 120+ exhibitors; "all HVACR/SM professionals" invited. The registration page says attendee registration opens summer 2026 and does not state a price. https://www.ihacitradeshow.com/ and https://www.ihacitradeshow.com/registration. This is the single densest HVAC-contractor room in LA all year.
-- **Flow Expo (PHCC Los Angeles) — Sat March 13, 2027, 9 AM–4 PM**, Fairplex, Pomona. 5,000+ plumbing/heating/cooling participants. Attendee cost not published. https://flowexpousa.com/
+### 7. Lomita Chamber September mixer
+- **When:** Wed Sept 30, 2026, 5:30–7:00 PM (ribbon cutting at 6:00)
+- **Where:** Floral 101, 2170 Lomita Blvd, Lomita 90717
+- **Cost:** Not shown on the Eventbrite page; registration required, no refunds noted.
+- Note this collides with the LA Small Business Expo, though the expo ends at 5:00 PM so both are possible.
 
-## Checked, nothing usable in the window
+### 8. Long Beach SBDC — free workshops, same day
+- **Thu Sept 24, 2026, 11:30 AM – 1:00 PM** — "Funding Your Growth For Existing and Start-up Small Businesses"
+- **Thu Sept 24, 2026, 2:00–3:30 PM** — "How To Build A Road Map To Start Your Business"
+- Both in person at North Long Beach Higher Education Center, 635 E South St, Long Beach 90805.
+- The other SBDCs in the LA network (Pacific Coast Regional, Pasadena City College, LA Regional) list webinars only for September and October.
+- Note the collision: these are the same day as the CLCA Firescaping seminar, but that one is 6:00 PM, so all three fit.
 
-- **LA Area Chamber of Commerce:** The Sept–Oct calendar shows no open mixer. The one Chamber event in the window, Pancakes & Politics (Tue Sept 15, 8:30–9:30 AM, City Club LA), is a members' speaker series. Small Business Summit 2026: date not published, check https://lachamber.com/events/small-business-summit/.
-- **PHCC Greater Los Angeles (phccglaa.org):** No meeting dates published; see Flow Expo above. Phone 323-913-7335.
-- **NARI Los Angeles:** narila.org did not resolve, and NARI's chapter page did not list an LA chapter. Could not confirm an active chapter.
-- **IEC Los Angeles:** The ieci.org chapter directory lists no Los Angeles or California chapter. National office: (703) 549-7351.
-- **Culver City Chamber:** Only two calendar items in the window (a trivia night and the Sept 30 expo above).
-- **Greater San Fernando Valley Chamber:** Calendar did not render; their recurring mixer is virtual. Date not published, check https://www.sanfernandovalleychamber.com/calendar/.
+### 9. Flow Expo — plumbing, but it is 2027
+- **Sat March 13, 2027, 9:00 AM – 4:00 PM**, Fairplex, Pomona. 5,000+ plumbing/heating/cooling participants, no attendee cost published. Worth a calendar entry, not a plan.
 
-## Two-sentence intro that fits the copy rules
+---
 
-"I build professional websites for home-services contractors, and the website itself is free. You own the domain, the code, and the hosting from day one; I make money only if you want a monthly plan later."
+## Could not be verified — do not act on these without checking yourself
 
-## Caveats and unverified points
+The first draft listed these; the fact-check could not confirm them. They are kept only so the same ground is not researched twice.
 
-- All dates were read on 2026-09-06; event pages change, so confirm each one the week before.
-- Most pages were read through a fetch tool that summarizes page content; dynamic pages (BNI chapter list, LA Chamber calendar, SCORE) were read in a browser. The BNI chapter list only showed 4 West LA chapters; the region likely has more that the directory did not render.
-- BNI visitor fee amount is not published anywhere I read (only 'nominal meeting fee'); the We Mean Business Meetup page lists no cost.
-- ABC SoCal Sept 15 class shows only a $0 member ticket; whether non-members may register, and at what price, is not on the page. Their events listing summary suggested non-members are allowed, but the detail page does not confirm it.
-- CLCA Sept 24 and Oct 22 costs are listed as TBA; non-member pricing was inferred from earlier 2026 events on the same calendar.
-- Small Business Expo free admission comes from The Valley Economic Alliance's listing; the organizer's own site returned 403 and the Eventbrite page did not show prices.
-- Lomita mixer cost is not shown on the Eventbrite page.
-- IHACI 2026 attendee cost is not stated on the registration page; third-party listings I saw only in search snippets (not read) describe prior years as free.
-- NARI LA and IEC LA: no active chapter could be confirmed; narila.org did not resolve and ieci.org's directory lists no California chapter. I did not verify via phone.
-- LA Area Chamber: the calendar rendered only partially in the browser (truncated at ~15k characters); a Chamber-only filter showed three Chamber events in the window, none an open mixer, but I could not read the full October list.
-- Greater San Fernando Valley Chamber calendar and Burbank Chamber's own calendar page did not render event lists via fetch; Burbank data came from the /calendar fetch that did work and the mixer detail page.
+- **SCORE Los Angeles workshops.** Three specific in-person workshops were listed with dates, times, and addresses (Sept 28, Oct 17, Oct 22). None could be confirmed: score.org returns HTTP 403 to every automated fetch, and no other source corroborates them. What *was* independently confirmed is that 1719 S Robertson Blvd is the LAPL Robertson Library, where SCORE LA runs **one-on-one mentoring on the 2nd and 4th Mondays, 2:00–5:00 PM** — a different format at a different time. **Check score.org in a browser yourself.** A free one-on-one mentoring session there may be worth more to you than any workshop.
+- **BNI Breakfast Club** (Beverly Hills). Day, time, venue, and member count could not be verified — BNI's chapter pages render nothing to an automated fetch. The address given for Fogo de Chão is correct, but no source confirms the chapter meets there. Call before driving.
+- **Three other West LA BNI chapters** were named in the first draft. The chapter-finder page lists nothing without an interactive search, so those names are unverified.
+- **LA Area Chamber "Pancakes & Politics" on Sept 15** — wrong. The cited page lists only a July 16, 2026 date. The series is also described as giving Chamber members access, so it may not be open to you.
+- **"The LA Area Chamber has no open mixer in the window"** — unconfirmed. Their calendar renders nothing to an automated fetch, so absence was never established. Worth checking manually at lachamber.com.
+- **Greater San Fernando Valley Chamber.** The first draft said their mixer is virtual. That is wrong: their **Annual Mixer and Trade Show is in person**. Separately, they run a virtual speed-networking session. Their calendar is worth a look.
+- **NARI Los Angeles** — the first draft concluded there is no LA chapter, but cited no page for it. Unverified either way.
+
+---
+
+## Two corrections worth naming
+
+- The first draft claimed the ABC seminar offers "90 minutes of coffee-line conversations." Nothing supports that. It is a scheduled two-hour breakfast seminar. Arrive early and stay for the breakfast part.
+- The first draft said the LA Small Business Expo includes "speed networking." Neither source says so.
 
 ## Sources
 
-- https://www.clca-lasgv.org/calendar
-- https://abcsocal.org/events/
-- https://abcsocal.org/event/nailing-down-annualization-ab-889-and-prevailing-wage-basics-in-california/
-- https://abcsocal.org/event/sporting-clays-tournament/
-- https://www.efundraisingconnections.com/c/ABCofSoCal/SportingClaysTournament2026
-- https://bni.la/en-US/findachapter
-- https://bni.la/en-US/howtojoin
-- https://bni.la/en-US/chapterlist?chapterName=&chapterCity=&chapterArea=&chapterMeetingDay=&chapterMeetingTime=&regionIds=486
-- https://bni.la/en-US/chapterdetail?chapterId=vsV2fGjMISNYqXKcyA0OBg%3D%3D&name=BNI+BNI+Breakfast+Club
-- https://www.meetup.com/wemeanbusiness/
-- https://www.burbankchamber.org/event-details/chamber-mixer-at-courtyard-by-marriott
-- https://www.burbankchamber.org/calendar
-- https://thevalley.net/event/los-angeles-small-business-expo-2026/
-- https://www.eventbrite.com/e/los-angeles-small-business-expo-2026-registration-1748632088649
-- https://www.eventbrite.com/e/lomita-chamber-business-mixer-september-2026-tickets-1998995029946
-- https://www.score.org/losangeles/local-workshops
-- https://longbeachsbdc.org/workshops/
-- https://smallbizla.org/workshops/
-- https://pcrsbdc.org/workshops/
-- https://pccsbdc.org/workshops/
-- https://www.ihacitradeshow.com/
-- https://www.ihacitradeshow.com/registration
-- https://www.ihaci.org/
-- https://flowexpousa.com/
-- https://phccglaa.org/
-- https://lachamber.com/pages/calendar/
-- https://lachamber.com/center-for-business-advocacy/accenture-pancakes-politics/
-- https://lachamber.com/events/small-business-summit/
-- https://ieci.org/membership/chapters/find-a-chapter/
-- https://business.culvercitychamber.com/events/calendar
-- https://www.sanfernandovalleychamber.com/about/events/
+- CLCA LA/SGV calendar: https://www.clca-lasgv.org/calendar
+- ABC Southern California events: https://abcsocal.org/events/
+- BNI We Mean Business: https://www.meetup.com/wemeanbusiness/
+- BNI chapter finder: https://bni.la/en-US/findachapter
+- Burbank Chamber: https://www.burbankchamber.org/
+- LA Small Business Expo (The Valley Economic Alliance listing + Eventbrite)
+- Lomita Chamber (Eventbrite)
+- Long Beach SBDC events calendar
+- IHACI: https://www.ihaci.org/
+- Flow Expo: https://www.flowexpo.com/
+- PHCC Greater Los Angeles: phone 323-913-7335 (publishes no meeting dates)
+- IEC chapter directory (lists no Los Angeles or California chapter); national office (703) 549-7351
