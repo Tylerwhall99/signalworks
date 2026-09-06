@@ -32,10 +32,10 @@ One brand + campaign per client sub-account.
   EIN but is more limited. Ask for the client's EIN at intake for these
   services.
 - **DBA wrinkle (relevant to us):** a company with an EIN operating
-  under a different brand name (hello, Signalworks under Long Hall
+  under a different brand name (hello, The Free Website Co. under Long Hall
   Financial) includes "We are doing DBA as [name]" in the campaign
   description, and the website/privacy policy must show both names
-  consistently. Flag this when registering the Signalworks line itself.
+  consistently. Flag this when registering the The Free Website Co. line itself.
 
 ## Top rejection causes (all avoidable at build time)
 

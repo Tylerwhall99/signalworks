@@ -426,3 +426,12 @@ items are the ones worth reviewing before launch.
 - GHL note for delivery: A2P texting registration per client takes
   days-to-weeks — start at kickoff (catalog A6 discipline applies to the
   Lead Capture and Reputation services now being sold).
+
+## 2026-09-06 — Rename: Signalworks → The Free Website Co.
+
+- **Decision (Tyler):** business and site renamed to **The Free Website Co.**; domain **freewebsiteco.com** bought at GoDaddy. Reasons: the name states the offer, the Signalworks namespace was crowded, and a LIVE/PENDING USPTO application for SIGNALWORKS in class 042 (serial 99570293) made the old name a legal risk. The trademark-attorney task is retired by the rename.
+- **Structure:** freewebsiteco.com is the lead-gen "door"; a separate parent/operating brand (to be chosen within ~30 days, before the first paid upsell) will carry paid services and invoices so the business stays decoupled from Long Hall Financial and exit-able. `BRAND.parent` in `src/config.ts` is an empty byline slot for it; the footer renders "a ___ company" only when it is set.
+- **Wordmark:** headers, footer, and the film header use the compact `BRAND.short` ("Free Website Co."); titles, meta, structured data, and legal text use the full `BRAND.name`.
+- **Left verbatim on purpose:** `docs/site-redraft-prompt.md`, `site-repair-prompt.md`, `site-upsell-prompt.md` (source-of-record prompts), `docs/trademark-consult-brief.md` (historical), earlier entries in this file, the GitHub repo name, the Vercel project name, and the `signalworks-hall-hub.vercel.app` alias (kept as a fallback URL).
+- **Assets:** `public/og.png` and the three social banners in `docs/brand-assets/` regenerated with the new name; `avatar-512.png` and `favicon.svg` are text-free and unchanged.
+- **Deploy:** `SITE_URL` → https://freewebsiteco.com; apex + www attached to the Vercel project; DNS at GoDaddy still to be pointed by Tyler (A @ 76.76.21.21, CNAME www → cname.vercel-dns.com).

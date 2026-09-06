@@ -1,4 +1,4 @@
-# Signalworks — Launch Checklist
+# The Free Website Co. — Launch Checklist
 
 Everything standing between here and a live business, in run-down order.
 Check things off as you go. **⚡ = I can do it the moment you say so.
@@ -8,19 +8,14 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 
 ## 0 · Decisions that unblock everything else (do these first)
 
-- [ ] 👤 **Name & domain decision.** The Signalworks namespace is crowded:
-  signalworks.com / .co / .io / .us are taken, and variants
-  (getsignalworks.com, trysignalworks.com, signalworkshq.com,
-  signalworks.site) were all registered within the last year — other
-  people are actively branding on this name. Options: (a) find an angle
-  that's free (signalworks.build / .dev / .studio looked possibly open —
-  verify at a registrar), (b) ~~run a USPTO search~~ **done — a LIVE PENDING
-  `SIGNALWORKS` application exists in class 042 (web design services),
-  serial 99570293; see §2**, (c) consider a name adjustment now, while it
-  costs nothing. Everything below (email, socials, GBP) waits on
-  this.
-- [ ] 👤 Buy the domain in **your own registrar account** (the same rule
-  the runbook gives clients).
+- [x] 👤 **Name & domain decision — DONE 2026-09-06.** Renamed to
+  **The Free Website Co.** and bought **freewebsiteco.com**. The name says
+  the offer, avoids the crowded "Signalworks" namespace entirely, and
+  retires the USPTO conflict (serial 99570293) — no attorney consult
+  needed for the mark. A parent/operating brand for paid services and
+  invoices is still to be chosen (~30-day horizon, before the first upsell).
+- [x] 👤 Buy the domain in **your own registrar account** — done, GoDaddy,
+  2026-09-06.
 - [ ] 👤 **Business email** on that domain (Google Workspace ~$7/mo or
   Zoho free tier). No @gmail on the site.
 - [ ] 👤 **Business phone number** (Google Voice is free; OpenPhone if you
@@ -78,7 +73,7 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   link, submit a form, open every page.
 - [ ] ⚡ Submit the sitemap to Google Search Console + Bing Webmaster
   Tools (needs the domain verified in your accounts).
-- [ ] 👤 Create a **Google Business Profile for Signalworks** — you're a
+- [ ] 👤 Create a **Google Business Profile for The Free Website Co.** — you're a
   service business in LA; practice what the site preaches.
 
 ## 2 · Legal & money
@@ -119,7 +114,7 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
     serial **99570293**, classes **009 and 042**. Visible recital:
     "Downloadable mobile applications for tracking the user's…"
   **Why 042 matters:** class 042 is the class that covers website design
-  and development services — the exact class Signalworks would operate
+  and development services — the exact class The Free Website Co. would operate
   and register in. An identical wordmark, pending, in your class is the
   one scenario the earlier note flagged as worth real advice.
   **Nuance that cuts both ways:** it is *pending*, not registered
@@ -130,7 +125,7 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
   an attorney do it.
 - [ ] 👤 **Trademark attorney consult (~$200–500, 30 minutes) — now
   justified, was optional.** Ask exactly: (1) what does serial 99570293
-  actually claim in class 042, (2) can I *use* Signalworks for web design
+  actually claim in class 042, (2) can I *use* The Free Website Co. for web design
   services under common law, (3) could I ever *register* it, (4) does
   their pending application create real cease-and-desist exposure. Use vs.
   register are different questions with different answers. Not legal
@@ -144,14 +139,14 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 - [ ] ⚡ GitHub org structure for client repos (repo per client domain,
   per the runbook).
 - [ ] 👤 **Stripe platform readiness** — Tyler's plan (2026-08-26):
-  create a **separate Signalworks tenant/account inside the LHF Stripe
+  create a **separate The Free Website Co. tenant/account inside the LHF Stripe
   organization**, which cleanly solves the red team's top blocker — the
-  client-facing brand is Signalworks, books stay separable, and LHF stays
+  client-facing brand is The Free Website Co., books stay separable, and LHF stays
   the parent. Then: (a) confirm the public business name + statement
-  descriptor on that tenant reads "Signalworks," (b)
+  descriptor on that tenant reads "The Free Website Co.," (b)
   update the platform's business description for the web-design use case
   (Stripe ToS: accurate representation), (c) attorney blesses the
-  LHF-platform/Signalworks-brand structure, (d) CPA confirms how
+  LHF-platform/The Free Website Co.-brand structure, (d) CPA confirms how
   platform-fee revenue books across entities. ⚡ Then I build Connect
   onboarding + pay page + one demo transaction, closing catalog A2.
 - [ ] 👤 **Track hours on the first three free builds** — the whole model
@@ -190,7 +185,7 @@ Check things off as you go. **⚡ = I can do it the moment you say so.
 - [ ] 👤 **GBP live before outreach, not after** — skeptical owners
   Google you first; a verified profile with real photos is the cheapest
   legitimacy signal there is.
-- [ ] ⚡ Decide on a small **"Site by Signalworks" footer credit** on
+- [ ] ⚡ Decide on a small **"Site by The Free Website Co." footer credit** on
   client builds (with an opt-out in the terms). It's the strongest free
   referral channel this model has.
 - [ ] ⚡ Content seeds I can draft: the "why free" explainer post, a

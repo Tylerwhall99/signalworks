@@ -4,7 +4,7 @@
 > [brackets] gets replaced. Keep it to two pages; it accompanies the
 > recorded walkthrough video.
 
-Your website: **[domain]** — live since [date], built by Signalworks.
+Your website: **[domain]** — live since [date], built by The Free Website Co.
 
 ## What you own (everything)
 
@@ -22,7 +22,7 @@ recovery email is yours.
 ## When something needs to change
 
 - **Something broke** (form stopped arriving, page won't load, button
-  does nothing): email [signalworks email]. If we built it and it broke,
+  does nothing): email [Free Website Co. email]. If we built it and it broke,
   the fix is free for 60 days after launch — after that, we'll tell you
   plainly what it costs before touching anything.
 - **Words, hours, prices, photos need updating:** [Care-plan clients:
@@ -47,4 +47,4 @@ People will call and email claiming your website or Google listing has
 "urgent problems" they can fix for a fee. They are lying. When in doubt,
 forward it to us — checking costs you nothing.
 
-— Signalworks · [email] · [phone]
+— The Free Website Co. · [email] · [phone]

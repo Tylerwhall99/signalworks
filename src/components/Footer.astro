@@ -8,7 +8,8 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <p class="site-footer__wordmark">{BRAND.name}</p>
+        <p class="site-footer__wordmark">{BRAND.short}</p>
+        {BRAND.parent && <p class="site-footer__byline">a {BRAND.parent} company</p>}
         <p class="site-footer__tagline">{BRAND.tagline}</p>
         <p class="site-footer__meta">
           Based in Los Angeles. Home services is the specialty — every
@@ -80,6 +81,15 @@ const year = new Date().getFullYear();
     font-weight: 750;
     font-size: 1.2rem;
     letter-spacing: -0.02em;
+  }
+
+  .site-footer__byline {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--footer-faint);
+    margin-top: var(--space-1);
   }
 
   .site-footer__tagline {

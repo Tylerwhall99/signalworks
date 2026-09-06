@@ -30,7 +30,7 @@ One favor, only if you're happy: if you know one other business owner
 who needs what you just got, forward them [site link]. That's how this
 works.
 
-— [Name], Signalworks
+— [Name], The Free Website Co.
 
 ## The handoff email (Care Plan client)
 
@@ -50,9 +50,9 @@ Same as above, with the middle paragraph swapped:
 
 If you approve the footer-credit idea, client sites get one quiet line:
 
-> Site by Signalworks — built free. [link]
+> Site by The Free Website Co. — built free. [link]
 
 The signed agreement then needs one added sentence: "The site footer may
-include a one-line credit with a link to Signalworks; you may opt out at
+include a one-line credit with a link to The Free Website Co.; you may opt out at
 any time and we'll remove it within 5 business days." Opt-out keeps it
 honest and un-pushy.

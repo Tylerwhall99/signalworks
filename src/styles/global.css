@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Signalworks design system
+   The Free Website Co. design system
    Plain, direct, confident. Paper + ink + one signal color.
    ========================================================================== */
 
@@ -155,7 +155,7 @@ a:hover {
   background: var(--signal-tint);
 }
 
-/* Monospace eyebrow label — the recurring Signalworks motif */
+/* Monospace eyebrow label — the recurring brand motif */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-xs);

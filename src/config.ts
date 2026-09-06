@@ -8,15 +8,19 @@
  * real numbers exist — FREE_BUILD.capacityPerMonth and CLEARED_SERVICES.
  */
 
-// Vercel preview URL until the real domain lands; swap once, everything follows.
-export const SITE_URL = 'https://signalworks-hall-hub.vercel.app';
+// The real domain. Vercel alias signalworks-hall-hub.vercel.app keeps working as a fallback.
+export const SITE_URL = 'https://freewebsiteco.com';
 
 export const BRAND = {
-  name: 'Signalworks',
+  name: 'The Free Website Co.',
+  /** Compact wordmark for headers/footers. */
+  short: 'Free Website Co.',
+  /** Parent/operating brand byline ("a ___ company"). Empty = no byline rendered. */
+  parent: '',
   tagline: 'Websites and apps that get service businesses found, called, and booked.',
   // Default meta description; individual pages override it.
   description:
-    'Signalworks builds free, professional websites — home services businesses first (HVAC, plumbing, electrical, roofing, landscaping), every business welcome. You own it outright: domain, files, everything. Built in days with AI-assisted development.',
+    'The Free Website Co. builds free, professional websites — home services businesses first (HVAC, plumbing, electrical, roofing, landscaping), every business welcome. You own it outright: domain, files, everything. Built in days with AI-assisted development.',
 } as const;
 
 export const CONTACT = {

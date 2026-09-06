@@ -7,7 +7,7 @@
 
 Design principles: quantities, never "unlimited support" vagueness;
 deliverables and response times, never outcomes; cancel anytime with the
-5-day full handoff on every tier; priced from Signalworks' real cost
+5-day full handoff on every tier; priced from The Free Website Co.'s real cost
 basis (static sites need no plugin babysitting) rather than agency
 convention.
 
@@ -83,10 +83,10 @@ owner's-guide template.
 ## Payments — "Get Paid Online" via Stripe Connect (added 2026-08-18)
 
 **Model:** Stripe Connect **Standard** accounts — the client owns a full
-Stripe account (dashboard, payouts, KYC) connected to Signalworks as the
+Stripe account (dashboard, payouts, KYC) connected to The Free Website Co. as the
 platform. Honors the runbook rule (never process payments through our
 account) and the ownership promise (they can disconnect anytime and keep
-the account). Signalworks collects a disclosed per-transaction
+the account). The Free Website Co. collects a disclosed per-transaction
 application fee; funds never touch us.
 
 **Deliverables (every tier, setup free):**
@@ -100,7 +100,7 @@ application fee; funds never touch us.
 
 **Fee ladder — the fee falls as the plan rises:**
 
-| Tier | Signalworks platform fee | Client total per transaction |
+| Tier | The Free Website Co. platform fee | Client total per transaction |
 | --- | --- | --- |
 | Free build, no plan | 0.75% | 3.65% + 30¢ |
 | Lights On ($29) | 0.50% | 3.40% + 30¢ |
@@ -120,7 +120,7 @@ still want to skip 'mail a check.'"
   Cloudflare Pages Function + one end-to-end demo transaction.
 - Disclosure in: pay page footer, Care/Front Office agreements,
   free-build agreement "not free" list ("payment processing: Stripe's
-  fees plus a disclosed Signalworks platform fee"), and /terms/.
+  fees plus a disclosed The Free Website Co. platform fee"), and /terms/.
 - Attorney review line: Stripe is merchant of record; clients complete
   their own verification in Stripe's flow; 1099-K reporting is theirs.
 
@@ -128,12 +128,12 @@ still want to skip 'mail a check.'"
 
 Stripe Connect is ALREADY set up through Tyler's holding company, **Long
 Hall Financial** — that existing platform will be used rather than a new
-Signalworks Stripe account. Implications to resolve (red-team audit +
+The Free Website Co. Stripe account. Implications to resolve (red-team audit +
 attorney):
 - Client-facing disclosure must name the platform entity: clients will
   see Long Hall Financial in Stripe onboarding/statements unless a
-  Signalworks profile/descriptor is configured on the platform.
-- Entity structure question changes: Signalworks operating as a
+  The Free Website Co. profile/descriptor is configured on the platform.
+- Entity structure question changes: The Free Website Co. operating as a
   brand/DBA under Long Hall Financial may simplify (or complicate) the
   CPA conversation in checklist §2.
 - Stripe platform profile should accurately reflect the web-design

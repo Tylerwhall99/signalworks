@@ -52,5 +52,5 @@
 - Capacity number [X] must be the real config number before any send.
 - One follow-up max, a week later, then done: "No pressure — if timing
   changes, the intake stays open."
-- Every response gets a task in the Signalworks Todoist project, and
+- Every response gets a task in the The Free Website Co. Todoist project, and
   the 1-business-day reply promise applies from message one.

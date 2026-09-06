@@ -1,6 +1,6 @@
-# Signalworks — marketing site
+# The Free Website Co. — marketing site
 
-The public website for Signalworks. Built with [Astro](https://astro.build)
+The public website for The Free Website Co. Built with [Astro](https://astro.build)
 as a fully static site: no database, no CMS, nothing to patch on a schedule.
 
 ## The one file you'll edit most
@@ -11,7 +11,7 @@ as a fully static site: no database, no CMS, nothing to patch on a schedule.
 | --- | --- |
 | Phone, email, address | `CONTACT` — currently placeholders, replace before launch |
 | Contact form endpoint | `CONTACT.formEndpoint` — paste a Formspree/Basin URL and the form appears on /contact/ automatically |
-| Real domain | `SITE_URL` — replace `https://signalworks.example` before launch |
+| Real domain | `SITE_URL` — set to `https://freewebsiteco.com` |
 | Prices & packages | `PRICING` and `CARE_PLAN` — edit numbers/bullets here, the pricing page and structured data update themselves |
 | Navigation | `NAV` and `NAV_CTA` |
 | Services list | `SERVICES` — see "Adding a new service" below |

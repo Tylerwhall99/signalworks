@@ -7,7 +7,7 @@
 
 ---
 
-**Between:** [LEGAL ENTITY / YOUR NAME], doing business as Signalworks
+**Between:** [LEGAL ENTITY / YOUR NAME], doing business as The Free Website Co.
 ("we") and ______________________________ ("you"), for the business
 ______________________________.
 
@@ -68,7 +68,7 @@ care-plan agreement).
 
 | | |
 | --- | --- |
-| Signalworks: ______________________ | Client: ______________________ |
+| The Free Website Co.: ______________________ | Client: ______________________ |
 | Date: ______________________ | Date: ______________________ |
 
 > Attorney to add/confirm: governing law (California), limitation of

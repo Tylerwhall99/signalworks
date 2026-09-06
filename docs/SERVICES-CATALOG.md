@@ -1,4 +1,4 @@
-# Signalworks — Full Service Catalog & Build Feasibility Map
+# The Free Website Co. — Full Service Catalog & Build Feasibility Map
 
 > Internal document — never published to the site. The public site only ever
 > shows services whose ledger rows below are CLOSED (see "The rule" at the
@@ -114,7 +114,7 @@ Gap to close: either (a) get certified and manage a small budget on your own bus
 
 | # | Assumption / prerequisite | Blocks | Status |
 |---|---|---|---|
-| A1 | Supabase (or equal) account strategy decided: client-owned vs. yours | Web apps, portals | CLOSED — client-owned accounts (Supabase, Stripe, domain, email). Signalworks retains admin access for delivery and Care Plan work. This matches the public "your data, your accounts, your code" promise. |
+| A1 | Supabase (or equal) account strategy decided: client-owned vs. yours | Web apps, portals | CLOSED — client-owned accounts (Supabase, Stripe, domain, email). The Free Website Co. retains admin access for delivery and Care Plan work. This matches the public "your data, your accounts, your code" promise. |
 | A2 | Stripe flows tested end-to-end on a demo | E-commerce | OPEN |
 | A3 | Shopify Partner account created | Shopify builds | OPEN |
 | A4 | One Expo app published under own dev accounts | Native mobile apps | OPEN |

@@ -5,7 +5,7 @@
 
 ---
 
-**Between:** [LEGAL ENTITY / YOUR NAME], doing business as Signalworks
+**Between:** [LEGAL ENTITY / YOUR NAME], doing business as The Free Website Co.
 ("we") and ______________________________ ("you"), for the website at
 ______________________________.
 
@@ -26,7 +26,7 @@ deliverability setup $100 one-time.
 **Payments (optional):** if you ask us to set up online payments (invoice
 payments, deposits, checkout), they run through your own Stripe account,
 connected to a payments platform operated by Long Hall Financial
-(Signalworks' parent company). Stripe's processing fees pass through
+(The Free Website Co.'s parent company). Stripe's processing fees pass through
 unchanged; the platform fee for your plan is disclosed in writing before
 the payment page goes live, and appears on the page itself. You can
 disconnect your Stripe account at any time and keep it.
@@ -64,7 +64,7 @@ disconnect your Stripe account at any time and keep it.
 
 | | |
 | --- | --- |
-| Signalworks: ______________________ | Client: ______________________ |
+| The Free Website Co.: ______________________ | Client: ______________________ |
 | Date: ______________________ | Date: ______________________ |
 
 > Attorney to add/confirm: governing law (California), liability
