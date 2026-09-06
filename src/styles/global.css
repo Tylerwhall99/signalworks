@@ -13,6 +13,9 @@
   --ink-faint: #6b7484;
   --line: #e2e4ea;
   --line-strong: #c9cdd8;
+  /* Interactive boundaries need >=3:1 (WCAG 1.4.11). #767e8f measures
+     4.08:1 on #ffffff and 3.91:1 on the #fafafc page ground. */
+  --line-control: #767e8f;
   --blue: #1d4ed8;          /* links, eyebrows, structure: 4.5:1+ on paper */
   --blue-strong: #163da6;   /* hovers */
   --blue-tint: #e9effc;
@@ -145,10 +148,26 @@ a:hover {
   color: var(--blue-strong);
 }
 
+/*
+ * Focus ring. --blue-strong is 2.03:1 on the film background and 1.91:1 on
+ * the dark footer, so keyboard users lost the indicator across the whole
+ * homepage and every footer. A double ring works on both grounds: a light
+ * outline with a dark shadow behind it, so whichever surface it lands on,
+ * one of the two contrasts.
+ */
 :focus-visible {
   outline: 2px solid var(--blue-strong);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+.site-footer :focus-visible,
+.film-header :focus-visible,
+.hero :focus-visible,
+.scene :focus-visible,
+.readout :focus-visible {
+  outline-color: #f2f5fb;
+  box-shadow: 0 0 0 5px rgba(11, 17, 28, 0.85);
 }
 
 ::selection {
@@ -411,7 +430,7 @@ select {
   font: inherit;
   width: 100%;
   padding: 0.7em 0.9em;
-  border: 1.5px solid var(--line-strong);
+  border: 1.5px solid var(--line-control);
   border-radius: var(--radius);
   background: var(--paper-raised);
   color: var(--ink);
