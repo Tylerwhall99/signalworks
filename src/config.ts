@@ -213,7 +213,7 @@ export interface LadderService {
 export const SERVICE_LADDER: LadderService[] = [
   {
     id: 'lead-capture',
-    hook: 'Never miss a call',
+    hook: 'Answer the calls you miss',
     name: 'Lead Capture System',
     price: '$297/month',
     blurb:
@@ -226,7 +226,7 @@ export const SERVICE_LADDER: LadderService[] = [
     price: '$197/month',
     bundleNote: '$97/month when added to Lead Capture',
     blurb:
-      'A review request goes out by text after every job. We draft the responses, you approve. Reviews come because you asked — not because you got lucky.',
+      'A review request goes out by text after every job. We draft the responses, you approve.',
   },
 ];
 

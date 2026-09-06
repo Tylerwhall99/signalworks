@@ -201,8 +201,9 @@ const STEPS = [
           A free, professional website for your home services business.
         </h1>
         <p class="film-sub">
-          Built in days. You own it outright — domain, files, everything. No
-          catch, and we’ll tell you exactly why it’s free.
+          Built in days. You own it outright — domain, files, everything.
+          It’s free because we make our money on the optional monthly
+          services afterward, not on the build.
         </p>
         <div class="btn-row hero-ctas">
           <a href="#start" class="btn btn--primary btn--large">{NAV_CTA.label}</a>
@@ -471,7 +472,7 @@ const STEPS = [
         <div class="container">
           <div class="section-head">
             <span class="eyebrow">After launch</span>
-            <h2>The site is free. Making it ring is the business.</h2>
+            <h2>The site is free. The phone side is the business.</h2>
             <p class="muted">
               Every service is month-to-month, cancel anytime, everything
               handed over within 5 business days if you leave.
@@ -715,6 +716,16 @@ const STEPS = [
               draft — <a href="/privacy/">the privacy policy</a>, in plain
               English.
             </p>
+            {
+              !hasEndpoint && (
+                <p class="intake-closed" role="status">
+                  <strong>Intake isn’t open yet.</strong> We’re still setting
+                  up the inbox on the new domain, so the forms below can’t
+                  send. Have a look at what they ask — they’ll be live within
+                  days.
+                </p>
+              )
+            }
           </div>
 
           <div class="wiz-chooser" data-wiz-chooser>
@@ -1809,6 +1820,15 @@ const STEPS = [
         margin-top: var(--space-3);
         font-weight: 650;
         color: var(--signal-strong);
+      }
+
+      .intake-closed {
+        margin-top: var(--space-4);
+        padding: var(--space-3) var(--space-4);
+        border: 1.5px solid var(--signal-strong);
+        border-radius: var(--radius);
+        background: color-mix(in srgb, var(--signal-strong) 6%, transparent);
+        font-size: var(--text-sm);
       }
 
       /* ---- Hero ---- */

@@ -4,6 +4,11 @@ import { CONTACT, CONTACT_READY, PHONE_HREF } from '../config';
 
 const hasForm = CONTACT.formEndpoint.length > 0 && CONTACT.accessKey.length > 0;
 const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
+// The lede used to instruct the visitor to email while the block directly
+// below said email did not exist yet. Gate the instruction, keep the promise.
+const ledeTail = CONTACT_READY.email
+  ? "For anything else, a few plain sentences by email works. You'll hear back within one business day."
+  : "You'll hear back within one business day.";
 ---
 
 <Base
@@ -16,8 +21,7 @@ const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
       <h1>Reach a person, directly.</h1>
       <p class="lede" style="margin-top: var(--space-4);">
         Starting a free site? The <a href="/#start">intake form</a> is the
-        fastest path — no call needed. For anything else, a few plain
-        sentences by email works. You'll hear back within one business day.
+        fastest path — no call needed. {ledeTail}
       </p>
     </div>
   </section>
@@ -51,7 +55,7 @@ const hasDirect = CONTACT_READY.email || CONTACT_READY.phone;
           )
         }
         <div class="contact-next">
-          <h2 class="contact-h">What happens after you write</h2>
+          <h2 class="contact-h">{hasDirect || hasForm ? 'What happens after you write' : 'What happens once you send intake'}</h2>
           <ol class="steps">
             <li>
               <h3>You get a reply</h3>
