@@ -11,6 +11,7 @@ const schema = {
   name: BRAND.name,
   description: BRAND.description,
   url: SITE_URL,
+  image: new URL('/og.png', SITE_URL).href,
   // Contact fields appear only once they are real (see CONTACT_READY).
   ...(CONTACT_READY.email ? { email: CONTACT.email } : {}),
   ...(CONTACT_READY.phone ? { telephone: CONTACT.phone } : {}),
@@ -37,12 +38,18 @@ const schema = {
         price: '0',
         priceCurrency: 'USD',
       },
+      // These are monthly subscriptions; a bare price reads as one-time.
       ...CARE_PLANS.map((plan) => ({
         '@type': 'Offer',
         name: plan.name,
         description: plan.blurb,
-        price: plan.price.replace(/[^0-9.]/g, ''),
-        priceCurrency: 'USD',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: plan.price.replace(/[^0-9.]/g, ''),
+          priceCurrency: 'USD',
+          unitCode: 'MON',
+          billingIncrement: 1,
+        },
       })),
     ],
   },
