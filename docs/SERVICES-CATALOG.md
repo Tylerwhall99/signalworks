@@ -135,3 +135,13 @@ Gap to close: either (a) get certified and manage a small budget on your own bus
 - **After first 2 clients:** #7, 10, 11, 18 (PDF reports), 20.
 - **After 5 clients:** #12, 14, 16, 9.
 - **Stage 3:** #13, 15, 17, 19, native #5.
+
+---
+
+## Open item added 2026-09-06 (site audit)
+
+**Lead Capture System ($297/mo) and Reputation Engine ($197/mo) have no signable agreement.** The free build and the care plans each have a one-pager (`docs/free-build-agreement.md`, `docs/care-plan-agreement.md`) and a plain-English twin at /terms/. The two lead services have neither, yet /services/ and the homepage apply the same month-to-month, cancel-anytime, 5-day-handoff promise to them.
+
+What "handed over" means for these is genuinely different from a website: it is the phone number, the message history, the contact records, and the review requests in flight. That needs writing down before the first sale, not after.
+
+**Action:** write `docs/lead-services-agreement.md` covering: who owns the phone number and what happens to it on cancellation; export format and timing for contact records and message history; what happens to scheduled review requests; A2P 10DLC registration ownership; and per-message costs if they are passed through. Add it to the attorney packet. Until it exists, the public pages say only what is actually true — the site, domain and contact records come back within 5 business days.
