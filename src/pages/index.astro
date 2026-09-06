@@ -1724,6 +1724,12 @@ const STEPS = [
         0%, 100% { opacity: 0.35; transform: translateY(0); }
         50% { opacity: 1; transform: translateY(6px); }
       }
+      @media (max-width: 21.99rem) {
+        .fh-skip {
+          display: none;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         .scroll-hint { animation: none; }
       }
@@ -2209,6 +2215,37 @@ const STEPS = [
       @media (max-width: 47.99rem) {
         .fh-link {
           display: none;
+        }
+        /* Longer wordmark since the rename: keep the whole header on one
+           line at phone widths — nothing wraps, the skip link gives way first. */
+        .film-header {
+          gap: 0.75rem;
+          padding-inline: 1rem;
+        }
+        .fh-wordmark {
+          font-size: 1.05rem;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+        .fh-nav {
+          gap: 0.75rem;
+          min-width: 0;
+        }
+        .fh-cta {
+          white-space: nowrap;
+          padding: 0.55em 0.85em;
+          font-size: var(--text-xs);
+        }
+        .fh-skip {
+          white-space: nowrap;
+        }
+        .fh-phone {
+          display: none;
+        }
+        /* Centered hero copy must never slide under the fixed header on
+           short phone viewports. */
+        .hero {
+          padding-top: 4.5rem;
         }
         .chip-field {
           grid-template-columns: repeat(2, 1fr);
