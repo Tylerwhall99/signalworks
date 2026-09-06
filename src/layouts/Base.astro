@@ -1,5 +1,5 @@
 ---
-import { BRAND, SITE_URL } from '../config';
+import { ANALYTICS, BRAND, SEARCH_VERIFICATION, SITE_URL } from '../config';
 import Header from '../components/Header.astro';
 import StickyBar from '../components/StickyBar.astro';
 import Footer from '../components/Footer.astro';
@@ -36,6 +36,22 @@ const canonical = new URL(Astro.url.pathname, SITE_URL).href;
     <meta property="og:image" content={new URL('/og.png', SITE_URL).href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#faf9f6" />
+    {SEARCH_VERIFICATION.google && (
+      <meta name="google-site-verification" content={SEARCH_VERIFICATION.google} />
+    )}
+    {SEARCH_VERIFICATION.bing && (
+      <meta name="msvalidate.01" content={SEARCH_VERIFICATION.bing} />
+    )}
+    {
+      ANALYTICS.plausibleDomain && (
+        <script
+          defer
+          data-domain={ANALYTICS.plausibleDomain}
+          src="https://plausible.io/js/script.js"
+          is:inline
+        />
+      )
+    }
     <slot name="head" />
   </head>
   <body>

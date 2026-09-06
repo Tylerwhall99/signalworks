@@ -28,5 +28,5 @@ never your bill.
 First working draft within five business days. No sales call — submit
 the form, get the draft, decide with something real in front of you.
 
-[LINK] — the terms are on the site in plain English, one page, before
+https://freewebsiteco.com — the terms are on the site in plain English, one page, before
 you give me anything.

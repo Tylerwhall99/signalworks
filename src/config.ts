@@ -55,6 +55,16 @@ export const ANALYTICS = {
   plausibleDomain: '',
 } as const;
 
+/**
+ * Search-engine ownership proofs. Paste the token each console gives you
+ * (Google Search Console → "HTML tag" method; Bing Webmaster → "Meta tag")
+ * and the matching <meta> renders on every page. Empty = nothing rendered.
+ */
+export const SEARCH_VERIFICATION = {
+  google: '',
+  bing: '',
+} as const;
+
 export interface NavItem {
   label: string;
   href: string;
