@@ -416,6 +416,56 @@ const STEPS = [
         </div>
       </section>
 
+      <!-- ============ SAMPLE BUILDS ============ -->
+      <!--
+        "Show me one you built" is the first thing a burned owner asks, and
+        the site had no answer. Every card carries its own fictional label so
+        a skimmer can never mistake these for a client roster — that would be
+        the invented proof the content rules ban.
+      -->
+      <section class="section section--rule" id="samples">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Sample builds</span>
+            <h2>What one actually looks like.</h2>
+            <p class="muted">
+              We have no clients yet, so these are fictional businesses we
+              built to show the range. Real ones replace them the moment
+              there are real ones.
+            </p>
+          </div>
+          <div class="samples-grid">
+            <a class="card sample" href="/demos/ridgeline-hvac/">
+              <span class="sample-tag">Sample build — fictional business</span>
+              <h3>Ridgeline Heating &amp; Air</h3>
+              <p class="muted">
+                HVAC. Click-to-call above the fold, services priced in
+                writing, estimate form.
+              </p>
+              <span class="sample-go">Open it →</span>
+            </a>
+            <a class="card sample" href="/demos/evergreen-landscaping/">
+              <span class="sample-tag">Sample build — fictional business</span>
+              <h3>Evergreen &amp; Stone</h3>
+              <p class="muted">
+                Landscaping. Warmer and editorial — deliberately nothing like
+                the HVAC one.
+              </p>
+              <span class="sample-go">Open it →</span>
+            </a>
+            <a class="card sample" href="/demos/alder-vance-law/">
+              <span class="sample-tag">Sample build — fictional business</span>
+              <h3>Alder &amp; Vance Family Law</h3>
+              <p class="muted">
+                A law firm. Restrained and serif, with no invented
+                credentials.
+              </p>
+              <span class="sample-go">Open it →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ AFTER LAUNCH: THE LADDER ============ -->
       <section class="section section--rule" id="after-launch">
         <div class="container">
@@ -477,13 +527,27 @@ const STEPS = [
                 <label for="calc-calls">Calls you can’t answer per week</label>
                 <input id="calc-calls" type="number" inputmode="numeric" min="0" value="5" />
               </div>
+              <div class="field">
+                <label for="calc-close">
+                  Of the calls you <em>do</em> answer, how many become jobs? (%)
+                </label>
+                <input
+                  id="calc-close"
+                  type="number"
+                  inputmode="numeric"
+                  min="0"
+                  max="100"
+                  placeholder="your number"
+                />
+              </div>
             </div>
             <p class="calc-out" aria-live="polite">
-              That’s roughly <strong id="calc-result">$7,525</strong>/month
-              walking past you.
+              <span id="calc-result">About 21 calls a month you never got to.</span>
             </p>
             <p class="muted calc-note">
-              Your numbers, simple math — not a projection.
+              Your numbers, your close rate. An estimate, not a promise — we
+              don’t know which of those calls would have said yes, and neither
+              does anyone selling you software.
             </p>
             <a href="#start" class="btn btn--primary">Start my free site</a>
             <p class="muted" style="font-size: var(--text-sm); margin-top: var(--space-3);">
@@ -1133,14 +1197,33 @@ const STEPS = [
         const calcValue = document.getElementById('calc-value');
         const calcCalls = document.getElementById('calc-calls');
         const calcResult = document.getElementById('calc-result');
+        const calcClose = document.getElementById('calc-close');
         if (calcValue && calcCalls && calcResult) {
+          // No default close rate: inventing one would make the dollar figure
+          // our claim rather than the visitor's arithmetic. Until they supply
+          // one we show the call count only, which needs no assumption.
           const recalc = () => {
             const v = Math.max(0, Number(calcValue.value) || 0);
             const c = Math.max(0, Number(calcCalls.value) || 0);
-            calcResult.textContent = '$' + Math.round(v * c * 4.3).toLocaleString('en-US');
+            const perMonth = Math.round(c * 4.3);
+            const raw = calcClose ? calcClose.value.trim() : '';
+            const rate = raw === '' ? null : Math.min(100, Math.max(0, Number(raw) || 0));
+            if (rate === null || !v) {
+              calcResult.textContent =
+                'About ' + perMonth.toLocaleString('en-US') +
+                (perMonth === 1 ? ' call' : ' calls') + ' a month you never got to.';
+              return;
+            }
+            const dollars = Math.round(v * perMonth * (rate / 100));
+            calcResult.textContent =
+              'About ' + perMonth.toLocaleString('en-US') +
+              (perMonth === 1 ? ' call' : ' calls') +
+              ' a month — roughly $' + dollars.toLocaleString('en-US') +
+              ' of work, at your own close rate.';
           };
           calcValue.addEventListener('input', recalc);
           calcCalls.addEventListener('input', recalc);
+          if (calcClose) calcClose.addEventListener('input', recalc);
           recalc();
         }
 
@@ -1686,6 +1769,46 @@ const STEPS = [
         background: var(--signal-strong);
         border-color: var(--signal-strong);
         color: #fff;
+      }
+
+      .samples-grid {
+        display: grid;
+        gap: var(--space-4);
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 48rem) {
+        .samples-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .sample {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 150ms ease, transform 150ms ease;
+      }
+      .sample:hover {
+        border-color: var(--signal-strong);
+        transform: translateY(-2px);
+      }
+      .sample-tag {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: var(--space-2);
+      }
+      .sample h3 {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-2);
+      }
+      .sample-go {
+        display: inline-block;
+        margin-top: var(--space-3);
+        font-weight: 650;
+        color: var(--signal-strong);
       }
 
       /* ---- Hero ---- */

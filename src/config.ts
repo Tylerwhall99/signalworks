@@ -17,7 +17,13 @@ export const BRAND = {
   short: 'Free Website Co.',
   /** Parent/operating brand byline ("a ___ company"). Empty = no byline rendered. */
   parent: '',
-  tagline: 'Websites and apps that get service businesses found, called, and booked.',
+  /**
+   * Deliverable-only. The old line ("get service businesses found, called,
+   * and booked") promised search visibility, lead volume and revenue — three
+   * outcome promises, in the footer of every page, directly under the /about/
+   * paragraph that forbids exactly that.
+   */
+  tagline: 'A real website, built for you, yours to keep.',
   // Default meta description; individual pages override it.
   description:
     'The Free Website Co. builds free, professional websites — home services businesses first (HVAC, plumbing, electrical, roofing, landscaping), every business welcome. You own it outright: domain, files, everything. Built in days with AI-assisted development.',
