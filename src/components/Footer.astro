@@ -136,6 +136,20 @@ const year = new Date().getFullYear();
     margin-top: var(--space-2);
   }
 
+  @media (max-width: 47.99rem) {
+    /* Stacked footer links were 18px tall. Give each its own row. */
+    .site-footer nav a,
+    .site-footer__brand + nav a {
+      display: block;
+      padding-block: 0.6rem;
+      min-height: 44px;
+    }
+
+    .site-footer li + li {
+      margin-top: 0;
+    }
+  }
+
   .site-footer a {
     color: var(--footer-paper);
     text-decoration: none;

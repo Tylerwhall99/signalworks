@@ -3,15 +3,104 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "(signalworks-hall-hub|signalworks-psi)\\.vercel\\.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "(signalworks-hall-hub|signalworks-psi)\\.vercel\\.app"
+        }
+      ],
       "destination": "https://freewebsiteco.com/:path*",
       "permanent": true
     },
-    { "source": "/pricing/", "destination": "/services/", "permanent": true },
-    { "source": "/process/", "destination": "/#how-it-works", "permanent": true },
-    { "source": "/services/web-design/", "destination": "/services/", "permanent": true },
-    { "source": "/services/landing-pages/", "destination": "/services/", "permanent": true },
-    { "source": "/services/web-apps/", "destination": "/services/", "permanent": true },
-    { "source": "/services/rescues/", "destination": "/services/", "permanent": true }
+    {
+      "source": "/pricing/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/process/",
+      "destination": "/#how-it-works",
+      "permanent": true
+    },
+    {
+      "source": "/services/web-design/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services/landing-pages/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services/web-apps/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services/rescues/",
+      "destination": "/services/",
+      "permanent": true
+    }
+  ],
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/vendor/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(og.png|favicon.svg|favicon.png|apple-touch-icon.png)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
   ]
 }

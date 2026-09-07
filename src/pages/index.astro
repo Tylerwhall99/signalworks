@@ -95,6 +95,9 @@ const STEPS = [
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL('/og.png', SITE_URL).href} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={BRAND.description} />
+    <meta name="twitter:image" content={new URL('/og.png', SITE_URL).href} />
     <meta name="theme-color" content="#0b111c" />
     <link
       rel="preload"
@@ -190,6 +193,8 @@ const STEPS = [
         <a href={NAV_CTA.href} class="fh-cta">{NAV_CTA.label}</a>
       </nav>
     </header>
+
+    <main id="content">
 
     <!-- ============ HERO ============ -->
     <section class="hero scene--dark" aria-label="The offer">
@@ -366,7 +371,6 @@ const STEPS = [
       <span class="ro-bar"><span class="ro-fill" id="ro-fill"></span></span>
     </div>
 
-    <main id="content">
       <!-- ============ WHY FREE ============ -->
       <section class="section" id="why-free">
         <div class="container container--narrow">
@@ -1229,9 +1233,21 @@ const STEPS = [
     <Footer />
     <StickyBar />
 
-    <script is:inline src="/vendor/gsap.min.js"></script>
-    <script is:inline src="/vendor/ScrollTrigger.min.js"></script>
-    <script is:inline src="/vendor/lenis.min.js"></script>
+    <!--
+      The film libraries are ~180KB and are useless to anyone with reduced
+      motion on, so load them only when the film will actually run. Injected
+      synchronously in document order, so the init script below still finds
+      them on window.
+    -->
+    <script is:inline>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.write(
+          '<script src="/vendor/gsap.min.js"><\/script>' +
+            '<script src="/vendor/ScrollTrigger.min.js"><\/script>' +
+            '<script src="/vendor/lenis.min.js"><\/script>',
+        );
+      }
+    </script>
     <script is:inline>
       (() => {
         const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1910,7 +1926,7 @@ const STEPS = [
       /* ---- Hero ---- */
       .hero {
         position: relative;
-        min-height: 100vh;
+        min-height: 100svh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1944,7 +1960,7 @@ const STEPS = [
       /* ---- Scenes ---- */
       .scene {
         position: relative;
-        min-height: 100vh;
+        min-height: 100svh;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -1999,6 +2015,7 @@ const STEPS = [
         color: var(--blue-bright);
       }
       .scroll-hint {
+        color: var(--film-text);
         margin-top: var(--space-6);
         font-family: var(--font-mono);
         font-size: var(--text-xs);
@@ -2011,6 +2028,15 @@ const STEPS = [
         0%, 100% { opacity: 0.35; transform: translateY(0); }
         50% { opacity: 1; transform: translateY(6px); }
       }
+      @media (max-width: 47.99rem) and (max-height: 50rem) {
+        .hero .scroll-hint {
+          display: none;
+        }
+        .hero .hero-ctas {
+          margin-top: var(--space-4);
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         .scroll-hint { animation: none; }
       }
@@ -2346,10 +2372,11 @@ const STEPS = [
       }
       .wiz-back {
         background: none;
-        border: 1.5px solid var(--line-strong);
+        border: 1.5px solid var(--line-control);
         border-radius: var(--radius);
-        width: 2.2rem;
-        height: 2.2rem;
+        /* 44px minimum: this is the only way back through the wizard. */
+        width: 44px;
+        height: 44px;
         font-size: 1rem;
         color: var(--ink);
         cursor: pointer;
@@ -2564,10 +2591,13 @@ const STEPS = [
         .film-header.is-open .fh-bar:nth-of-type(2) {
           transform: translateY(-4px) rotate(-45deg);
         }
-        /* Centered hero copy must never slide under the fixed header on
-           short phone viewports. */
+        /* Centred hero copy must clear both fixed bars: the 69px header and
+           the 57px sticky CTA. Padding alone is not enough on short phones,
+           where the copy is taller than the band — there the scroll cue is
+           dropped and the button gap tightened instead. */
         .hero {
           padding-top: 4.5rem;
+          padding-bottom: 4.5rem;
         }
         .chip-field {
           grid-template-columns: repeat(2, 1fr);
