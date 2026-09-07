@@ -921,7 +921,8 @@ const STEPS = [
                 <button
                   type="submit"
                   class="btn btn--primary btn--large intake-submit"
-                  disabled={!hasEndpoint}
+                  aria-disabled={!hasEndpoint ? 'true' : undefined}
+                  data-inert={!hasEndpoint ? 'true' : undefined}
                 >
                   Send it — build my draft
                 </button>
@@ -945,7 +946,8 @@ const STEPS = [
                     ) : (
                       <>
                         Intake opens in the next few days — we’re moving onto
-                        the new domain. Keep your answers; check back shortly.
+                        the new domain. Anything you type here is saved in
+                        this browser, so you can come back to it.
                       </>
                     )}
                   </p>
@@ -1185,7 +1187,8 @@ const STEPS = [
                 <button
                   type="submit"
                   class="btn btn--primary btn--large intake-submit"
-                  disabled={!hasEndpoint}
+                  aria-disabled={!hasEndpoint ? 'true' : undefined}
+                  data-inert={!hasEndpoint ? 'true' : undefined}
                 >
                   Send it — build my draft
                 </button>
@@ -1209,7 +1212,8 @@ const STEPS = [
                     ) : (
                       <>
                         Intake opens in the next few days — we’re moving onto
-                        the new domain. Keep your answers; check back shortly.
+                        the new domain. Anything you type here is saved in
+                        this browser, so you can come back to it.
                       </>
                     )}
                   </p>
@@ -1289,6 +1293,48 @@ const STEPS = [
           if (calcClose) calcClose.addEventListener('input', recalc);
           recalc();
         }
+
+        // ---- Intake answers survive a refresh ----
+        // The closed-intake notice tells people to keep their answers. It was
+        // not true: nothing was stored. Saves per-field, restores on load, and
+        // clears once a submission actually goes through.
+        const DRAFT_KEY = 'fwc-intake-draft-v1';
+        function readDraft() {
+          try {
+            return JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
+          } catch (e) {
+            return {};
+          }
+        }
+        function saveField(el) {
+          if (!el.name || el.name === 'company_website') return;
+          try {
+            const d = readDraft();
+            d[el.name] = el.type === 'checkbox' ? el.checked : el.value;
+            localStorage.setItem(DRAFT_KEY, JSON.stringify(d));
+          } catch (e) {
+            /* private mode, quota — losing the draft is not worth an error */
+          }
+        }
+        function restoreDraft() {
+          const d = readDraft();
+          if (!Object.keys(d).length) return;
+          document.querySelectorAll('.wiz-form [name]').forEach((el) => {
+            if (!(el.name in d)) return;
+            if (el.type === 'checkbox') el.checked = !!d[el.name];
+            else el.value = d[el.name];
+          });
+        }
+        function clearDraft() {
+          try {
+            localStorage.removeItem(DRAFT_KEY);
+          } catch (e) {}
+        }
+        document.querySelectorAll('.wiz-form [name]').forEach((el) => {
+          el.addEventListener('input', () => saveField(el));
+          el.addEventListener('change', () => saveField(el));
+        });
+        restoreDraft();
 
         // ---- Intake wizard (runs film or not) ----
         const chooser = document.querySelector('[data-wiz-chooser]');
@@ -1416,6 +1462,14 @@ const STEPS = [
               return;
             }
             errorEl.hidden = true;
+            // aria-disabled rather than the native attribute, so the control
+            // stays focusable and screen readers announce why it is inert.
+            const submitBtn = form.querySelector('.intake-submit');
+            if (submitBtn && submitBtn.getAttribute('aria-disabled') === 'true') {
+              ev.preventDefault();
+              return;
+            }
+            clearDraft();
             const action = form.getAttribute('action');
             if (!action) {
               ev.preventDefault();
@@ -2429,6 +2483,10 @@ const STEPS = [
         width: 1px;
         height: 1px;
         overflow: hidden;
+      }
+      .intake-submit[aria-disabled='true'] {
+        opacity: 0.55;
+        cursor: not-allowed;
       }
       [aria-invalid='true'] {
         border-color: #b3261e !important;
