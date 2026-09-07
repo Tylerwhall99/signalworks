@@ -22,18 +22,27 @@ import { ANALYTICS, BRAND, CONTACT, CONTACT_READY } from '../config';
         <h2>What we collect</h2>
         <p>
           What you type into the intake or contact forms: business name,
-          what you do, service area, phone, email, and the optional details
-          you choose to add (photos, links, preferences). Nothing is
-          collected behind your back — no hidden trackers scraping contacts.
+          what you do, service area, phone, email, your hours, the licences
+          or certifications you hold, testimonials you have permission to
+          use, sites you like and dislike, whether you own a domain, whether
+          you have a Google Business Profile, and any other detail you
+          choose to add. If you tick the texting box, we keep that choice
+          too.
+        </p>
+        <p>
+          There are no trackers on this site and no advertising pixels. Our
+          web host keeps ordinary server logs — the sort every website has,
+          recording that a request happened — and we don't use them to build
+          a profile of you.
         </p>
 
         <h2>Where it goes</h2>
         <p>
-          Form submissions are delivered by a form-handling service to our
-          email inbox, and that's where they live. The form service is a
-          processor — it moves the message, it doesn't get to keep or use
-          your information for itself. If you email or call directly, that
-          conversation stays between us.
+          {CONTACT.formEndpoint
+            ? "Form submissions are delivered by a form-handling service to our email inbox, and that's where they live. The form service is a processor — it moves the message, it doesn't get to keep or use your information for itself."
+            : "The forms are not connected to anything yet, so nothing can be submitted and nothing is being collected through them. When they go live, submissions will be delivered by a form-handling service to our email inbox and this page will name it."}
+          {' '}If you email or call directly, that conversation stays between
+          us.
         </p>
 
         <h2>What we do with it</h2>
@@ -81,11 +90,22 @@ import { ANALYTICS, BRAND, CONTACT, CONTACT_READY } from '../config';
           {' '}and we'll delete your submissions and confirm in writing. No
           forms, no hoops, no "retention period."
         </p>
+        <p>
+          One honest exception, so the two pages agree: if we have already
+          built you a site, our <a href="/terms/">free-build terms</a>
+          {' '}reserve an archived copy of that finished work for our
+          portfolio. You can opt out of that when you sign, and you can ask
+          us to take it down later. Deleting your enquiry doesn't
+          automatically delete the archive — say if you want both gone and
+          we'll do both.
+        </p>
 
         <h2>Questions</h2>
         <p>
           This policy is written by {BRAND.name}, for humans. If any of it
-          is unclear, that's a bug — email us and we'll fix the wording.
+          is unclear, that's a bug — tell us however you can reach us (the
+          {' '}<a href="/contact/">contact page</a> has whatever channels are
+          open right now) and we'll fix the wording.
         </p>
 
         <p class="muted" style="font-size: var(--text-sm);">

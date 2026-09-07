@@ -1,6 +1,6 @@
 # Attorney review packet — The Free Website Co.
 
-Prepared 2026-09-06 for a one-sitting review (target: 45–60 minutes of attorney time). Questions 16–21 concern the business name and were added after a research pass; if time is short, they are the ones worth the most.
+Prepared 2026-09-06 for a one-sitting review (target: 45–60 minutes of attorney time). Questions 15–20 concern the business name and were added after a research pass; if time is short, they are the ones worth the most.
 
 ## What the business is, in four lines
 
