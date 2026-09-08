@@ -51,12 +51,6 @@ export const CONTACT = {
 } as const;
 
 /**
- * Which contact details are real. Anything still reading *_PLACEHOLDER is
- * hidden sitewide (footer, contact page, structured data, form fallbacks)
- * so a public visitor never sees scaffolding. Fill CONTACT above and these
- * flip on their own.
- */
-/**
  * Dial-safe phone for `tel:` links. Browsers mostly cope with "(213) 555-0142"
  * but some Android dialers and older iOS versions choke on the punctuation,
  * so links use this and the visible text uses CONTACT.phone.
@@ -65,6 +59,12 @@ export const PHONE_HREF = CONTACT.phone.includes('PLACEHOLDER')
   ? ''
   : `+1${CONTACT.phone.replace(/\D/g, '').replace(/^1/, '')}`;
 
+/**
+ * Which contact details are real. Anything still reading *_PLACEHOLDER is
+ * hidden sitewide (footer, contact page, structured data, form fallbacks)
+ * so a public visitor never sees scaffolding. Fill CONTACT above and these
+ * flip on their own.
+ */
 export const CONTACT_READY = {
   email: !CONTACT.email.includes('PLACEHOLDER'),
   phone: !CONTACT.phone.includes('PLACEHOLDER'),
