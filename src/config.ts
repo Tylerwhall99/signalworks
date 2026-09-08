@@ -226,7 +226,7 @@ export const SERVICE_LADDER: LadderService[] = [
     price: '$197/month',
     bundleNote: '$97/month when added to Lead Capture',
     blurb:
-      'A review request goes out by text after every job. We draft the responses, you approve.',
+      'A review request goes out by text after a job you mark complete. We draft the responses, you approve.',
   },
 ];
 
